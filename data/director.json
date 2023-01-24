@@ -1,0 +1,328 @@
+﻿{
+  "directors": [
+    {
+      "name": "Frank Darabont",
+      "birthdate": "January 28, 1959",
+      "birthplace": "Montbéliard, France",
+      "height": "6'0",
+      "spouse": "Laurie Holden",
+      "occupation": "Film director, screenwriter, and producer",
+      "known_for": [
+        "The Shawshank Redemption",
+        "The Green Mile",
+        "The Mist"
+      ],
+      "education": {
+        "degree": "Bachelor of Arts",
+        "field": "Film",
+        "school": "Hollywood High School, Los Angeles City College"
+      },
+      "awards": [
+        "Academy Award for Best Adapted Screenplay nomination for The Shawshank Redemption",
+        "Saturn Award for Best Director for The Shawshank Redemption"
+      ],
+      "quotes": [
+        "Hope is a good thing, maybe the best of things, and no good thing ever dies.",
+        "I believe in the power of cinema to transcend all barriers, to reach across all borders, to heal all wounds, to unite us all as one human family."
+      ],
+      "imdb_page": "https://www.imdb.com/name/nm0001104/"
+    },
+    {
+      "name": "Francis Ford Coppola",
+      "birthdate": "April 7, 1939",
+      "birthplace": "Detroit, Michigan, U.S.",
+      "height": "5'7",
+      "spouse": "Eleanor Coppola",
+      "occupation": "Film director, producer, and screenwriter",
+      "known_for": [
+        "The Godfather",
+        "Apocalypse Now",
+        "The Godfather Part II"
+      ],
+      "education": {
+        "degree": "Bachelor of Arts",
+        "field": "Drama",
+        "school": "Hofstra University"
+      },
+      "awards": [
+        "Academy Award for Best Picture for The Godfather",
+        "Academy Award for Best Director for The Godfather Part II"
+      ],
+      "quotes": [
+        "I think cinema, movies, and magic have always been closely associated. The very earliest people who made film were magicians.",
+        "The film of tomorrow will be an act of love."
+      ],
+      "imdb_page": "https://www.imdb.com/name/nm0000338/"
+    },
+    {
+      "name": "Christopher Nolan",
+      "birthdate": "July 30, 1970",
+      "birthplace": "London, England, U.K.",
+      "height": "6'0",
+      "spouse": "Emma Thomas",
+      "occupation": "Film director, screenwriter, and producer",
+      "known_for": [
+        "The Dark Knight",
+        "Inception",
+        "Interstellar"
+      ],
+      "education": {
+        "degree": "",
+        "field": "",
+        "school": "University College London"
+      },
+      "awards": [
+        "Academy Award for Best Original Screenplay nomination for Memento",
+        "BAFTA Award for Best Original Screenplay for Inception"
+      ],
+      "quotes": [
+        "I try to approach the storytelling in a very classical way, which is to say that I try to find a way to tell the story that has the most impact and the most resonance.",
+        "The idea of the film is the first thing that comes to you, and it's the thing that you're most excited about, but it's also the thing that you have to be the most ruthless with."
+      ],
+      "imdb_page": "https://www.imdb.com/name/nm0634240/"
+    },
+    {
+      "name": "Sidney Lumet",
+      "birthdate": "June 25, 1924",
+      "birthplace": "Philadelphia, Pennsylvania, U.S.",
+      "height": "",
+      "spouse": "Gloria Vanderbilt, Helen Beverley",
+      "occupation": "Film director, producer, and screenwriter",
+      "known_for": [
+        "12 Angry Men",
+        "Dog Day Afternoon",
+        "Network"
+      ],
+      "education": {
+        "degree": "",
+        "field": "",
+        "school": "Erasmus Hall High School"
+      },
+      "awards": [
+        "Academy Award for Best Director nomination for Network",
+        "Golden Globe Award for Best Director for Network"
+      ],
+      "quotes": [
+        "Making a film is like putting on a play. There are actors, costumes, sets, and lights.",
+        "The director is the one who creates the atmosphere in which the actors work."
+      ],
+      "imdb_page": "https://www.imdb.com/name/nm0525266/"
+    },
+    {
+      "name": "Peter Jackson",
+      "birthdate": "October 31, 1961",
+      "birthplace": "Pukerua Bay, New Zealand",
+      "height": "5'7",
+      "spouse": "Frances Walsh",
+      "occupation": "Film director, producer, and screenwriter",
+      "known_for": [
+        "The Lord of the Rings",
+        "The Hobbit",
+        "King Kong"
+      ],
+      "education": {
+        "degree": "",
+        "field": "",
+        "school": "Onslow College"
+      },
+      "awards": [
+        "Academy Award for Best Director for The Lord of the Rings: The Return of the King",
+        "BAFTA Award for Best Director for The Lord of the Rings: The Return of the King"
+      ],
+      "quotes": [
+        "I'm interested in the way the audience can be manipulated through cinema, and how cinema can be used to tell stories.",
+        "I always want to make the audience feel like they're in the movie, and not just watching it."
+      ],
+      "imdb_page": "https://www.imdb.com/name/nm0413168/"
+    },
+    {
+      "name": "Sergio Leone",
+      "birthdate": "January 3, 1929",
+      "birthplace": "Rome, Italy",
+      "height": "",
+      "spouse": "Carla Leone",
+      "occupation": "Film director, producer, and screenwriter",
+      "known_for": [
+        "The Good, the Bad and the Ugly",
+        "Once Upon a Time in the West",
+        "A Fistful of Dollars"
+      ],
+      "education": {
+        "degree": "",
+        "field": "",
+        "school": ""
+      },
+      "awards": [
+        "David di Donatello for Best Director for Once Upon a Time in America",
+        "Golden Globe Award for Best Director for Once Upon a Time in America"
+      ],
+      "quotes": [
+        "A film is - or should be - more like music than like fiction. It should be a progression of moods and feelings. The theme, what's behind the emotion, the meaning, all that comes later.",
+        "I have always been a big admirer of American Westerns and wanted to do one myself."
+      ],
+      "imdb_page": "https://www.imdb.com/name/nm0001466/"
+    },
+    {
+      "name": "David Fincher",
+      "birthdate": "August 28, 1962",
+      "birthplace": "Denver, Colorado, U.S.",
+      "height": "6'1",
+      "spouse": "Dawn Fincher",
+      "occupation": "Film director, producer, and screenwriter",
+      "known_for": [
+        "Fight Club",
+        "The Social Network",
+        "Gone Girl"
+      ],
+      "education": {
+        "degree": "",
+        "field": "",
+        "school": "Ashland High School"
+      },
+      "awards": [
+        "Academy Award for Best Director nomination for The Social Network",
+        "Golden Globe Award for Best Director for The Social Network"
+      ],
+      "quotes": [
+        "I think that the audience is smart enough to be able to put together the pieces and figure out what's going on. I don't think that you have to spell everything out.",
+        "I've always been interested in the idea that you can't really know somebody until you know what they want."
+      ],
+      "imdb_page": "https://www.imdb.com/name/nm0000399/"
+    },
+    {
+      "name": "Robert Zemeckis",
+      "birthdate": "May 14, 1952",
+      "birthplace": "Chicago, Illinois, U.S.",
+      "height": "",
+      "spouse": "Leslie Harter Zemeckis",
+      "occupation": "Film director, producer, and screenwriter",
+      "known_for": [
+        "Back to the Future",
+        "Forrest Gump",
+        "Cast Away"
+      ],
+      "education": {
+        "degree": "Bachelor of Arts",
+        "field": "Television and Radio",
+        "school": "University of Southern California"
+      },
+      "awards": [
+        "Academy Award for Best Director for Forrest Gump",
+        "Golden Globe Award for Best Director for Forrest Gump"
+      ],
+      "quotes": [
+        "I'm not interested in how people move, I'm interested in how people move the audience.",
+        "I'm a storyteller and the medium I work in happens to be film."
+      ],
+      "imdb_page": "https://www.imdb.com/name/nm0000709/"
+    },
+    {
+      "name": "The Wachowski Brothers",
+      "birthdate": [ "Larry Wachowski: June 21, 1965", "Andy Wachowski: December 29, 1967" ],
+      "birthplace": [ "Larry Wachowski: Chicago, Illinois, U.S.", "Andy Wachowski: Chicago, Illinois, U.S." ],
+      "height": "",
+      "spouse": [ "Larry Wachowski: Thea Bloom", "Andy Wachowski: Alisa Blasingame" ],
+      "occupation": "Film directors, producers, and screenwriters",
+      "known_for": [
+        "The Matrix",
+        "V for Vendetta",
+        "Cloud Atlas"
+      ],
+      "education": {
+        "degree": "",
+        "field": "",
+        "school": ""
+      },
+      "awards": [
+        "Saturn Award for Best Science Fiction Film for The Matrix",
+        "Hugo Award for Best Dramatic Presentation for The Matrix"
+      ],
+      "quotes": [
+        "We always try to be true to our own vision, and that's all you can do as a filmmaker.",
+        "The story is everything."
+      ],
+      "imdb_page": [ "https://www.imdb.com/name/nm0905152/", "https://www.imdb.com/name/nm0905154/" ]
+    },
+    {
+      "name": "Martin Scorsese",
+      "birthdate": "November 17, 1942",
+      "birthplace": "Queens, New York City, New York, U.S.",
+      "height": "5'5",
+      "spouse": "Helen Morris, Isabella Rossellini, Julia Cameron",
+      "occupation": "Film director, producer, and screenwriter",
+      "known_for": [
+        "Goodfellas",
+        "The Departed",
+        "The Irishman"
+      ],
+      "education": {
+        "degree": "Bachelor of Arts",
+        "field": "English",
+        "school": "New York University"
+      },
+      "awards": [
+        "Academy Award for Best Director for The Departed",
+        "Golden Globe Award for Best Director for Gangs of New York"
+      ],
+      "quotes": [
+        "Cinema is a matter of what's in the frame and what's out.",
+        "The most personal is the most creative."
+      ],
+      "imdb_page": "https://www.imdb.com/name/nm0000217/"
+    },
+    {
+      "name": "Milos Forman",
+      "birthdate": "February 18, 1932",
+      "birthplace": "Caslav, Czechoslovakia",
+      "height": "",
+      "spouse": "Jana Brejchová, Věra Křesadlová, Martina Zborilová",
+      "occupation": "Film director, producer, and screenwriter",
+      "known_for": [
+        "One Flew Over the Cuckoo's Nest",
+        "Amadeus",
+        "The People vs. Larry Flynt"
+      ],
+      "education": {
+        "degree": "",
+        "field": "",
+        "school": "Prague Film Academy"
+      },
+      "awards": [
+        "Academy Award for Best Director for One Flew Over the Cuckoo's Nest",
+        "Academy Award for Best Director for Amadeus"
+      ],
+      "quotes": [
+        "I'm not interested in how people move, I'm interested in how people move the audience.",
+        "I hate intellectual dialogue in the movies. I want to reach the people who understand emotions, not words."
+      ],
+      "imdb_page": "https://www.imdb.com/name/nm0001228/"
+    },
+    {
+      "name": "Akira Kurosawa",
+      "birthdate": "March 23, 1910",
+      "birthplace": "Tokyo, Japan",
+      "height": "",
+      "spouse": "Yoshiko Yamaguchi, Yôko Yaguchi",
+      "occupation": "Film director, producer, and screenwriter",
+      "known_for": [
+        "Rashomon",
+        "Seven Samurai",
+        "Ikiru"
+      ],
+      "education": {
+        "degree": "",
+        "field": "",
+        "school": "Keio University"
+      },
+      "awards": [
+        "Honorary Academy Award",
+        "Golden Lion for Lifetime Achievement"
+      ],
+      "quotes": [
+        "Man is a genius when he is dreaming.",
+        "There is no such thing as an empty space or an empty time. There is always something to see, something to hear. In fact, try as we may to make a silence, we cannot."
+      ],
+      "imdb_page": "https://www.imdb.com/name/nm0000041/"
+    }
+  ]
+}

@@ -1,0 +1,285 @@
+{
+
+  "actors": [
+    {
+      "name": "Keiko Tsushima",
+      "birthdate": "June 23, 1924",
+      "birthplace": "Tokyo, Japan",
+      "occupation": "Actress",
+      "height": "",
+      "biography": ""
+    },
+    {
+      "name": "Elijah Wood",
+      "birthdate": "January 28, 1981",
+      "birthplace": "Cedar Rapids, Iowa, USA",
+      "height": "5'6",
+      "occupation": "Actor",
+      "biography": "Elijah Wood is an American actor. He is best known for his role as Frodo Baggins in the Lord of the Rings film trilogy, for which he has been nominated for several awards. He has also appeared in other successful films such as Sin City, Eternal Sunshine of the Spotless Mind and The Last Witch Hunter."
+    },
+    {
+      "name": "Ian McKellen",
+      "birthdate": "May 25, 1939",
+      "birthplace": "Burnley, Lancashire, England",
+      "height": "6'1",
+      "occupation": "Actor and theater director",
+      "biography": "Ian McKellen is an English actor and theater director. He is best known for his roles in films such as The Lord of the Rings, X-Men and The Hobbit film series, and for his stage work, he is a multiple award-winning actor, including six Laurence Olivier Awards, a Tony Award, a Golden Globe Award, a Screen Actors Guild Award, a BIF Award, two Saturn Awards, four Drama Desk Awards, and two Critics' Choice Awards."
+    },
+    {
+      "name": "Viggo Mortensen",
+      "birthdate": "October 20, 1958",
+      "birthplace": "New York City, New York, USA",
+      "height": "6'3",
+      "occupation": "Actor, poet, and painter",
+      "biography": "Viggo Mortensen is an American actor, poet, and painter. He is best known for his role as Aragorn in the Lord of the Rings film trilogy. He has also appeared in other successful films such as A History of Violence, Eastern Promises and Captain Fantastic. He is also an accomplished poet and painter, and has published several books of poetry and photography."
+    },
+    {
+      "name": "Leonardo DiCaprio",
+      "birthdate": "November 11, 1974",
+      "birthplace": "Los Angeles, California, USA",
+      "height": "6'0",
+      "occupation": "Actor, film producer",
+      "biography": "Leonardo Wilhelm DiCaprio is an American actor, producer, and environmental activist. He has been nominated for six Academy Awards, and in 2016 won the Academy Award for Best Actor for his role in The Revenant. He is known for starring in films such as Titanic, The Departed, Inception, The Wolf of Wall Street, and The Great Gatsby among others."
+    },
+    {
+      "name": "Tom Hardy",
+      "birthdate": "September 15, 1977",
+      "birthplace": "London, England",
+      "height": "6'0",
+      "occupation": "Actor, producer",
+      "biography": "Tom Hardy is an English actor and producer. He is best known for his roles in films such as Inception, The Dark Knight Rises, and Mad Max: Fury Road. He has also appeared in successful films such as Dunkirk, Venom, and The Revenant. He has been nominated for numerous awards, including the BAFTA Rising Star Award."
+    },
+    {
+      "name": "Ellen Page",
+      "birthdate": "February 21, 1987",
+      "birthplace": "Halifax, Nova Scotia, Canada",
+      "height": "5'1",
+      "occupation": "Actress, producer",
+      "biography": "Ellen Page is a Canadian actress and producer. She first gained recognition for her role in the film Hard Candy, and later received critical acclaim for her role as the title character in Juno, for which she received an Academy Award nomination for Best Actress. She has also appeared in other successful films such as Inception and The East."
+    },
+    {
+      "name": "Tom Hanks",
+      "birthdate": "July 9, 1956",
+      "birthplace": "Concord, California, USA",
+      "height": "6'0",
+      "occupation": "Actor, producer, and director",
+      "biography": "Tom Hanks is an American actor, producer, and director. He is widely regarded as one of the greatest actors of all time. He has won two Academy Awards, for his roles in Philadelphia and Forrest Gump. He has also appeared in many other successful films such as Saving Private Ryan, Catch Me If You Can, and The Terminal among others."
+    },
+    {
+      "name": "Robin Wright",
+      "birthdate": "April 8, 1966",
+      "birthplace": "Dallas, Texas, USA",
+      "height": "5'6",
+      "occupation": "Actress, director, and producer",
+      "biography": "Robin Wright is an American actress, director, and producer. She gained international recognition for her role as Princess Buttercup in the film The Princess Bride. She is also known for her role as Jenny Curran in Forrest Gump and as Claire Underwood in the Netflix series House of Cards. She has been nominated for several awards throughout her career, including the Golden Globe and Emmy award."
+    },
+    {
+      "name": "Gary Sinise",
+      "birthdate": "March 17, 1955",
+      "birthplace": "Blue Island, Illinois, USA",
+      "height": "6'0",
+      "occupation": "Actor, director, and musician",
+      "biography": "Gary Sinise is an American actor, director, and musician. He is best known for his portrayal of Lieutenant Dan Taylor in Forrest Gump, for which he was nominated for the Academy Award for Best Supporting Actor. He has also appeared in many other successful films such as Apollo 13, Ransom, and The Green Mile among others. He has also had a successful career as a stage actor, and is the founder of the Gary Sinise Foundation which supports veterans and first responders."
+    },
+    {
+      "name": "Edward Norton",
+      "birthdate": "August 18, 1969",
+      "birthplace": "Boston, Massachusetts, USA",
+      "height": "6'0",
+      "occupation": "Actor, director, and producer",
+      "biography": "Edward Norton is an American actor, director, and producer. He has been nominated for three Academy Awards, and won a Golden Globe award for his role in the film American History X. He is known for his roles in films such as Fight Club, The Illusionist, The Grand Budapest Hotel, and The Incredible Hulk among others. He is also a social activist, and has been involved in several environmental and humanitarian causes."
+    },
+    {
+      "name": "Clint Eastwood",
+      "birthdate": "May 31, 1930",
+      "birthplace": "San Francisco, California, USA",
+      "height": "6'4",
+      "occupation": "Actor, director, and producer",
+      "biography": "Clint Eastwood is an American actor, director, and producer. He has been in the film industry for over six decades and is considered one of the most iconic actors in Hollywood history. He is best known for his roles in the Dirty Harry series, and for his Western roles in films such as The Good, the Bad and the Ugly, A Fistful of Dollars, and Unforgiven among others. He has also directed and produced many successful films, and has been awarded numerous accolades throughout his career."
+    },
+    {
+      "name": "Eli Wallach",
+      "birthdate": "December 7, 1915",
+      "birthplace": "New York City, New York, USA",
+      "height": "5'9",
+      "occupation": "Actor",
+      "biography": "Eli Wallach was an American actor. He is considered one of the greatest character actors in American film history. He is best known for his roles in films such as The Magnificent Seven, The Good, the Bad and the Ugly, The Misfits, and The Godfather Part III among others. He has been nominated for several awards throughout his career, including an Emmy"
+    },
+    {
+      "name": "Lee Van Cleef",
+      "birthdate": "January 9, 1925",
+      "birthplace": "Somerville, New Jersey, USA",
+      "height": "6'2",
+      "occupation": "Actor",
+      "biography": "Lee Van Cleef was an American actor. He is best known for his roles in Spaghetti Westerns, particularly in films such as The Good, the Bad and the Ugly, For a Few Dollars More, and The Big Gundown. He has also appeared in many other films, including Escape from New York, and The Great Silence. He has been nominated for several awards throughout his career."
+    },
+    {
+      "name": "Henry Fonda",
+      "birthdate": "May 16, 1905",
+      "birthplace": "Grand Island, Nebraska, USA",
+      "height": "6'1",
+      "occupation": "Actor",
+      "biography": "Henry Fonda was an American actor. He appeared in more than 90 films over a 35-year career, including The Grapes of Wrath, 12 Angry Men, and On Golden Pond. He received an Academy Award for Best Actor for his role in On Golden Pond and was nominated for Best Actor in The Grapes of Wrath and Mister Roberts. He has also received BAFTA, Golden Globe and Tony awards throughout his career."
+    },
+    {
+      "name": "Lee J. Cobb",
+      "birthdate": "December 8, 1911",
+      "birthplace": "New York City, New York, USA",
+      "height": "5'10",
+      "occupation": "Actor",
+      "biography": "Lee J. Cobb was an American actor. He is best known for his roles in films such as On the Waterfront, 12 Angry Men, and The Exorcist, and for his portrayal of Willy Loman in the original stage production of Arthur Miller's Death of a Salesman, for which he won a Tony Award. He has been nominated for several awards throughout his career, including the Academy Award for Best Supporting Actor for his role in On the Waterfront."
+    },
+    {
+      "name": "Christian Bale",
+      "birthdate": "January 30, 1974",
+      "birthplace": "Haverfordwest, Pembrokeshire, Wales",
+      "height": "6'0",
+      "occupation": "Actor",
+      "biography": "Christian Bale is a Welsh actor, known for his versatility in a wide range of roles. He has received critical acclaim for his performances in films such as American Psycho, The Fighter, and The Dark Knight trilogy. He won an Academy Award for Best Supporting Actor for his role in The Fighter and has been nominated for several other awards throughout his career."
+    },
+    {
+      "name": "Heath Ledger",
+      "birthdate": "April 4, 1979",
+      "birthplace": "Perth, Western Australia, Australia",
+      "height": "6'1",
+      "occupation": "Actor",
+      "biography": "Heath Ledger was an Australian actor. He is best known for his role as the Joker in The Dark Knight, for which he posthumously won the Academy Award for Best Supporting Actor. He has also appeared in other successful films such as Brokeback Mountain, and the Four Feathers. He passed away in 2008 at the age of 28, but his legacy lives on through his performances and his iconic role as the Joker."
+    },
+    {
+      "name": "Marlon Brando",
+      "birthdate": "April 3, 1924",
+      "birthplace": "Omaha, Nebraska, USA",
+      "height": "6'1",
+      "occupation": "Actor",
+      "biography": "Marlon Brando was an American actor and film director. He is widely considered one of the greatest actors of all time. He is best known for his roles in films such as A Streetcar Named Desire, On the Waterfront, and The Godfather. He has won two Academy Awards for Best Actor, for On the Waterfront and The Godfather, and has been nominated for several other awards throughout his career."
+    },
+    {
+      "name": "Al Pacino",
+      "birthdate": "April 25, 1940",
+      "birthplace": "New York City, New York, USA",
+      "height": "5'7",
+      "occupation": "Actor",
+      "biography": "Al Pacino is an American actor and filmmaker. He is best known for his roles in films such as The Godfather trilogy, Scarface, and Dog Day Afternoon. He has won an Academy Award for Best Actor for his role in Scent of a Woman, and has been nominated for several other awards throughout his career. He is widely considered one of the greatest actors of all time."
+    },
+    {
+      "name": "Tim Robbins",
+      "birthdate": "October 16, 1958",
+      "birthplace": "West Covina, California, USA",
+      "height": "6'5",
+      "occupation": "Actor, director, and producer",
+      "biography": "Tim Robbins is an American actor, director, and producer. He is best known for his roles in films such as The Shawshank Redemption, Mystic River, and Dead Man Walking. He has won an Academy Award for Best Supporting Actor for his role in Mystic River and has been nominated for several other awards throughout his career. He is also known for his political activism and his work as a director and producer."
+    },
+    {
+      "name": "Keanu Reeves",
+      "birthdate": "September 2, 1964",
+      "birthplace": "Beirut, Lebanon",
+      "height": "6'1",
+      "occupation": "Actor, director, and producer",
+      "biography": "Keanu Reeves is a Canadian actor, director, and producer. He is best known for his roles in films such as The Matrix trilogy, Speed, and John Wick. He has been nominated for several awards throughout his career and has also made a name for himself as a philanthropist."
+    },
+    {
+      "name": "Laurence Fishburne",
+      "birthdate": "July 30, 1961",
+      "birthplace": "Augusta, Georgia, USA",
+      "height": "6'0",
+      "occupation": "Actor, director, and producer",
+      "biography": "Laurence Fishburne is an American actor, director, and producer. He is best known for his roles in films such as Apocalypse Now, The Matrix Reloaded, and Mystic River. He has been nominated for several awards throughout his career and also has received a Tony Award for his role in Two Trains Running."
+    },
+    {
+      "name": "Carrie-Anne Moss",
+      "birthdate": "August 21, 1967",
+      "birthplace": "Vancouver, British Columbia, Canada",
+      "height": "5'5",
+      "occupation": "Actress",
+      "biography": "Carrie-Anne Moss is a Canadian actress. She is best known for her role as Trinity in the Matrix film series. She has also appeared in other successful films such as Memento, Disturbia and The Soft Kill. She has been nominated for several awards throughout her career."
+    },
+    {
+      "name": "Robert De Niro",
+      "birthdate": "August 17, 1943",
+      "birthplace": "New York City, New York, USA",
+      "height": "5'8",
+      "occupation": "Actor, director and producer",
+      "biography": "Robert De Niro is an American actor, director and producer. He is widely considered one of the greatest actors of all time. He is best known for his roles in films such as The Godfather Part II, Taxi Driver, and Raging Bull. He has won two Academy Awards for Best Actor, for The Godfather Part II and Raging Bull, and has been nominated for several other awards throughout his career."
+    },
+    {
+      "name": "Ray Liotta",
+      "birthdate": "December 18, 1954",
+      "birthplace": "Newark, New Jersey, USA",
+      "height": "5'10",
+      "occupation": "Actor",
+      "biography": "Ray Liotta is an American actor, best known for his portrayal of Henry Hill in Goodfellas, for which he was nominated for an Academy Award for Best Supporting Actor, and for his role in Field of Dreams. He has also appeared in other successful films such as Cop Land, and Blow. He has been nominated for several awards throughout his career."
+    },
+    {
+      "name": "Joe Pesci",
+      "birthdate": "February 9, 1943",
+      "birthplace": "Newark, New Jersey, USA",
+      "height": "5'4",
+      "occupation": "Actor and musician",
+      "biography": "Joe Pesci is an American actor and musician. He is best known for his roles in films such as Raging Bull, Goodfellas, and Casino. He has won an Academy Award for Best Supporting Actor for his role in Goodfellas and has been nominated for several other awards throughout his career. He has also released several albums as a musician. He is known for his dynamic performances and versatility"
+    },
+    {
+      "name": "Jack Nicholson",
+      "birthdate": "April 22, 1937",
+      "birthplace": "Neptune City, New Jersey, USA",
+      "height": "5'9",
+      "occupation": "Actor, director, and producer",
+      "biography": "Jack Nicholson is an American actor, director, and producer. He is widely considered one of the greatest actors of all time. He is best known for his roles in films such as One Flew Over the Cuckoo's Nest, Chinatown and The Shining. He has won three Academy Awards for Best Actor, for One Flew Over the Cuckoo's Nest, As Good as It Gets and Terms of Endearment and has been nominated for several other awards throughout his career."
+    },
+    {
+      "name": "Louise Fletcher",
+      "birthdate": "July 22, 1934",
+      "birthplace": "Birmingham, Alabama, USA",
+      "height": "5'4",
+      "occupation": "Actress",
+      "biography": "Louise Fletcher is an American actress. She is best known for her role as Nurse Ratched in the film One Flew Over the Cuckoo's Nest, for which she won an Academy Award for Best Actress. She has also appeared in other successful films such as Brainstorm and Cruel Intentions 2. She has been nominated for several awards throughout her career."
+    },
+    {
+      "name": "Will Sampson",
+      "birthdate": "September 27, 1933",
+      "birthplace": "Okmulgee, Oklahoma, USA",
+      "height": "6'4",
+      "occupation": "Actor and painter",
+      "biography": "Will Sampson was an American actor and painter. He was best known for his role as Chief Bromden in One Flew Over the Cuckoo's Nest, for which he was nominated for a Golden Globe award. He also appeared in other successful films such as The White Buffalo and The Outlaw Josey Wales, He is also known as a painter and his work was exhibited in galleries and museums."
+    },
+    {
+      "name": "Toshiro Mifune",
+      "birthdate": "April 1, 1920",
+      "birthplace": "Qingdao, Shandong, China",
+      "height": "5'9",
+      "occupation": "Actor",
+      "biography": "Toshiro Mifune was a Japanese actor who appeared in over 150 films. He is considered one of the greatest actors in the history of Japanese cinema. He is best known for his roles in films such as Rashomon, Seven Samurai and Throne of Blood. He worked with director Akira Kurosawa in 16 films and his performances are considered iconic in Japan and around the world."
+    },
+    {
+      "name": "Takashi Shimura",
+      "birthdate": "March 12, 1905",
+      "birthplace": "Ikuno, Osaka, Japan",
+      "height": "5'8",
+      "occupation": "Actor",
+      "biography": "Takashi Shimura was a Japanese actor. He appeared in over 200 films and television series, and is best known for his roles in films such as Rashomon, Seven Samurai and Throne of Blood. He is considered one of the greatest actors in the history of Japanese cinema and worked with director Akira Kurosawa in several films."
+    },
+    {
+      "name": "Brad Pitt",
+      "birthdate": "December 18, 1963",
+      "birthplace": "Shawnee, Oklahoma, USA",
+      "height": "5'11",
+      "occupation": "Actor, film producer",
+      "biography": "Brad Pitt is an American actor and film producer. He is considered one of the biggest movie stars in the world and has appeared in many successful films such as Fight Club, Troy, and Once Upon a Time in Hollywood. He has won several awards throughout his career, including an Academy Award for Best Supporting Actor for his role in Once Upon a Time in Hollywood."
+    },
+    {
+      "name": "Morgan Freeman",
+      "birthdate": "June 1, 1937",
+      "birthplace": "Memphis, Tennessee, USA",
+      "height": "6'2",
+      "occupation": "Actor, narrator, and film producer",
+      "biography": "Morgan Freeman is an American actor, narrator and film producer. He has appeared in many successful films such as Million Dollar Baby, The Shawshank Redemption and Batman Begins. He has won an Academy Award for Best Supporting Actor for his role in Million Dollar Baby and has been nominated for several other awards throughout his career. He is also known for his deep and distinctive voice, which he frequently uses as a narrator."
+    },
+    {
+      "name": "Gwyneth Paltrow",
+      "birthdate": "September 27, 1972",
+      "birthplace": "Los Angeles, California, USA",
+      "height": "5'9",
+      "occupation": "Actress, singer, and entrepreneur",
+      "biography": "Gwyneth Paltrow is an American actress, singer, and entrepreneur. She is best known for her roles in films such as Shakespeare in Love, which won her an Academy Award for Best Actress, Iron Man and The Royal Tenenbaums. She has been nominated for several awards throughout her career. She is also known for her lifestyle brand, Goop, which she founded in 2008."
+    }
+  ]
+}
