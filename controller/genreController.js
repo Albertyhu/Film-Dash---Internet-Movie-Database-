@@ -1,2 +1,2 @@
-const { body, validationRequest } = required('express-validator');
+const { body, validationRequest } = require('express-validator');
 const async = require('async')

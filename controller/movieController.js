@@ -1,4 +1,4 @@
-const { body, validationRequest } = required('express-validator');
+const { body, validationRequest } = require('express-validator');
 const async = require('async')
 
 const Movie = require('../model/Movies'); 
@@ -7,8 +7,10 @@ const Director = require('../model/Directors');
 const Genre = require('../model/Genres')
 const MovieInstance = require('../model/MovieInstance')
 
+const MovieData = require('../data/movie.json')
+
 exports.MovieList = (req, res, next) => {
-    Movie.find({})
+    Movie.find({}, "Movies")
         .sort({title: 1})
         .populate('Director')
         .populate('Actor')
@@ -21,6 +23,7 @@ exports.MovieList = (req, res, next) => {
             res.render('index', {
                 title: "Movies",
                 movie_list: result, 
+                movie_data: MovieData.movies,
             })
         })
 }

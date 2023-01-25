@@ -1,0 +1,44 @@
+1/24/23
+How you choose which database you want to work with: 
+
+The following code is how you connect with MongoDB with Mongoose:
+const mongoose = require('mongoose')
+const mongoDB = `mongodb+srv://${process.env.USER}:${process.env.PASS}@locallibrarycluster.lyfvtsg.mongodb.net/MovieRental?retryWrites=true&w=majority`
+mongoose.connect(mongoDB, options)
+
+If focus on this part of the mongoDB object, you will notice where the database name goes.
+.mongodb.net/MovieRental?retryWrites=true&w=majority`
+
+How models are named and created: 
+After you define the models and connect with MongoDB database with mongoose, you will make the name all lower case letters and make it plural
+
+module.exports = mongoose.model('Actor', ActorSchema)
+
+This will create the collection 'actors' in the database. 
+
+1/24/23 
+I ran into issues of not being able to connect with MongoDB database.
+I resolved the issue by creating a new user and password in MongoDB and writing the following line in app.js
+require("dotenv").config();
+
+Make sure to give the new user account the privilege to read and write any database.
+
+
+1/23/23
+
+Installed dotenv to hide password
+
+1/23/23
+
+How to use faker: 
+
+const faker = require('faker');
+
+const randomStatus = faker.random.arrayElement(["Available", "Maintenance", "Loaned", "Reserved"]);
+const randomDate = faker.date.between('2020-01-01', '2022-01-01');
+
+const exampleInstance = await MovieInstance.create({
+  movie: exampleMovie._id,
+  status: randomStatus,
+  dateAvailable: randomDate,
+});
