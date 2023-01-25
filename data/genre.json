@@ -1,14 +1,28 @@
 {
   "genres": [
-    "Crime",
-    "Drama",
-    "Action",
-    "Sci-Fi",
-    "Adventure",
-    "Fantasy",
-    "Thriller",
-    "Romance",
-    "Western",
-    "Mystery"
+    { "name": "Crime" },
+    { "name": "Drama" },
+    {
+      "name": "Action"
+    },
+    {
+      "name": "Sci-Fi"
+    },
+    {
+      "name": "Adventure"
+    },
+    {
+      "name": "Fantasy"
+    },
+    {
+      "name": "Thriller"
+    },
+    {
+      "name": "Romance"
+    },
+    {
+      "name": "Western"
+    },
+      { "name": "Mystery" }
   ]
 }

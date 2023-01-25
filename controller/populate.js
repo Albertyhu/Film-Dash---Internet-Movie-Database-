@@ -6,10 +6,14 @@ const MovieInstance = require('../model/MovieInstance')
 const async = require('async');
 const {validationResult } = require('express-validator')
 const MovieData = require('../data/movie.json'); 
+const DirectorData = require('../data/director.json'); 
+const ActorData = require('../data/actor.json');
+const GenreData = require('../data/genre.json'); 
+const mongoose = require('mongoose')
 
 const MoviesArray = []
 
-const PopulateMovie = (req, res, next) => {
+const PopulateMovie = () => {
     //console.log(MovieData.movies)
         MovieData.movies.forEach(item => {
         const obj = {
@@ -40,10 +44,56 @@ const PopulateMovie = (req, res, next) => {
     })
 }
 
+const PopulateDirector = () => {
+    DirectorData.directors.forEach(item => {
+        const newDirector = new Director(item)
+        newDirector.save(err => {
+            if (err) {
+                console.log("Error in uploading director: ", err)
+                return;
+            }
+            else {
+                console.log("Directors are successfully uploaded.")
+            }
+        })
+    })
+}
+
+const PopulateActor = () => {
+    ActorData.actors.forEach(item => {
+        const newActor = new Actor(item)
+        newActor.save(err => {
+            if (err) {
+                console.log("Error in uploading Actor: ", err)
+                return;
+            }
+
+        })
+    })
+}
+
+const PopulateGenre = () => {
+    GenreData.genres.forEach(item => {
+        const newGenre = new Genre(item)
+        newGenre.save(err => {
+            if (err) {
+                console.log("Error in uploading Genre: ", err)
+                return;
+            }
+            else {
+                console.log("Genres successfully uploaded")
+            }
+        })
+    })
+}
+
 exports.populateDatabase = (req, res) => {
-    async.series(
+    async.parallel(
         [
-            PopulateMovie,
+            //PopulateMovie,
+            //PopulateActor,
+           // PopulateDirector,
+            //PopulateGenre,
         ],
         function (err, results) {
             if (err) {

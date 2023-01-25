@@ -39,7 +39,7 @@ app.use('/catalog', catalogRouter);
 
 const { populateDatabase } = require('./controller/populate')
 
-populateDatabase();
+//populateDatabase();
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

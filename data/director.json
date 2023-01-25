@@ -217,11 +217,11 @@
       "imdb_page": "https://www.imdb.com/name/nm0000709/"
     },
     {
-      "name": "The Wachowski Brothers",
-      "birthdate": [ "Larry Wachowski: June 21, 1965", "Andy Wachowski: December 29, 1967" ],
-      "birthplace": [ "Larry Wachowski: Chicago, Illinois, U.S.", "Andy Wachowski: Chicago, Illinois, U.S." ],
+      "name": "Larry Wachowski",
+      "birthdate": "June 21, 1965",
+      "birthplace": "Chicago, Illinois, U.S",
       "height": "",
-      "spouse": [ "Larry Wachowski: Thea Bloom", "Andy Wachowski: Alisa Blasingame" ],
+      "spouse": "Thea Bloom",
       "occupation": "Film directors, producers, and screenwriters",
       "known_for": [
         "The Matrix",
@@ -241,7 +241,34 @@
         "We always try to be true to our own vision, and that's all you can do as a filmmaker.",
         "The story is everything."
       ],
-      "imdb_page": [ "https://www.imdb.com/name/nm0905152/", "https://www.imdb.com/name/nm0905154/" ]
+      "imdb_page": "https://www.imdb.com/name/nm0905152/"
+    },
+    {
+      "name": "Andy Wachowski",
+      "birthdate": "December 29, 1967",
+      "birthplace": "Chicago, Illinois, U.S.",
+      "height": "",
+      "spouse": "Alisa Blasingame",
+      "occupation": "Film directors, producers, and screenwriters",
+      "known_for": [
+        "The Matrix",
+        "V for Vendetta",
+        "Cloud Atlas"
+      ],
+      "education": {
+        "degree": "",
+        "field": "",
+        "school": ""
+      },
+      "awards": [
+        "Saturn Award for Best Science Fiction Film for The Matrix",
+        "Hugo Award for Best Dramatic Presentation for The Matrix"
+      ],
+      "quotes": [
+        "We always try to be true to our own vision, and that's all you can do as a filmmaker.",
+        "The story is everything."
+      ],
+      "imdb_page": "https://www.imdb.com/name/nm0905154/"
     },
     {
       "name": "Martin Scorsese",
