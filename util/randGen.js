@@ -5,7 +5,7 @@ const alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", 
 exports.genKey = (size) => {
     var key = ""; 
     for (var i = 0; i < size; i++) {
-        key += alpha[Math.floor(Math.random() * alpha.length) - 1]; 
+        key += alpha[Math.floor(Math.random() * alpha.length)]; 
     }
     return key; 
 }

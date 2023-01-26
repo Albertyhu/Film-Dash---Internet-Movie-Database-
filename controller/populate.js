@@ -11,6 +11,7 @@ const ActorData = require('../data/actor.json');
 const GenreData = require('../data/genre.json'); 
 const mongoose = require('mongoose')
 const { genKey, genNum } = require('../util/randGen'); 
+const { DateTime } = require('luxon');
 
 const MoviesArray = []
 
@@ -145,32 +146,39 @@ const PopulateGenre = () => {
 const GenerateMovieInstance = (num) =>{
     const InstanceStatus = ["Available", "Maintenance", "Loaned", "Reserved"];
     const InstanceFormat = ["DVD", "Blue-ray", "Video Tape", "Film Reel"]; 
-    const MovieArray = Movie.find({}, (err) => {
+    Movie.find({}, (err, result) => {
         if (err) {
             console.log("Error in retrieving movies for generating movie instances: ", err);
             return;
         }
-    })
-    for (var i = 0; i < num; i++) { 
+    for (var i = 0; i < num; i++) {
         const status = InstanceStatus[genNum(InstanceStatus.length)];
-        var newDate = null; 
+        var newDate = null;
         if (status == "Loaned") {
             newDate = new Date((new Date()) + Math.floor(Math.random() * 10000000000))
         }
-        console.log(MovieArray.length)
 
-        //const obj = {
-        //    movie: MovieArray[genNum(MovieArray.length)]._id,
-        //    status: status,
-        //    NumberOfDiscs: genNum(3) + 1, 
-        //    Sku: genKey(10), 
-        //    physical_format: InstanceFormat[genNum(instanceFormat.length)],
-        //    due_back: DateTime.fromJSDate(newDate).toFormat('yyyy-MM-dd'), 
-        //}
-        //if (typeof obj != 'undefined') {
-        //    console.log(obj)
-        //}
-    }    
+        const obj = {
+            movie: result[genNum(result.length)]._id,
+            status: status,
+            NumberOfDiscs: genNum(3) + 1,
+            Sku: genKey(10),
+            physical_format: InstanceFormat[genNum(InstanceFormat.length)],
+            due_back: newDate != null ? DateTime.fromJSDate(newDate).toFormat('yyyy-MM-dd') : '',
+        }
+
+        const newMovieInstance = new MovieInstance(obj)
+        newMovieInstance.save(err => {
+            if (err) {
+                console.log("Error in uploading movie instance: ", err)
+                return;
+            }
+            else {
+                console.log("Movie instance successfully uploaded")
+            }
+        })
+    }   
+    }) 
 }
 
 exports.populateDatabase = (req, res) => {
@@ -180,7 +188,7 @@ exports.populateDatabase = (req, res) => {
             //PopulateActor,
            // PopulateDirector,
             //PopulateGenre,
-            ()=>GenerateMovieInstance(1)
+          // ()=>GenerateMovieInstance(10)
         ],
         function (err, results) {
             if (err) {

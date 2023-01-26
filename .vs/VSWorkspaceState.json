@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\bin",
     "\\controller",
     "\\data",
     "\\model",
     "\\public",
     "\\public\\stylesheets",
     "\\routes",
+    "\\util",
     "\\views",
     "\\views\\partials"
   ],
-  "SelectedNode": "\\controller\\populate.js",
+  "SelectedNode": "\\app.js",
   "PreviewInSolutionExplorer": false
 }

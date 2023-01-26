@@ -20,7 +20,7 @@ const MovieInstanceSchema = new Schema({
         enum: ["DVD", "Blue-ray", "Video Tape", "Film Reel"], 
         default: "DVD"
     }, 
-    due_back: {type: Date, default: Date.now}, 
+    due_back: { type: Date, default: Date.now } | {type: null}, 
 })
 
 MovieInstanceSchema.virtual('FormattedDueBack').get(function () {
