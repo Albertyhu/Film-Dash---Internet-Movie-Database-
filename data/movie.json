@@ -13,7 +13,7 @@
       "production_company": "Columbia Pictures",
       "budget": "25 million USD",
       "runtime": 142,
-      "poster": ""
+      "poster": "https://m.media-amazon.com/images/I/51SZp7RhtQL._AC_.jpg"
     },
     {
       "title": "The Godfather",
@@ -168,7 +168,7 @@
     {
       "title": "The Matrix",
       "year": 1999,
-      "director": "The Wachowski Brothers",
+      "director": [ "Andy Wachowski", "Larry Wachowski" ],
       "actors": [ "Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss" ],
       "genres": [ "Action", "Sci-Fi" ],
       "tagline": "Welcome to the Real World",
@@ -238,7 +238,7 @@
       "production_company": "New Line Cinema",
       "budget": "33 million USD",
       "runtime": 127,
-      "poster": ""
+      "poster": "https://cdn.shopify.com/s/files/1/0057/3728/3618/products/248875c05ff4754eb10c861c0f21c42d_5be29f59-c841-4941-ae55-3dff98e364dc_480x.progressive.jpg?v=1573585329"
     }
   ]
 }
