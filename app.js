@@ -7,8 +7,7 @@ const mongoose = require('mongoose')
 require("dotenv").config();
 var app = express();
 
-const mongoDB ="mongodb+srv://MovieRentalAdmin:sV9eiVa2CATmwLc@locallibrarycluster.lyfvtsg.mongodb.net/?retryWrites=true&w=majority"
-//const mongoDB = `mongodb+srv://${process.env.USER}:${process.env.PASS}@locallibrarycluster.lyfvtsg.mongodb.net/MovieRental?retryWrites=true&w=majority`;
+const mongoDB = `mongodb+srv://${process.env.USER}:${process.env.PASS}@locallibrarycluster.lyfvtsg.mongodb.net/MovieRental?retryWrites=true&w=majority`;
 
 //The explanation behind useNewUrlPaser is that Mongoose is using a new parser for url
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
