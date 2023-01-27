@@ -4,18 +4,29 @@
   <meta charset="utf-8">
   <title>Film Dash</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel ="stylesheet" href='stylesheets/style.css'> 
   <link rel="icon" type="image/x-icon" href="/images/favicon.png">
 </head>
-<body>
+<body class = "bg-gray-900">
   <div class = "w-full">
   <%- include("partials/header") %>
-	<h2 class ="font-bold text-center mx-auto mt-[50px]"><%= title %></h2>
+  <%- include("partials/MobileMenu") %>
+	<h2 class ="font-bold text-center mx-auto mt-[50px]  text-white"><%= title %></h2>
 	<% if(movie_list) { %>
 		<div class = "">
 			<% movie_list.forEach(movie =>{ %>
 				<div 
 				id="MoviePanel"
-				class ="rounded-lg boxshadow w-11/12 mx-auto my-[10px] bg-gray-300 p-10">
+				class ="rounded-lg w-11/12 mx-auto my-[25px] p-10 text-white
+					before:bg-[url('<%= movie.poster %>')] relative before:absolute 
+					before:block before:left-0 before:right-0 before:top-0 before:w-full before:h-full
+					before:opacity-60 before:z-[-2] before:bg-no-repeat before:bg-cover before:backdrop-blur-3xl before:rounded-md
+					before:brightness-50 before:bg-center">
+				    <img 
+						src = '<%= movie.poster%>' 
+						alt = '<%movie.title%> + poster' 
+						class = "rounded-md w-auto h-auto mx-auto cursor-pointer" 
+					/>
 					<p class = "font-bold text-lg"><%= movie.title %></p>
 					<p><%= movie.year %></p>
 				<% if (!Array.isArray(movie.director)) {%>
@@ -44,11 +55,15 @@
 						</p>
 					<% } else {}%>
 					<% if(movie.genres) { %> 
+					    <p>Genres:</p>
 						<div 
 						id = "genres"
-							class = "flex my-10">
-							<% movie.genres.forEach(val => { %> 
-								<span class = "mx-10"><%= val.name %></span>
+							class = "flex my-1 mx-auto">
+							<% movie.genres.forEach((val, ind) => { %> 
+								<span class = ""><%= val.name %></span>
+								<% if(ind < movie.genres.length - 1 ) { %> 
+									<span class = "mx-1"> | </span>
+								<%}%>
 							<%})%>
 						</div>
 					<%} else {}%>

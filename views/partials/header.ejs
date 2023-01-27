@@ -1,27 +1,35 @@
 <!-- views/partials/footer.ejs -->
-<div 
-	id='header' 
-	class = "">
+<script>
+	const MobileMenuIcon = document.getElementById("MobileMenuIcon"); 
+	const MobileMenu = document.getElementById("MobileMenu"); 
+	const openMobileMenu = () =>{
+		alert("opened menu")
+		MobileMenu.classList.remove('closed-menu');
+		MobileMenu.classList.add('opened-menu');
+	}
+</script>
 	<div
 		id='MobileHeader' 
-		class = "w-full bg-black fixed top-0 left-0 right-0 h-[50px] sm:hidden z-10"
+		class = "w-full bg-black fixed top-0 left-0 right-0  
+		flex sm:hidden z-10 h-[50px] bg-black justify-between"
 	>
-		<a href = "/">
+		<a href = "/" class = "">
 			<img 
 				src = "images/FilmDashLogo.png" 
 				class = "h-full w-auto cursor-pointer" 
 				alt = "logo"/>
 		</a>
-		<div>
+		<div class="my-auto cursor-pointer" onclick ={openMobileMenu}>
 			<img
+				id="MobileMenuIcon"
 				src = "icon/hamburger_menu_white.png" 
-				class = "cursor-pointer" 
+				class = " z-20 my-auto ml-auto mr-5 w-[35px] h-[35px] " 
 				alt = "logo"/>
 		</div>
 	</div>
 	<div
 		id='DesktopHeader' 
-		class = "w-full bg-black fixed top-0 left-0 right-0 h-[50px] hideden sm:flex"
+		class = "w-full bg-black fixed top-0 left-0 right-0 h-[50px] hidden sm:flex"
 	>
 			<a href = "/">
 				<img 
@@ -30,4 +38,3 @@
 					alt = "logo"/>
 			</a>
 	</div>
-</div>
