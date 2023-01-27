@@ -5,8 +5,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose')
 require("dotenv").config();
+var app = express();
 
-const mongoDB = `mongodb+srv://${process.env.USER}:${process.env.PASS}@locallibrarycluster.lyfvtsg.mongodb.net/MovieRental?retryWrites=true&w=majority`;
+const mongoDB ="mongodb+srv://MovieRentalAdmin:sV9eiVa2CATmwLc@locallibrarycluster.lyfvtsg.mongodb.net/?retryWrites=true&w=majority"
+//const mongoDB = `mongodb+srv://${process.env.USER}:${process.env.PASS}@locallibrarycluster.lyfvtsg.mongodb.net/MovieRental?retryWrites=true&w=majority`;
 
 //The explanation behind useNewUrlPaser is that Mongoose is using a new parser for url
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
@@ -22,7 +24,7 @@ db.on("error", console.error.bind(console, "MongoDB connection error"))
 
 var indexRouter = require('./routes/index');
 const catalogRouter = require('./routes/catalog')
-var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,14 +34,17 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/favicon.ico', express.static('images/favicon.png'));
 
 app.use('/', indexRouter);
 app.use('/catalog', catalogRouter);
 
 const { populateDatabase } = require('./controller/populate')
 
-populateDatabase();
+//populateDatabase();
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

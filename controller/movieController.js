@@ -10,21 +10,22 @@ const MovieInstance = require('../model/MovieInstance')
 const MovieData = require('../data/movie.json')
 
 exports.MovieList = (req, res, next) => {
-    Movie.find({}, "Movies")
-        .sort({title: 1})
-        .populate('Director')
-        .populate('Actor')
-        .populate('Genre')
-        .populate('MovieInstance')
-        .exec((err, result) => {
+    Movie.find({})
+        .sort({ title: 1 })
+        .populate("director")
+        .populate("actor")
+        .populate("genre")
+        .populate("movieinstance")
+        .exec(function (err, result){
             if (err) {
                 return next(err)
             }
-            res.render('index', {
-                title: "Movies",
-                movie_list: result, 
-                movie_data: MovieData.movies,
-            })
+            if (result != null) { 
+                res.render('index', {
+                    title: "Movies",
+                    movie_list: result,
+                })
+            }
         })
 }
 

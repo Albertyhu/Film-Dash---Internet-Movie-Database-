@@ -13,8 +13,6 @@ const mongoose = require('mongoose')
 const { genKey, genNum } = require('../util/randGen'); 
 const { DateTime } = require('luxon');
 
-const MoviesArray = []
-
     //Look at the title of each movie
     //get the objectID of the following: director, actor, genre from the data base
     //put them into the new Movie object 
@@ -184,11 +182,11 @@ const GenerateMovieInstance = (num) =>{
 exports.populateDatabase = (req, res) => {
     async.parallel(
         [
-            //PopulateMovie,
+            //() => PopulateMovie(MovieData),
             //PopulateActor,
            // PopulateDirector,
             //PopulateGenre,
-          // ()=>GenerateMovieInstance(10)
+          //()=>GenerateMovieInstance(60)
         ],
         function (err, results) {
             if (err) {

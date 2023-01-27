@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8">
   <title>Film Dash</title>
-  <link href="stylesheets/style.css" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.png">
 </head>
 <body>
   <div class = "w-full">
-	<p class = ""></p>
+  <%- include("partials/header") %>
+	<h2 class ="font-bold text-center mx-auto mt-[50px]"><%= title %></h2>
 	<% if(movie_list) { %>
 		<div class = "">
 			<% movie_list.forEach(movie =>{ %>
@@ -16,7 +17,13 @@
 				id="MoviePanel"
 				class ="rounded-lg boxshadow w-11/12">
 					<p class = "bold"><%= movie.title %></p>
-					<p>Directed by <%= movie.director %></p>
+					<p><%= movie.year %></p>
+					<% if (!Array.isArray(movie.director)) {%>
+						<p>Directed by <%= movie.director.name %></p>
+					<%} else { movie.director.forEach(codirector =>{ %> 
+						<p><%= codirector.name  %></p>
+					<%}) %> 
+					<%}%>
 					<% if(movie.actors) {%>
 						<p>Starring <% movie.actors.forEach((actor, index) => { %>
 								<%= actor %>
@@ -32,13 +39,6 @@
 			<%})%>
 		</div>
 	<%}else {}%>
-	<% if(movie_data) {%>
-		<ul>
-			<% movie_data.forEach(movie =>{ %>  
-				<li><%= movie.title %></li>
-			<%})%>
-		</ul>
-	<% } else {} %>
   </div>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <script>
