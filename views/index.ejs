@@ -11,9 +11,17 @@
   <div class = "w-full">
   <%- include("partials/header") %>
   <%- include("partials/MobileMenu") %>
+	<video  
+		loop = 'true' 
+		muted = 'muted'
+		autoplay
+		class = 'w-full h-auto z-10'
+	>
+		<source src='video/Shimmering_Particles.mov' type = 'video/mp4' />
+	</video>
 	<h2 class ="font-bold text-center mx-auto mt-[50px]  text-white"><%= title %></h2>
 	<% if(movie_list) { %>
-		<div class = "">
+		<div class = "sm:grid sm:grid-cols-2 md:grid-cols-3">
 			<% movie_list.forEach(movie =>{ %>
 				<div 
 				id="MoviePanel"
@@ -21,13 +29,15 @@
 					before:bg-[url('<%= movie.poster %>')] relative before:absolute 
 					before:block before:left-0 before:right-0 before:top-0 before:w-full before:h-full
 					before:opacity-60 before:z-[-2] before:bg-no-repeat before:bg-cover before:backdrop-blur-3xl before:rounded-md
-					before:brightness-50 before:bg-center">
+					before:brightness-50 before:bg-center sm:max-w-[350px]">
 				    <img 
 						src = '<%= movie.poster%>' 
 						alt = '<%movie.title%> + poster' 
-						class = "rounded-md w-auto h-auto mx-auto cursor-pointer" 
+						class = "rounded-md w-auto h-auto mx-auto cursor-pointer hover:perspective hover:rotate-6 
+						hover:scale-[1.25]
+						transition duration-[rotate 500ms, scale 1s]" 
 					/>
-					<p class = "font-bold text-lg"><%= movie.title %></p>
+					<p class = "font-bold text-2xl"><%= movie.title %></p>
 					<p><%= movie.year %></p>
 				<% if (!Array.isArray(movie.director)) {%>
 					<p>Directed by <%= director_list.find(val => val._id.toString() == movie.director.toString() ).name %></p>

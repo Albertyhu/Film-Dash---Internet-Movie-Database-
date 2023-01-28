@@ -1,40 +1,51 @@
 <!-- views/partials/footer.ejs -->
 <script>
-	const MobileMenuIcon = document.getElementById("MobileMenuIcon"); 
-	const MobileMenu = document.getElementById("MobileMenu"); 
-	const openMobileMenu = () =>{
-		alert("opened menu")
+	var MobileMenu = document.getElementById('MobileMenu')
+    
+	function openMenu(){ 
+		MobileMenu = document.getElementById('MobileMenu')
 		MobileMenu.classList.remove('closed-menu');
 		MobileMenu.classList.add('opened-menu');
 	}
+	const clickEvent = event =>{
+		const targetEvent = event.target
+		MobileMenu = document.getElementById('MobileMenu')
+		if(MobileMenu != targetEvent){
+			MobileMenu.classList.remove('opened-menu');
+			MobileMenu.classList.add('closed-menu');
+
+		}
+	} 
+	document.addEventListener("mousedown", clickEvent)
+
 </script>
-	<div
-		id='MobileHeader' 
-		class = "w-full bg-black fixed top-0 left-0 right-0  
-		flex sm:hidden z-10 h-[50px] bg-black justify-between"
-	>
-		<a href = "/" class = "">
+<div
+	id='MobileHeader' 
+	class = "w-full bg-black fixed top-0 left-0 right-0  
+	flex sm:hidden z-30 h-[50px] bg-black justify-between"
+>
+	<a href = "/" class = "">
+		<img 
+			src = "images/FilmDashLogo.png" 
+			class = "h-full w-auto cursor-pointer" 
+			alt = "logo"/>
+	</a>
+	<div class="my-auto cursor-pointer" onclick="openMenu()">
+		<img
+			id="MobileMenuIcon"
+			src = "icon/hamburger_menu_white.png" 
+			class = " z-20 my-auto ml-auto mr-5 w-[35px] h-[35px] " 
+			alt = "logo"/>
+	</div>
+</div>
+<div
+	id='DesktopHeader' 
+	class = "w-full bg-black fixed top-0 left-0 right-0 h-[50px] hidden sm:flex z-30"
+>
+		<a href = "/">
 			<img 
 				src = "images/FilmDashLogo.png" 
 				class = "h-full w-auto cursor-pointer" 
 				alt = "logo"/>
 		</a>
-		<div class="my-auto cursor-pointer" onclick ={openMobileMenu}>
-			<img
-				id="MobileMenuIcon"
-				src = "icon/hamburger_menu_white.png" 
-				class = " z-20 my-auto ml-auto mr-5 w-[35px] h-[35px] " 
-				alt = "logo"/>
-		</div>
-	</div>
-	<div
-		id='DesktopHeader' 
-		class = "w-full bg-black fixed top-0 left-0 right-0 h-[50px] hidden sm:flex"
-	>
-			<a href = "/">
-				<img 
-					src = "images/FilmDashLogo.png" 
-					class = "h-full w-auto cursor-pointer" 
-					alt = "logo"/>
-			</a>
-	</div>
+</div>

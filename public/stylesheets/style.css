@@ -15,10 +15,10 @@ a {
 
 .closed-menu {
     transform: translateX(300px);
-    transition: transform 1s linear; 
+    transition: transform 500ms linear; 
 }
 
 .opened-menu {
-    transform: translateX(300px);
-    transition: transform 1s linear;
+    transform: translateX(0px);
+    transition: transform 500ms linear;
 }
