@@ -7,7 +7,7 @@
   <link rel ="stylesheet" href='stylesheets/style.css'> 
   <link rel="icon" type="image/x-icon" href="/images/favicon.png">
 </head>
-<body class = "bg-gray-900">
+<body class = "bg-gray-900 h-auto flex flex-col">
   <div class = "w-full">
   <%- include("partials/header") %>
   <%- include("partials/MobileMenu") %>
@@ -39,7 +39,7 @@
 						src = '<%= movie.poster%>' 
 						alt = '<%movie.title%> + poster' 
 						class = "rounded-md w-auto h-auto mx-auto cursor-pointer hover:perspective hover:rotate-6 
-						hover:scale-[1.25]
+						hover:scale-[1.25] 
 						transition duration-[rotate 500ms, scale 1s]" 
 					/>
 					<p class = "font-bold text-2xl"><%= movie.title %></p>
@@ -87,6 +87,7 @@
 		</div>
 	<%}else {}%>
   </div>
+  <%- include('partials/footer') %>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <script>
   </script>
