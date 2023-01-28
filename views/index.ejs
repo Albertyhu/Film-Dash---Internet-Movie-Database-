@@ -11,15 +11,20 @@
   <div class = "w-full">
   <%- include("partials/header") %>
   <%- include("partials/MobileMenu") %>
-	<video  
-		loop = 'true' 
-		muted = 'muted'
-		autoplay
-		class = 'w-full h-auto z-10'
-	>
-		<source src='video/Shimmering_Particles.mov' type = 'video/mp4' />
-	</video>
-	<h2 class ="font-bold text-center mx-auto mt-[50px]  text-white"><%= title %></h2>
+  <div class = "relative">
+		<video  
+			loop = 'true' 
+			muted = 'muted'
+			autoplay
+			class = 'w-full h-auto z-50'
+		>
+			<source src='<%= video %>' type = 'video/mp4' />
+		</video>
+		<div class = "absolute top-[50%] left-[50%] text-center text-white translate-x-[-50%]">
+			<h2 class = "text-lg text-center text-white sm:text-5xl">Access to thousands of films at the tip of your fingers</h2>
+		</div>
+   </div>
+	<h2 class ="font-bold text-center mx-auto mt-[50px]  text-white text-lg"><%= title %></h2>
 	<% if(movie_list) { %>
 		<div class = "sm:grid sm:grid-cols-2 md:grid-cols-3">
 			<% movie_list.forEach(movie =>{ %>

@@ -40,6 +40,7 @@ exports.MovieList = (req, res, next) => {
                     director_list: result.DirectorList,
                    // openMenu: MobileFunctions.openMenu, 
                     genre_list: result.GenreList, 
+                    video: "video/red_glitter.mp4"
                 })
             }
         }

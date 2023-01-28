@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\asset",
-    "\\controller",
     "\\model",
     "\\public",
     "\\public\\icon",
     "\\public\\stylesheets",
+    "\\public\\video",
     "\\routes",
+    "\\util",
     "\\views",
     "\\views\\partials"
   ],
-  "SelectedNode": "\\controller\\movieController.js",
+  "SelectedNode": "\\public\\video\\Shimmering_Particles.mov",
   "PreviewInSolutionExplorer": false
 }

@@ -36,6 +36,9 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+//serves files from public
+app.use(express.static("public"));
+
 app.use('/favicon.ico', express.static('images/favicon.png'));
 
 app.use('/', indexRouter);
