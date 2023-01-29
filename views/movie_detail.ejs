@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Film Dash</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel ="stylesheet" href='../../stylesheets/style.css'> 
+  <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+</head>
+<body class = "bg-black h-auto flex flex-col">
+  <div class = "w-full">
+    <%- include("partials/header") %>
+    <%- include("partials/MobileMenu") %>
+  </div>
+  <div class = "min-h-[100vh] text-white relative before:bg-black before:z-[1] before:h-full before:w-full 
+    before:block before:absolute before:left-0 before:right-0 before:top-0 before:opacity-60">
+     <img 
+        class = "h-full w-full " 
+        src = '<%= movie.poster %>'
+        alt = "<%= movie.title%> poster"
+     />
+     <div 
+        id="MovieTitleBlock"
+        class = "z-[2] text-white absolute top-[25%] left-[50%] translate-x-[-50%] whitespace-nowrap">
+        <h1 class = "text-5xl"><%= movie.title%></h1>
+        <p class = "text-3xl">Directed by <%= director.name %></p>
+        <p class = "text-3xl text-center">Starring</p>
+        <% if(movie.actors) { %> 
+            <ul class = "mx-auto text-center">
+            <% movie.actors.forEach(actor =>{ %> 
+                <li><%= actor.name %></li>
+            <%})%>
+            </ul>
+        <%}%>
+        <div class = "my-10">
+            <div class = "">
+                <p>Genre: 
+                    <% if(movie.genres){ %> 
+                        <% movie.genres.forEach((val, ind) =>{%>
+                            <span><%= val.name %></span>
+                            <% if(ind < movie.genres.length - 1){ %>
+                                <span> | </span>
+                            <%} %>
+                        <%})%>
+                    <%}%>
+                </p>
+            </div>
+            <p>IMDB rating: <%= movie.imdb_rating%></p>
+            <p>Parental Guide: <%= movie.parental_guide %></p>
+            <p>Production Compoany: <%= movie.production_company %></p>
+            <p>Budget: <%= movie.budget %></p>
+            <p>Runtime: <%= movie.runtime %></p>
+        </div>
+     </div>
+    </div>
+  </div>
+  <%- include('partials/footer') %>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</body>
+</html

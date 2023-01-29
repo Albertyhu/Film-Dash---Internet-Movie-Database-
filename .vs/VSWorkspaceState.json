@@ -11,6 +11,6 @@
     "\\views",
     "\\views\\partials"
   ],
-  "SelectedNode": "\\public\\video\\red_glitter.mp4",
+  "SelectedNode": "\\views\\partials\\footer.ejs",
   "PreviewInSolutionExplorer": false
 }

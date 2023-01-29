@@ -7,7 +7,7 @@
   <link rel ="stylesheet" href='stylesheets/style.css'> 
   <link rel="icon" type="image/x-icon" href="/images/favicon.png">
 </head>
-<body class = "bg-gray-900 h-auto flex flex-col">
+<body class = "bg-black h-auto flex flex-col">
   <div class = "w-full">
   <%- include("partials/header") %>
   <%- include("partials/MobileMenu") %>
@@ -35,13 +35,15 @@
 					before:block before:left-0 before:right-0 before:top-0 before:w-full before:h-full
 					before:opacity-60 before:z-[-2] before:bg-no-repeat before:bg-cover before:backdrop-blur-3xl before:rounded-md
 					before:brightness-50 before:bg-center sm:max-w-[350px]">
-				    <img 
-						src = '<%= movie.poster%>' 
-						alt = '<%movie.title%> + poster' 
-						class = "rounded-md w-auto h-auto mx-auto cursor-pointer hover:perspective hover:rotate-6 
-						hover:scale-[1.25] 
-						transition duration-[rotate 500ms, scale 1s]" 
-					/>
+				    <a href ="<%= movie.url %>">
+						<img 
+							src = '<%= movie.poster%>' 
+							alt = '<%movie.title%> + poster' 
+							class = "rounded-md w-auto h-auto mx-auto cursor-pointer hover:perspective hover:rotate-6 
+							hover:scale-[1.25] 
+							transition duration-[rotate 500ms, scale 1s]" 
+						/>
+					</a>
 					<p class = "font-bold text-2xl"><%= movie.title %></p>
 					<p><%= movie.year %></p>
 				<% if (!Array.isArray(movie.director)) {%>

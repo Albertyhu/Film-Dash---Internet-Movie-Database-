@@ -30,7 +30,7 @@ MovieSchema.virtual("FormattedReleaseDate").get(function(){
 })
 
 MovieSchema.virtual("url").get(function () {
-    return `/movies/:id`
+    return `/catalog/movie/${this._id}`
 })
 
 module.exports = mongoose.model('Movies', MovieSchema); 

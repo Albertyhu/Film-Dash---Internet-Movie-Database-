@@ -61,7 +61,10 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-    res.render('error', {error: err.message})
+    res.render('error', {
+        title: "Error",
+        error: err.message
+    })
 });
 
 app.listen(9000)

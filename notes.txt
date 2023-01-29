@@ -1,3 +1,64 @@
+1/28/23
+
+//async.series method
+
+const async = require('async');
+
+const movieId = "5f9d7f6e8734f097e2c8ab6e";
+
+async.series({
+    movie: function(callback) {
+        Movie.findById(movieId, callback);
+    },
+    directors: function(callback) {
+        if(movie && Array.isArray(movie.director)){
+            Director.find({ _id: { $in: movie.director } }, callback);
+        }else if(movie){
+            Director.findById(movie.director, callback);
+        }else{
+            callback(null, null);
+        }
+    }
+}, function(err, results) {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(results.movie);
+        console.log(results.directors);
+    }
+});
+
+
+//waterfall method
+
+const async = require('async');
+
+const movieId = "5f9d7f6e8734f097e2c8ab6e";
+
+async.waterfall([
+    function(callback) {
+        Movie.findById(movieId, callback);
+    },
+    function(movie, callback) {
+        if(movie && Array.isArray(movie.director)){
+            Director.find({ _id: { $in: movie.director } }, callback);
+        }else if(movie){
+            Director.findById(movie.director, callback);
+        }else{
+            callback(null, null);
+        }
+    }
+], function(err, results) {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(results.movie);
+        console.log(results.directors);
+    }
+});
+
+
+
 1/26/23
 Installed multer to allow the ability to upload files and images. 
 
