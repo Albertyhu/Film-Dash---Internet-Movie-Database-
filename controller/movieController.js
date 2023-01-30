@@ -56,39 +56,68 @@ exports.MovieDetail = (req, res, next) => {
                     .populate('genres')
                     .exec(callback)
             }, 
+            function (movie, callback) {
+                Genre.find({}).exec((err, genres) => { callback(err, movie, genres)})
+            },
             //The argument 'movie' carries the results of the previous function, which is the movie founded with req.params.id
-            function(movie, callback) {
+            function(movie, genres, callback) {
                 if (movie && Array.isArray(movie.director)) {
                     Director.find({ _id: { $in: movie.director } }, (err, directors) => {
                         //Once the task of finding the director of the movie is done, use the following line to pass the movie and director data to the next task
-                        callback(err, movie, directors)
+                        callback(err, movie, genres, directors)
                     })
                 }
                 else if (movie) {
                     Director.findById(movie.director, (err, director) => {
-                        callback(err, movie, director); 
+                        callback(err, movie, genres, director); 
                     }) 
                 }
                 else {
-                    callback(null, null, null)
+                    callback(null, null, null, null)
                 }
             }
         ],
         //movie and director has to be in the following paramters for this to work
-        (err, movie, director) => {
+        (err, movie, genres, director) => {
             if (err) {
                 return next(err)
             }
 
             res.render('movie_detail', {
                 movie: movie,
-                director: director, 
+                director: director,
+                genre_list: genres, 
             })
         }
     )
 }
 
-exports.MovieCreate_Get = (req, res, next) => { }
+exports.MovieCreate_Get = (req, res, next) => {
+    async.parallel(
+        {
+            GenreList(callback) {
+                Genre.find({}).exec(callback)
+            },
+            ActorList(callback) {
+                Actor.find({}).exec(callback)
+            },
+            DirectorList(callback) {
+                Director.find({}).exec(callback)
+            }
+        },
+        (err, result) => {
+            if (err)
+                return next(err);
+            res.render("movie_form", {
+                title: "Add Movie to the Database", 
+                genre_list: result.GenreList, 
+                actor_list: result.ActorList, 
+                director_list: result.DirectorList, 
+            })
+
+        }
+    )
+}
 
 exports.MovieCreate_Post = []
 

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Film Dash</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel ="stylesheet" href='../../stylesheets/style.css'> 
+  <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+</head>
+<body class = "bg-black h-auto flex flex-col">
+  <div class = "w-full">
+    <%- include("partials/header") %>
+    <%- include("partials/MobileMenu") %>
+  </div>
+  <div class = "min-h-[100vh]">
+    <h1><%= title %></h1>
+        <div class = "w-11/12 mx-auto">
+            <form 
+                action="" 
+                method="POST"
+                class="[&>div>label]:text-white [&>div]:grid mt-[50px] [&>div>input]:rounded-lg [&>div]:w-full [&>div]:my-[10px]"
+                >
+                <div>
+                    <label for = "title">Title</label>
+                    <input 
+                        name = "title" 
+                        type = "text"
+                        placeholder = "Title of movie" 
+                        required = "true"
+                        class = "" 
+                        />
+                </div>
+                <div>
+                    <label for = "year">Year</label>
+                    <input 
+                        type = "number" 
+                        placeholder = "Type the year of release date here"
+                        name = 'year'
+                        value ="<%= typeof movie != 'undefined' ? movie.year : null %>"
+                        />
+                </div>
+                <div>
+                    <label for="director">Director</label>
+                    <select
+                        type="select"
+                        placeholder="select director"
+                        name= 'director'
+                        required= 'true' 
+                        class = "rounded-lg"
+                        multiple
+                    >   
+                        <% director_list.forEach(person => { %> 
+                            <option value = "person._id"><%= person.name %></option>
+                        <%}) %>
+                    </select>
+                </div>
+                <div>
+                    <label for="actor">Actor</label>
+                    <select
+                        type="select"
+                        placeholder="select actors"
+                        name= 'actor'
+                        required= 'true' 
+                        class = "rounded-lg"
+                        multiple>
+                        <% actor_list.forEach(person => { %> 
+                            <option value = "person._id"><%= person.name %></option>
+                        <%}) %>
+                    </select>
+                </div>
+                <div>
+                    <label for="genre">Genres</label>
+                    <select
+                        type="select"
+                        placeholder="select genre(s)"
+                        name= 'genre'
+                        required= 'true' 
+                        class = "rounded-lg"
+                        multiple>
+                        <% genre_list.forEach(item => { %> 
+                            <option value = "item._id"><%= item.name %></option>
+                        <%}) %>
+                    </select>
+                </div>
+                <div>
+                    <label for = "tagline">Tagline</label>
+                    <input 
+                        type = "text"
+                        placeholder = "Write the tagline here"
+                        name='tagline'
+                        value = "<%= typeof movie != 'undefined' ? movie.tagline : null %>"
+                        />
+                </div>
+                <div>
+                    <label for = "imdb_rating">IMDB Rating</label>
+                    <input 
+                        type = "number" 
+                        name='imdb_rating' 
+                        placeholder = "Write the IMDB rating here"
+                        value = "<%= typeof movie != 'undefined' ? movie.imdb_rating : null %>"
+                        />
+                </div>
+                <div>
+                    <label for = "parental_guide">Parental Guide</label>
+                    <input 
+                        type = "text"
+                        placeholder = "Write the Parental Guide here"
+                        name='parental_guide'
+                        value = "<%= typeof movie != 'undefined' ? movie.parental_guide : null %>"
+                        />
+                </div>
+                <div>
+                    <label for = "release_date">Release Date</label>
+                    <input 
+                        type = "date"
+                        name='release_date'
+                        value = "<%= typeof movie != 'undefined' ? movie.release_date : null %>"
+                        />
+                </div>
+                <div>
+                    <label for = "budget">Budget</label>
+                    <input 
+                        type = "text" 
+                        name='budget'
+                        placeholder = "Write the budget here"
+                        value = "<%= typeof movie != 'undefined' ? movie.budget : null %>"
+                        />
+                </div>
+                <div>
+                    <label for = "runtime">Runtime</label>
+                    <input 
+                        type = "number" 
+                        name='runtime' 
+                        value = "<%= typeof movie != 'undefined' ? movie.runtime : null %>"
+                        />
+                </div>
+                <div>
+                    <label for = "poster">Poster</label>
+                    <input 
+                        type = "text" 
+                        name='poster'
+                        placeholder = "Copy and paste the movie poster url here."
+                        value = "<%= typeof movie != 'undefined' ? movie.poster : null %>"
+                        />
+                </div>
+                <div class = 'w-full my-[10px]'>
+                    <button 
+                    type = "submit"
+                    class = "rounded-full p-[10px] active:translate-x-[5px] active:translate-y-[5px] cursor-pointer
+                    border-white border-2 text-center w-[150px] select-none text-white mx-auto
+                    hover:bg-gray-800">Submit</button>
+                </div>
+            </form>
+        </div>
+  </div>
+  <%- include('partials/footer') %>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script>
+  </script>
+</body>
+</htmla

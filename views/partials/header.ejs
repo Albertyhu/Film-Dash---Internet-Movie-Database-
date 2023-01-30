@@ -16,7 +16,6 @@
 		}
 	} 
 	document.addEventListener("mousedown", clickEvent)
-
 </script>
 <div
 	id='MobileHeader' 
@@ -39,7 +38,7 @@
 </div>
 <div
 	id='DesktopHeader' 
-	class = "w-full bg-black fixed top-0 left-0 right-0 h-[50px] hidden sm:flex z-30"
+	class = "w-full bg-black fixed top-0 left-0 right-0 h-[50px] hidden sm:flex z-30 justify-between"
 >
 		<a href = "/">
 			<img 
@@ -47,4 +46,48 @@
 				class = "h-full w-auto cursor-pointer" 
 				alt = "logo"/>
 		</a>
+		<div 
+			id= "HeaderMenu"
+			class = "flex text-white ml-auto mr-5 [&>*]:mx-[10px] my-auto cursor-pointer">
+			<div 
+				id="GenreMenuLink"
+				class = "relative"
+				>
+				<span class = "hover:underline hover:font-bold grid">Genres</span>
+				<div
+					id="GenreMenu"
+				    class = "absolute z-50 text-center bg-white [&>*]:text-black [&>*]:min-w-[100px]
+					[&>*]:my-5 hidden">
+					<% if(genre_list) {%> 
+						<% genre_list.forEach(val => {%> 
+							<div 
+							class = "hover:bg-gray-300"><a href ="<%= val.url%>"><%= val.name %></a></div>
+						<%})%>
+					<%}%>
+				</div>
+			</div>
+			<div class = "hover:underline hover:font-bold">Directors</div>
+			<div class = "hover:underline hover:font-bold">Actors</div>
+			<div class = "hover:underline hover:font-bold">Add Movie</div>
+			<div class = "hover:underline hover:font-bold">Contact</div>
+		</div>
 </div>
+<script>
+	const GenreMenuLink = document.getElementById('GenreMenuLink'); 
+	var GenreMenu = document.getElementById('GenreMenu'); 
+
+	const OpenGenreMenu = evt =>{
+		GenreMenu = document.getElementById('GenreMenu'); 
+		GenreMenu.classList.remove('hidden')
+		GenreMenu.classList.add('block');
+	}
+	
+	const CloseGenreMenu = evt =>{
+		GenreMenu = document.getElementById('GenreMenu'); 
+		GenreMenu.classList.remove('block')
+		GenreMenu.classList.add('hidden');
+	}
+
+	GenreMenuLink.addEventListener('mouseover', OpenGenreMenu)
+	GenreMenuLink.addEventListener('mouseout', CloseGenreMenu)
+</script>
