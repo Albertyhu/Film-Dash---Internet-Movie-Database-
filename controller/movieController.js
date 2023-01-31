@@ -1,4 +1,4 @@
-const { body, validationRequest } = require('express-validator');
+const { body, validationResult } = require('express-validator');
 const async = require('async');
 const fs = require('fs');
 const Movie = require('../model/Movies'); 
@@ -7,8 +7,8 @@ const Director = require('../model/Directors');
 const Genre = require('../model/Genres'); 
 const MovieInstance = require('../model/MovieInstance'); 
 const MobileFunctions = require('../util/mobileMenuFunctions');  
-const MovieData = require('../data/movie.json')
-
+const MovieData = require('../data/movie.json');
+const MPAA = require('../data/MPAA_ratings.js');
 
 exports.MovieList = (req, res, next) => {
     async.parallel(
@@ -109,15 +109,108 @@ exports.MovieCreate_Get = (req, res, next) => {
             if (err)
                 return next(err);
             res.render("movie_form", {
-                title: "Add Movie to the Database", 
+                title: "Add a movie to the database", 
                 genre_list: result.GenreList, 
                 actor_list: result.ActorList, 
-                director_list: result.DirectorList, 
+                director_list: result.DirectorList,
+                MPAA_ratings: MPAA, 
+                errors: [], 
             })
 
         }
     )
 }
 
-exports.MovieCreate_Post = []
+exports.MovieCreate_Post = [
+    body('title', 'Title must not be empty')
+        .trim()
+        .isLength({ min: 1 })
+        .withMessage("Title of the movie needs to be specified.")
+        .escape(),
+    body('year') 
+        .trim()
+        .escape(),
+    body('director')
+        .escape(),
+    body('actor')
+        .escape(),
+    body('genre')
+        .escape(),
+    body('tagline')
+        .escape(),
+    body('imdb_rating')
+        .escape(),
+    body('parental_guide')
+        .escape(),
+    body('date')
+        .optional({ checkFalsy: true })
+        .isISO8601()
+        .toDate(),
+    body('budget')
+        .escape(), 
+    body('runtime')
+        .escape(), 
+    body('poster')
+        .escape(),
+    (req, res, next) => {
+    try {
+        const errors = validationResult(req); 
+        if (!errors.isEmpty) {
+            async.parallel(
+                {
+                    GenreList(callback) {
+                        Genre.find({}).exec(callback)
+                    },
+                    ActorList(callback) {
+                        Actor.find({}).exec(callback)
+                    },
+                    DirectorList(callback) {
+                        Director.find({}).exec(callback)
+                    }
+                },
+                (err, result) => {
+                    if (err)
+                        return next(err);
+                    res.render("movie_form", {
+                        title: "Add a movie to the database",
+                        genre_list: result.GenreList,
+                        actor_list: result.ActorList,
+                        director_list: result.DirectorList,
+                        MPAA_ratings: MPAA,
+                        errors: errors.array()
+                    })
+
+                }
+            ); 
+            return; 
+        }
+        const obj = {
+            title: req.body.title, 
+            year: req.body.year, 
+            director: req.body.director, 
+            actor: req.body.actor, 
+            genre: req.body.genre, 
+            tagline: req.body.tagline, 
+            imdb_rating: req.body.imdb_rating, 
+            parental_guide: req.body.parental_guide, 
+            release_date: req.body.release_date, 
+            budget: req.body.budget, 
+            runtime: req.body.runtime, 
+            poster: req.body.poster
+        }
+        const newMovie = new Movie(obj)
+
+            newMovie.save(err => {
+                if (err) {
+                    console.log("Error in saving movie to the database: ", err)
+                    return next(err)
+                }
+                res.redirect(newMovie.url)
+            })
+        } catch (error) {
+            console.error(error);
+            res.status(500).send("Server Error"); 
+        }
+    }
+]
 

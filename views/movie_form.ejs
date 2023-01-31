@@ -12,13 +12,14 @@
     <%- include("partials/header") %>
     <%- include("partials/MobileMenu") %>
   </div>
-  <div class = "min-h-[100vh]">
-    <h1><%= title %></h1>
-        <div class = "w-11/12 mx-auto">
+  <div class = "min-h-[100vh] mt-[50px]">
+    <h1 class = "text-white text-center text-4xl"><%= title %></h1>
+        <div class = "w-11/12 mx-auto sm:w-5/12 ">
             <form 
                 action="" 
                 method="POST"
-                class="[&>div>label]:text-white [&>div]:grid mt-[50px] [&>div>input]:rounded-lg [&>div]:w-full [&>div]:my-[10px]"
+                class="[&>div>label]:text-white [&>div]:grid mt-[50px] [&>div>input]:rounded-lg 
+                [&>div]:w-full [&>div]:my-[10px] [&>div>input]:pl-3"
                 >
                 <div>
                     <label for = "title">Title</label>
@@ -100,15 +101,25 @@
                         value = "<%= typeof movie != 'undefined' ? movie.imdb_rating : null %>"
                         />
                 </div>
-                <div>
-                    <label for = "parental_guide">Parental Guide</label>
-                    <input 
-                        type = "text"
-                        placeholder = "Write the Parental Guide here"
-                        name='parental_guide'
-                        value = "<%= typeof movie != 'undefined' ? movie.parental_guide : null %>"
-                        />
-                </div>
+                <% if(MPAA_ratings) { %> 
+                    <div>
+                        <label for = "parental_guide">Parental Guide</label>
+                        <select
+                            type="select"
+                            class = "rounded-lg"
+                            placeholder = "Select MPAA rating"
+                            name="parental_guide"
+                            value = "<%= typeof movie != 'undefined' ? movie.parental_guide : null %>"
+                            >
+                            <% MPAA_ratings.forEach(rating => { %> 
+                                <option 
+                                value = "<%= rating %>" 
+                                <%= typeof movie != 'undefined' ? movie.parental_guide == rating ? "selected" : null : null %>
+                                 ><%= rating %></option>
+                            <%})%>
+                        </select>
+                    </div>
+                <%}%>
                 <div>
                     <label for = "release_date">Release Date</label>
                     <input 
@@ -127,7 +138,7 @@
                         />
                 </div>
                 <div>
-                    <label for = "runtime">Runtime</label>
+                    <label for = "runtime">Runtime (in minutes)</label>
                     <input 
                         type = "number" 
                         name='runtime' 
@@ -152,6 +163,11 @@
                 </div>
             </form>
         </div>
+  </div>
+  <div>
+    <% if(errors) { %> 
+    
+    <%}%>
   </div>
   <%- include('partials/footer') %>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
