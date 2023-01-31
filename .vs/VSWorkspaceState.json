@@ -1,8 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\bin",
     "\\controller",
+    "\\data",
     "\\public",
     "\\public\\images",
     "\\public\\video",
@@ -11,6 +11,6 @@
     "\\views",
     "\\views\\partials"
   ],
-  "SelectedNode": "\\views\\movie_detail.ejs",
+  "SelectedNode": "\\routes\\catalog.js",
   "PreviewInSolutionExplorer": false
 }

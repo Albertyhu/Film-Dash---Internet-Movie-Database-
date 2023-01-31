@@ -21,7 +21,7 @@ const DirectorSchema = new Schema({
 
 DirectorSchema.virtual("FormattedBirthDate").get(function () {
     return this.birthdate ?
-        DateTime.FormJSDate(this.birthdate).toFormatted("yyyy-MM-dd")
+        DateTime.FromJSDate(this.birthdate).toFormat("yyyy-MM-dd")
         :
         null; 
 })

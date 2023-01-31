@@ -33,6 +33,9 @@
             </ul>
         <%}%>
         <div class = "my-10">
+            <% if(movie.tagline) { %> 
+                <p>Tagline: <%= movie.tagline %></p>
+            <%}%>
             <div class = "">
                 <p>Genre: 
                     <% if(movie.genres){ %> 
@@ -45,11 +48,12 @@
                     <%}%>
                 </p>
             </div>
-            <p>IMDB rating: <%= movie.imdb_rating%></p>
-            <p>Parental Guide: <%= movie.parental_guide %></p>
-            <p>Production Compoany: <%= movie.production_company %></p>
-            <p>Budget: <%= movie.budget %></p>
-            <p>Runtime: <%= movie.runtime %></p>
+            <% if (movie.imdb_rating) {%><p>IMDB rating: <%= movie.imdb_rating%></p><% } %>
+            <% if (movie.parental_guide) {%><p>Parental Guide: <%= movie.parental_guide %></p><% } %>
+            <% if (movie.release_date) { %><p>Releaset Date: <%= movie.FormattedReleaseDate %> </p><% } %>
+            <% if (movie.production_company) {%><p>Production Company: <%= movie.production_company %></p><% } %>
+            <% if (movie.budget) {%><p>Budget: <%= movie.budget %></p><% } %>
+            <% if (movie.runtime) {%><p>Runtime: <%= movie.runtime_minutes %></p><% } %>
         </div>
         <div class = "flex justify-between" >
             <div 

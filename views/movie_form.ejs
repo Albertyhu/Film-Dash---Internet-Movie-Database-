@@ -51,7 +51,7 @@
                         multiple
                     >   
                         <% director_list.forEach(person => { %> 
-                            <option value = "person._id"><%= person.name %></option>
+                            <option value = <%= person._id %>><%= person.name %></option>
                         <%}) %>
                     </select>
                 </div>
@@ -65,7 +65,7 @@
                         class = "rounded-lg"
                         multiple>
                         <% actor_list.forEach(person => { %> 
-                            <option value = "person._id"><%= person.name %></option>
+                            <option value = <%= person._id %>><%= person.name %></option>
                         <%}) %>
                     </select>
                 </div>
@@ -79,7 +79,7 @@
                         class = "rounded-lg"
                         multiple>
                         <% genre_list.forEach(item => { %> 
-                            <option value = "item._id"><%= item.name %></option>
+                            <option value = <%= item._id %>><%= item.name %></option>
                         <%}) %>
                     </select>
                 </div>
@@ -99,6 +99,7 @@
                         name='imdb_rating' 
                         placeholder = "Write the IMDB rating here"
                         value = "<%= typeof movie != 'undefined' ? movie.imdb_rating : null %>"
+                        step = "0.1"
                         />
                 </div>
                 <% if(MPAA_ratings) { %> 
@@ -121,6 +122,15 @@
                     </div>
                 <%}%>
                 <div>
+                    <label for = "production_company">Production Company</label>
+                    <input 
+                        type = "text"
+                        placeholder = "Write the name of the production company here"
+                        name='production_company'
+                        value = "<%= typeof movie != 'undefined' ? movie.production_company : null %>"
+                        />
+                </div>
+                <div>
                     <label for = "release_date">Release Date</label>
                     <input 
                         type = "date"
@@ -142,6 +152,7 @@
                     <input 
                         type = "number" 
                         name='runtime' 
+                        step = "0.1"
                         value = "<%= typeof movie != 'undefined' ? movie.runtime : null %>"
                         />
                 </div>

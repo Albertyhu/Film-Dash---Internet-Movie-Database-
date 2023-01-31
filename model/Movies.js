@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const { DateTime } = require('luxon')
 const Schema = mongoose.Schema; 
 
 const MovieSchema = new Schema({
@@ -24,7 +24,7 @@ MovieSchema.virtual("runtime_minutes").get(function () {
 
 MovieSchema.virtual("FormattedReleaseDate").get(function(){
     return this.release_date ?
-        DateTime.formJSDate(this.release_date).toFormatted("yyyy-MM-dd")
+        DateTime.fromJSDate(this.release_date).toFormat("yyyy-MM-dd")
         :
         null; 
 })

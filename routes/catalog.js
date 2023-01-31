@@ -7,7 +7,8 @@ router.get('/', MovieController.MovieList);
 
 
 router.get('/movie/create', MovieController.MovieCreate_Get);
-//router.post('/movie/create', MovieController.MovieCreate_Post); 
+
+router.post('/movie/create', MovieController.MovieCreate_Post); 
 
 router.get('/movie/:id', MovieController.MovieDetail);
 
