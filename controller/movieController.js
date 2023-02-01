@@ -141,11 +141,6 @@ exports.MovieCreate_Post = [
     },
     body('title', 'Title must not be empty')
         .trim()
-        .custom(value => {
-            let encodedValue = encodeURIComponent(value);
-            req.encodedTitle = encodedValue;
-            return true;
-        })
         .isLength({ min: 1 })
         .withMessage("Title of the movie needs to be specified.")
         .escape(),
@@ -159,42 +154,27 @@ exports.MovieCreate_Post = [
     body('genre')
         .escape(),
     body('tagline')
-        .custom(value => {
-            let encodedValue = encodeURIComponent(value);
-            req.encodedTagline = encodedValue;
-            return true;
-        })
         .escape(),
     body('imdb_rating')
         .escape(),
     body('parental_guide')
         .escape(),
     body('production_company')
-        .custom(value => {
-            let encodedValue = encodeURIComponent(value);
-            req.encodedProductionCompany = encodedValue;
-            return true;
-        })
         .escape(), 
     body('date')
         .optional({ checkFalsy: true })
         .isISO8601()
         .toDate(),
     body('budget')
-        .custom(value => {
-            let encodedValue = encodeURIComponent(value);
-            req.endcodedBudget = encodedValue;
-            return true;
-        })
         .escape(), 
     body('runtime')
         .escape(), 
     body('poster')
-        .custom(value => {
-            let encodedValue = encodeURIComponent(value);
-            req.endcodedPoster = encodedValue;
-            return true;
-        })
+        //.custom(value => {
+        //    let encodedValue = encodeURI(value);
+        //    req.endcodedPoster = encodedValue;
+        //    return true;
+        //})
         .escape(),
     (req, res, next) => {
     try {
@@ -226,23 +206,23 @@ exports.MovieCreate_Post = [
 
                 }
             ); 
-            return; 
+            return; encodeURI
         }
-
+        console.log("Tagline ", (req.body.tagline))
         const obj = {
-            title: decodeURIComponent(req.encodedTitle), 
+            title: decodeURIComponent(req.body.title), 
             year: req.body.year, 
             director: req.body.director, 
             actor: req.body.actor, 
             genre: req.body.genre, 
-            tagline: decodeURIComponent(req.encodedTagline), 
+            tagline: decodeURIComponent(req.body.tagline), 
             imdb_rating: req.body.imdb_rating, 
             parental_guide: req.body.parental_guide, 
-            production_company: decodeURIComponent(req.encodedProductionCompany),
+            production_company: decodeURIComponent(req.body.production_company),
             release_date: req.body.release_date, 
-            budget: decodeURIComponent(req.encodedBudget), 
+            budget: decodeURIComponent(req.body.budget), 
             runtime: req.body.runtime, 
-            poster: decodeURIComponent(req.encodedPoster), 
+            poster: decodeURIComponent(req.body.poster), 
         }
         const newMovie = new Movie(obj)
 

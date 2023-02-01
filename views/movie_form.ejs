@@ -25,6 +25,7 @@
                     <label for = "title">Title</label>
                     <input 
                         name = "title" 
+                        id = "titleInput"
                         type = "text"
                         placeholder = "Title of movie" 
                         required = "true"
@@ -54,7 +55,7 @@
                         <% director_list.forEach(person => { %> 
                             <option 
                             value = <%= person._id %>
-                            <% if(typeof movie.director != 'undefined') { %> 
+                            <% if(typeof movie != 'undefined') { %> 
                                 <% if(Array.isArray(movie.director)) { %> 
                                     <% movie.director.some(val => val._id.toString() == person._id.toString()) ? 'selected' : null %>
                                 <%} else { %> 
@@ -77,7 +78,7 @@
                         <% actor_list.forEach(person => { %> 
                             <option 
                                 value = <%= person._id %>
-                                <% if(typeof movie.actors != 'undefined') { %> 
+                                <% if(typeof movie != 'undefined') { %> 
                                     <% movie.actors.some(val => val._id.toString() == person._id.toString()) ? 'selected' : null %>
                                 <%}%>
                                 ><%= person.name %></option>
@@ -96,7 +97,7 @@
                         <% genre_list.forEach(item => { %> 
                             <option 
                                 value = <%= item._id %>
-                                <% if(typeof movie.genres != 'undefined') { %> 
+                                <% if(typeof movie != 'undefined') { %> 
                                         <% movie.genres.some(val => val._id.toString() == item._id.toString()) ? 'selected' : null %>
                                 <%}%>
                                 ><%= item.name %></option>
@@ -106,6 +107,7 @@
                 <div>
                     <label for = "tagline">Tagline</label>
                     <input 
+                        id ="taglineInput"
                         type = "text"
                         placeholder = "Write the tagline here"
                         name='tagline'
@@ -144,6 +146,7 @@
                 <div>
                     <label for = "production_company">Production Company</label>
                     <input 
+                        id = "PcompanyInput"
                         type = "text"
                         placeholder = "Write the name of the production company here"
                         name='production_company'
@@ -161,6 +164,7 @@
                 <div>
                     <label for = "budget">Budget</label>
                     <input 
+                        id="budgetInput"
                         type = "text" 
                         name='budget'
                         placeholder = "Write the budget here"
@@ -179,6 +183,7 @@
                 <div>
                     <label for = "poster">Poster</label>
                     <input 
+                        id= "posterInput"
                         type = "text" 
                         name='poster'
                         placeholder = "Copy and paste the movie poster url here."
@@ -205,4 +210,39 @@
   <script>
   </script>
 </body>
-</htmla
+</html>
+<script>
+    const form = document.querySelector("form"); 
+    const titleInput = document.getElementById('titleInput'); 
+    const taglineInput = document.getElementById('taglineInput'); 
+    const PcompanyInput = document.getElementById('PcompanyInput'); 
+    const budgetInput = document.getElementById('budgetInput');
+    const posterInput = document.getElementById('posterInput'); 
+    const htmlEntities = {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#x27;",
+      };
+    form.addEventListener("submit", (event)=>{
+        event.preventDefault(); 
+        let encodedTitle = encodeURIComponent(titleInput.value)
+        titleInput.value = encodedTitle;
+        
+        let encodedTagline = encodeURIComponent(taglineInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+
+        taglineInput.value = encodedTagline; 
+
+        let encodedPcompanyInput = encodeURIComponent(PcompanyInput.value)
+        PcompanyInput.value = encodedPcompanyInput;
+
+        let encodedbudget = encodeURIComponent(budgetInput.value)
+        budgetInput.value = encodedbudget;
+
+        let encodedposter = encodeURIComponent(posterInput.value)
+        posterInput.value = encodedposter;
+        
+        form.submit(); 
+    });
+</script>

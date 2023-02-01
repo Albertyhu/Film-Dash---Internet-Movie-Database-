@@ -34,7 +34,7 @@
         <%}%>
         <div class = "my-10">
             <% if(movie.tagline) { %> 
-                <p>Tagline: <%= movie.tagline %></p>
+                <p>Tagline: <%= decodeURIComponent(movie.tagline) %></p>
             <%}%>
             <div class = "">
                 <p>Genre: 
