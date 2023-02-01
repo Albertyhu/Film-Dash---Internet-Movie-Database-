@@ -11,6 +11,6 @@
     "\\views",
     "\\views\\partials"
   ],
-  "SelectedNode": "\\routes\\catalog.js",
+  "SelectedNode": "\\views\\movie_form.ejs",
   "PreviewInSolutionExplorer": false
 }

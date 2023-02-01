@@ -28,7 +28,8 @@
                         type = "text"
                         placeholder = "Title of movie" 
                         required = "true"
-                        class = "" 
+                        class = ""
+                        value = "<%=  typeof movie != 'undefined' ? movie.title : null %>"
                         />
                 </div>
                 <div>
@@ -51,7 +52,16 @@
                         multiple
                     >   
                         <% director_list.forEach(person => { %> 
-                            <option value = <%= person._id %>><%= person.name %></option>
+                            <option 
+                            value = <%= person._id %>
+                            <% if(typeof movie.director != 'undefined') { %> 
+                                <% if(Array.isArray(movie.director)) { %> 
+                                    <% movie.director.some(val => val._id.toString() == person._id.toString()) ? 'selected' : null %>
+                                <%} else { %> 
+                                    <% movie.director.toString() == person._id.toString ? "selected" : null  %>
+                                <%}%>
+                            <%}%>
+                            ><%= person.name %></option>
                         <%}) %>
                     </select>
                 </div>
@@ -65,7 +75,12 @@
                         class = "rounded-lg"
                         multiple>
                         <% actor_list.forEach(person => { %> 
-                            <option value = <%= person._id %>><%= person.name %></option>
+                            <option 
+                                value = <%= person._id %>
+                                <% if(typeof movie.actors != 'undefined') { %> 
+                                    <% movie.actors.some(val => val._id.toString() == person._id.toString()) ? 'selected' : null %>
+                                <%}%>
+                                ><%= person.name %></option>
                         <%}) %>
                     </select>
                 </div>
@@ -79,7 +94,12 @@
                         class = "rounded-lg"
                         multiple>
                         <% genre_list.forEach(item => { %> 
-                            <option value = <%= item._id %>><%= item.name %></option>
+                            <option 
+                                value = <%= item._id %>
+                                <% if(typeof movie.genres != 'undefined') { %> 
+                                        <% movie.genres.some(val => val._id.toString() == item._id.toString()) ? 'selected' : null %>
+                                <%}%>
+                                ><%= item.name %></option>
                         <%}) %>
                     </select>
                 </div>

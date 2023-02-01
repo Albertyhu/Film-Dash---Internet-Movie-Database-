@@ -18,26 +18,33 @@ exports.GenreList = (req, res, next) => {
 }
 
 exports.GenreDetail = (req, res, next) => {
-    async.parallel(
-        {
-            TargetGenre(callback) {
-                Genres.findById(req.params.id)
-                    .exec(callback)
+    async.waterfall(
+        [
+            function (callback) {
+                Genres.findById(req.params.id).exec(callback)
             },
-            FullMovieList(callback) {
-                Movie.findById({})
-                    .populate('genres')
-                .exec(callback)
+
+            function (genre, callback) {
+                Movies.find({ genres: { $in: genre._id } }, (err, movie_list) => {
+                    callback(err, genre, movie_list)
+                })
             }
-        },
-        (err, results)=>{
+        ],
+        (err, genre, movie_list)=>{
             if (err) {
                  return next(err)
             }
-
+            const category = 'genre'
             res.render('genre_detail', {
-                title: results.TargetGenre.name, 
+                title: genre.name, 
+                movie_list: movie_list, 
+                updateURL: `/catalog/${category}/${req.params.id}/update`,
+                deleteURL: `/catalog/${category}/${req.params.id}/update`, 
             })
         }
     )
 }
+
+exports.GenreCreate_Get = (req, res, next) => { }
+
+exports.GenreCreate_Post = []; 

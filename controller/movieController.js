@@ -9,6 +9,9 @@ const MovieInstance = require('../model/MovieInstance');
 const MobileFunctions = require('../util/mobileMenuFunctions');  
 const MovieData = require('../data/movie.json');
 const MPAA = require('../data/MPAA_ratings.js');
+const path = require('path'); 
+const logo = fs.readFileSync(path.join(__dirname, '../public/images/FilmDashLogo.png')).toString('base64');
+const burgerMenu = fs.readFileSync(path.join(__dirname, '../public/icon/hamburger_menu_white.png')).toString('base64');
 
 exports.MovieList = (req, res, next) => {
     async.parallel(
@@ -39,7 +42,9 @@ exports.MovieList = (req, res, next) => {
                     movie_list: result.MovieList,
                     director_list: result.DirectorList,
                     genre_list: result.GenreList, 
-                    video: "video/red_glitter.mp4"
+                    video: "video/red_glitter.mp4",
+                    logo: logo,
+                    burgerMenu: burgerMenu,
                 })
             }
         }
@@ -82,11 +87,15 @@ exports.MovieDetail = (req, res, next) => {
             if (err) {
                 return next(err)
             }
-
+            const category = 'movie'
             res.render('movie_detail', {
                 movie: movie,
                 director: director,
                 genre_list: genres, 
+                updateURL: `/catalog/${category}/${req.params.id}/update`,
+                deleteURL: `/catalog/${category}/${req.params.id}/update`,
+                logo: logo,
+                burgerMenu: burgerMenu,
             })
         }
     )
@@ -114,6 +123,8 @@ exports.MovieCreate_Get = (req, res, next) => {
                 actor_list: result.ActorList, 
                 director_list: result.DirectorList,
                 MPAA_ratings: MPAA, 
+                logo: logo,
+                burgerMenu: burgerMenu,
                 errors: [], 
             })
 
@@ -130,6 +141,11 @@ exports.MovieCreate_Post = [
     },
     body('title', 'Title must not be empty')
         .trim()
+        .custom(value => {
+            let encodedValue = encodeURIComponent(value);
+            req.encodedTitle = encodedValue;
+            return true;
+        })
         .isLength({ min: 1 })
         .withMessage("Title of the movie needs to be specified.")
         .escape(),
@@ -143,30 +159,42 @@ exports.MovieCreate_Post = [
     body('genre')
         .escape(),
     body('tagline')
-        //.custom(value => {
-        //    let encodedValue = encodeURIComponent(value);
-        //    req.encodedTagline = encodedValue;
-        //    return true;
-        //})
+        .custom(value => {
+            let encodedValue = encodeURIComponent(value);
+            req.encodedTagline = encodedValue;
+            return true;
+        })
         .escape(),
     body('imdb_rating')
         .escape(),
     body('parental_guide')
         .escape(),
+    body('production_company')
+        .custom(value => {
+            let encodedValue = encodeURIComponent(value);
+            req.encodedProductionCompany = encodedValue;
+            return true;
+        })
+        .escape(), 
     body('date')
         .optional({ checkFalsy: true })
         .isISO8601()
         .toDate(),
     body('budget')
+        .custom(value => {
+            let encodedValue = encodeURIComponent(value);
+            req.endcodedBudget = encodedValue;
+            return true;
+        })
         .escape(), 
     body('runtime')
         .escape(), 
     body('poster')
-        //.custom(value => {
-        //    let encodedValue = encodeURIComponent(value);
-        //    req.endcodedPoster = encodedValue;
-        //    return true;
-        //})
+        .custom(value => {
+            let encodedValue = encodeURIComponent(value);
+            req.endcodedPoster = encodedValue;
+            return true;
+        })
         .escape(),
     (req, res, next) => {
     try {
@@ -201,23 +229,20 @@ exports.MovieCreate_Post = [
             return; 
         }
 
-        const encodedTitle = encodeURIComponent(req.body.title);
-        const encodedTagline = encodeURIComponent(req.encodedTagline);
-        const encodedPoster = encodeURIComponent(req.endcodedPoster)
         const obj = {
-            title: encodedTitle, 
+            title: decodeURIComponent(req.encodedTitle), 
             year: req.body.year, 
             director: req.body.director, 
             actor: req.body.actor, 
             genre: req.body.genre, 
-            tagline: encodedTagline, 
+            tagline: decodeURIComponent(req.encodedTagline), 
             imdb_rating: req.body.imdb_rating, 
             parental_guide: req.body.parental_guide, 
-            production_company: req.body.production_company,
+            production_company: decodeURIComponent(req.encodedProductionCompany),
             release_date: req.body.release_date, 
-            budget: req.body.budget, 
+            budget: decodeURIComponent(req.encodedBudget), 
             runtime: req.body.runtime, 
-            poster: encodedPoster, 
+            poster: decodeURIComponent(req.encodedPoster), 
         }
         const newMovie = new Movie(obj)
 
@@ -235,3 +260,163 @@ exports.MovieCreate_Post = [
     }
 ]
 
+exports.Update_Get = (req, res, next) => {
+    async.parallel(
+        {
+            SelectedMovie(callback) {
+                Movie.findById(req.params.id)
+                    .populate('actors')
+                    .populate('genres')
+                    .exec(callback)
+            },
+            ActorList(callback) {
+                Actor.find({}).exec(callback)
+            },
+            GenreList(callback) {
+                Genre.find({}).exec(callback)
+            },
+            DirectorList(callback) {
+                Director.find({}).exec(callback)
+            }
+        },
+        (err, results) => {
+            if (err) {
+                return next(err)
+            }
+
+            res.render('movie_form', {
+                title: `Update details about ${results.SelectedMovie.title}`, 
+                movie: results.SelectedMovie, 
+                director_list: results.DirectorList,
+                actor_list: results.ActorList,
+                genre_list: results.GenreList, 
+                MPAA_ratings: MPAA,
+                logo: logo,
+                logoURL: '../public/images/FilmDashLogo.png', 
+                burgerMenu: burgerMenu,
+                errors: [], 
+            })
+        }
+    )
+}
+
+exports.Update_Post = [
+    (req, res, next) => {
+        req.body.genre = !Array.isArray(req.body.genre) ? typeof req.body.genre != 'undefined' ? [req.body.genre] : [] : req.body.genre;
+        req.body.director = typeof req.body.director != 'undefined' ? req.body.director : [];
+        req.body.actor = !Array.isArray(req.body.actor) ? typeof req.body.actor != 'undfined' ? [req.body.actor] : [] : req.body.actor;
+        next();
+    },
+    body("title", "Title must not be empty")
+        .trim()
+        .isLength({ min: 1 })
+        .withMessage("Title of the movie needs to be specified.")
+        .escape(),
+    body('year')
+        .trim()
+        .escape(),
+    body('director')
+        .escape(),
+    body('actor')
+        .escape(),
+    body('genre')
+        .escape(),
+    body('tagline')
+        //.custom(value => {
+        //    let encodedValue = encodeURIComponent(value);
+        //    req.encodedTagline = encodedValue;
+        //    return true;
+        //})
+        .escape(),
+    body('imdb_rating')
+        .escape(),
+    body('parental_guide')
+        .escape(),
+    body('date')
+        .optional({ checkFalsy: true })
+        .isISO8601()
+        .toDate(),
+    body('budget')
+        .escape(),
+    body('runtime')
+        .escape(),
+    body('poster')
+        //.custom(value => {
+        //    let encodedValue = encodeURIComponent(value);
+        //    req.endcodedPoster = encodedValue;
+        //    return true;
+        //})
+        .escape(),
+    (req, res, next) => {
+        try {
+            const errors = validationResult(req);
+            if (!errors.isEmpty) {
+                async.parallel(
+                    {
+                        SelectedMovie(callback) {
+                            Movie.findById(req.params.id)
+                                .populate('actors')
+                                .populate('genres')
+                                .exec(callback)
+                        },
+                        GenreList(callback) {
+                            Genre.find({}).exec(callback)
+                        },
+                        ActorList(callback) {
+                            Actor.find({}).exec(callback)
+                        },
+                        DirectorList(callback) {
+                            Director.find({}).exec(callback)
+                        }
+                    },
+                    (err, result) => {
+                        if (err)
+                            return next(err);
+                        res.render("movie_form", {
+                            title: `Update details about ${result.SelectedMovie.title}`,
+                            movie: result.SelectedMovie, 
+                            genre_list: result.GenreList,
+                            actor_list: result.ActorList,
+                            director_list: result.DirectorList,
+                            MPAA_ratings: MPAA,
+                            errors: errors.array()
+                        })
+                    }
+                );
+                return;
+            }
+
+            const encodedTitle = encodeURIComponent(req.body.title);
+            const encodedTagline = encodeURIComponent(req.encodedTagline);
+            const encodedPoster = encodeURIComponent(req.endcodedPoster)
+            const obj = {
+                title: encodedTitle,
+                year: req.body.year,
+                director: req.body.director,
+                actor: req.body.actor,
+                genre: req.body.genre,
+                tagline: encodedTagline,
+                imdb_rating: req.body.imdb_rating,
+                parental_guide: req.body.parental_guide,
+                production_company: req.body.production_company,
+                release_date: req.body.release_date,
+                budget: req.body.budget,
+                runtime: req.body.runtime,
+                poster: encodedPoster,
+                _id: req.params.id
+            }
+            const updatedMovie = new Movie(obj)
+
+            Movie.findByIdAndUpdate(req.params.id, updatedMovie, {}, (err, result) => {
+                if (err) {
+                    console.log("Error in saving movie to the database: ", err)
+                    return next(err)
+                }
+                res.redirect(result.url)
+            })
+        } catch (error) {
+            console.error(error);
+            res.status(500).send("Server Error");
+        }
+    }
+]

@@ -55,16 +55,7 @@
             <% if (movie.budget) {%><p>Budget: <%= movie.budget %></p><% } %>
             <% if (movie.runtime) {%><p>Runtime: <%= movie.runtime_minutes %></p><% } %>
         </div>
-        <div class = "flex justify-between" >
-            <div 
-                id = "UpdateButton" 
-                class = "rounded-full p-[10px] active:translate-x-[5px] active:translate-y-[5px] cursor-pointer
-                border-white border-2 text-center w-[150px] select-none">Update Movie</div> 
-            <div 
-                id = "DeleteButton"
-                class = "rounded-full text-black p-[10px] active:translate-x-[5px] active:translate-y-[5px] cusor-pointer
-                text-center w-[150px] bg-gray-300 cursor-pointer select-none">Delete</div>
-        </div>
+        <%- include('partials/CRUDButtons') %>
      </div>
     </div>
   </div>

@@ -1,3 +1,14 @@
+<style>
+.closed-menu {
+    transform: translateX(300px);
+    transition: transform 500ms linear; 
+}
+
+.opened-menu {
+    transform: translateX(0px);
+    transition: transform 500ms linear;
+}
+</style>
 <script>
 	var MobileMenu = document.getElementById('MobileMenu')
     
@@ -24,7 +35,7 @@
 >
 	<a href = "/" class = "">
 		<img 
-			src = "../../images/FilmDashLogo.png" 
+			src = <%= typeof logo != 'undefined' ? logo : typeof logoURL != 'undefined' ? logoURL : null %> 
 			class = "h-full w-auto cursor-pointer" 
 			alt = "logo"/>
 	</a>

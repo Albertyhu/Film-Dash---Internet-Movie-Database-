@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Film Dash</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel ="stylesheet" href='stylesheets/style.css'> 
+  <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+</head>
+<body class = "bg-black h-auto flex flex-col">
+  <div class = "w-full">
+    <%- include("partials/header") %>
+    <%- include("partials/MobileMenu") %>
+  </div>
+  <h1 class = "text-white text-center text-4xl"><%= title %></h1>
+  <div class = "w-11/12 mx-auto sm:w-5/12 ">
+        <form 
+        action="" 
+        method="POST"
+        class="[&>div>label]:text-white [&>div]:grid mt-[50px] [&>div>input]:rounded-lg 
+        [&>div]:w-full [&>div]:my-[10px] [&>div>input]:pl-3"
+        >
+            <div>
+                <label for = "genre">Name</label>
+                    <input 
+                        name = "genre" 
+                        type = "text"
+                        placeholder = "Type name of genre here" 
+                        required = "true"
+                        class = "" 
+                        value = "<%=  typeof genre != 'undefined' ? genre.name : null %>"
+                        />
+                <div class = 'w-full my-[10px]'>
+                    <button 
+                    type = "submit"
+                    class = "rounded-full p-[10px] active:translate-x-[5px] active:translate-y-[5px] cursor-pointer
+                    border-white border-2 text-center w-[150px] select-none text-white mx-auto
+                    hover:bg-gray-800">Submit</button>
+                </div>
+            </div>
+        </form>
+  </div>
+  <%- include('partials/footer') %>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script>
+  </script>
+</body>
+</htmla
