@@ -3,7 +3,7 @@
     {
       "title": "The Shawshank Redemption",
       "year": 1994,
-      "director": "Frank Darabont",
+      "director": [ "Frank Darabont" ],
       "actors": [ "Tim Robbins", "Morgan Freeman" ],
       "genres": [ "Drama" ],
       "tagline": "Fear can hold you prisoner. Hope can set you free.",
@@ -18,7 +18,7 @@
     {
       "title": "The Godfather",
       "year": 1972,
-      "director": "Francis Ford Coppola",
+      "director": [ "Francis Ford Coppola" ],
       "actors": [ "Marlon Brando", "Al Pacino" ],
       "genres": [ "Crime", "Drama" ],
       "tagline": "An offer you can't refuse.",
@@ -33,7 +33,7 @@
     {
       "title": "The Dark Knight",
       "year": 2008,
-      "director": "Christopher Nolan",
+      "director": [ "Christopher Nolan" ],
       "actors": [ "Christian Bale", "Heath Ledger" ],
       "genres": [ "Action", "Crime", "Drama", "Thriller" ],
       "tagline": "Why So Serious?",
@@ -48,7 +48,7 @@
     {
       "title": "12 Angry Men",
       "year": 1957,
-      "director": "Sidney Lumet",
+      "director": [ "Sidney Lumet" ],
       "actors": [ "Henry Fonda", "Lee J. Cobb" ],
       "genres": [ "Crime", "Drama" ],
       "tagline": "",
@@ -63,7 +63,7 @@
     {
       "title": "The Lord of the Rings: The Return of the King",
       "year": 2003,
-      "director": "Peter Jackson",
+      "director": [ "Peter Jackson" ],
       "actors": [ "Elijah Wood", "Ian McKellen", "Viggo Mortensen" ],
       "genres": [ "Adventure", "Drama", "Fantasy" ],
       "tagline": "The eyes of the world are upon you.",
@@ -78,7 +78,7 @@
     {
       "title": "The Good, the Bad and the Ugly",
       "year": 1966,
-      "director": "Sergio Leone",
+      "director": [ "Sergio Leone" ],
       "actors": [ "Clint Eastwood", "Eli Wallach", "Lee Van Cleef" ],
       "genres": [ "Western" ],
       "tagline": "They formed an alliance of hate to steal a fortune in dead man's gold",
@@ -93,7 +93,7 @@
     {
       "title": "Fight Club",
       "year": 1999,
-      "director": "David Fincher",
+      "director": [ "David Fincher" ],
       "actors": [ "Edward Norton", "Brad Pitt" ],
       "genres": [ "Drama" ],
       "tagline": "Mischief. Mayhem. Soap.",
@@ -108,7 +108,7 @@
     {
       "title": "Forrest Gump",
       "year": 1994,
-      "director": "Robert Zemeckis",
+      "director": [ "Robert Zemeckis" ],
       "actors": [ "Tom Hanks", "Robin Wright", "Gary Sinise" ],
       "genres": [ "Drama", "Romance" ],
       "tagline": "Life is like a box of chocolates",
@@ -123,7 +123,7 @@
     {
       "title": "Inception",
       "year": 2010,
-      "director": "Christopher Nolan",
+      "director": [ "Christopher Nolan" ],
       "actors": [ "Leonardo DiCaprio", "Tom Hardy", "Ellen Page" ],
       "genres": [ "Action", "Sci-Fi", "Thriller" ],
       "tagline": "Your mind is the scene of the crime",
@@ -138,7 +138,7 @@
     {
       "title": "The Lord of the Rings: The Fellowship of the Ring",
       "year": 2001,
-      "director": "Peter Jackson",
+      "director": [ "Peter Jackson" ],
       "actors": [ "Elijah Wood", "Ian McKellen", "Viggo Mortensen" ],
       "genres": [ "Adventure", "Drama", "Fantasy" ],
       "tagline": "One ring to rule them all",
@@ -153,7 +153,7 @@
     {
       "title": "The Lord of the Rings: The Two Towers",
       "year": 2002,
-      "director": "Peter Jackson",
+      "director": [ "Peter Jackson" ],
       "actors": [ "Elijah Wood", "Ian McKellen", "Viggo Mortensen" ],
       "genres": [ "Adventure", "Drama", "Fantasy" ],
       "tagline": "The eye of the enemy is moving",
@@ -183,7 +183,7 @@
     {
       "title": "Goodfellas",
       "year": 1990,
-      "director": "Martin Scorsese",
+      "director": [ "Martin Scorsese" ],
       "actors": [ "Robert De Niro", "Ray Liotta", "Joe Pesci" ],
       "genres": [ "Crime", "Drama" ],
       "tagline": "As far back as I can remember, I always wanted to be a gangster.",
@@ -198,7 +198,7 @@
     {
       "title": "One Flew Over the Cuckoo's Nest",
       "year": 1975,
-      "director": "Milos Forman",
+      "director": [ "Milos Forman" ],
       "actors": [ "Jack Nicholson", "Louise Fletcher", "Will Sampson" ],
       "genres": [ "Drama" ],
       "tagline": "If he's crazy, what does that make you?",
@@ -213,7 +213,7 @@
     {
       "title": "Seven Samurai",
       "year": 1954,
-      "director": "Akira Kurosawa",
+      "director": [ "Akira Kurosawa" ],
       "actors": [ "Toshiro Mifune", "Takashi Shimura", "Keiko Tsushima" ],
       "genres": [ "Adventure", "Drama" ],
       "tagline": "",
@@ -228,7 +228,7 @@
     {
       "title": "Se7en",
       "year": 1995,
-      "director": "David Fincher",
+      "director": [ "David Fincher" ],
       "actors": [ "Brad Pitt", "Morgan Freeman", "Gwyneth Paltrow" ],
       "genres": [ "Crime", "Drama", "Mystery" ],
       "tagline": "Long are the days. Sleek is the night. Hard is the hunt. Sweet is the victory.",

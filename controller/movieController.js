@@ -62,50 +62,110 @@ exports.MovieList = (req, res, next) => {
     )
 }
 
+//exports.MovieDetail = (req, res, next) => {
+//    //The waterfall method must be written an array of functions as the first argument
+//    async.waterfall(
+//        [
+//            function(callback) {
+//                Movie.findById(req.params.id)
+//                    .populate('actors')
+//                    .populate('genres')
+//                    .populate('director')
+//                    .exec(callback)
+//            },
+//            function (movie, callback) {
+//                Genre.find({}).exec((err, genres) => { callback(err, movie, genres)})
+//            },
+//            //The argument 'movie' carries the results of the previous function, which is the movie founded with req.params.id
+//            function(movie, genres, callback) {
+//                if (movie && Array.isArray(movie.director)) {
+//                    Director.find({ _id: { $in: movie.director } }, (err, directors) => {
+//                        //Once the task of finding the director of the movie is done, use the following line to pass the movie and director data to the next task
+//                        callback(err, movie, genres, directors)
+//                    })
+//                }
+//                else if (movie) {
+//                    Director.findById(movie.director, (err, director) => {
+//                        callback(err, movie, genres, director);
+//                    })
+//                }
+//                else {
+//                    callback(null, null, null, null)
+//                }
+//            }
+//        ],
+//        //movie and director has to be in the following paramters for this to work
+//        (err, movie, genres, director) => {
+//            if (err) {
+//                return next(err)
+//            }
+//            const category = 'movie'
+//            res.render('movie_detail', {
+//                movie: movie,
+//                director: director,
+//                genre_list: genres,
+//                updateURL: `/catalog/${category}/${req.params.id}/update`,
+//                deleteURL: `/catalog/${category}/${req.params.id}/update`,
+//                logo: logo,
+//                burgerMenu: "../../icon/hamburger_menu_white.png",
+//            })
+//        }
+//    )
+//}
+
+
+//exports.MovieDetail = (req, res, next) => {
+//    Movie.findById(req.params.id)
+//        .populate('actors')
+//        .populate('genres')
+//        .populate('director')
+//        .exec((err, result) => {
+//            if (err) {
+//                return next(err)
+//            }
+//            const category = 'movie'
+//            res.render('movie_detail', {
+//                movie: result,
+//                director: result.director,
+//                genre_list: result.genres,
+//                actor_list: result.actors,
+//                updateURL: `/catalog/${category}/${req.params.id}/update`,
+//                deleteURL: `/catalog/${category}/${req.params.id}/update`,
+//                logoURL: "../../images/FilmDashLogo.png",
+//                burgerMenu: "../../icon/hamburger_menu_white.png",
+//            })
+
+//    })
+//}
+
+
 exports.MovieDetail = (req, res, next) => {
-    //The waterfall method must be written an array of functions as the first argument
-    async.waterfall(
-        [
-            function(callback) {
+    async.parallel(
+        {
+            SelectedMovie(callback) {
                 Movie.findById(req.params.id)
                     .populate('actors')
                     .populate('genres')
+                    .populate('director')
                     .exec(callback)
-            }, 
-            function (movie, callback) {
-                Genre.find({}).exec((err, genres) => { callback(err, movie, genres)})
             },
-            //The argument 'movie' carries the results of the previous function, which is the movie founded with req.params.id
-            function(movie, genres, callback) {
-                if (movie && Array.isArray(movie.director)) {
-                    Director.find({ _id: { $in: movie.director } }, (err, directors) => {
-                        //Once the task of finding the director of the movie is done, use the following line to pass the movie and director data to the next task
-                        callback(err, movie, genres, directors)
-                    })
-                }
-                else if (movie) {
-                    Director.findById(movie.director, (err, director) => {
-                        callback(err, movie, genres, director); 
-                    }) 
-                }
-                else {
-                    callback(null, null, null, null)
-                }
+            GenreList(callback) {
+                Genre.find({})
+                    .exec(callback)
             }
-        ],
-        //movie and director has to be in the following paramters for this to work
-        (err, movie, genres, director) => {
+        },
+        (err, result) => {
             if (err) {
                 return next(err)
             }
             const category = 'movie'
             res.render('movie_detail', {
-                movie: movie,
-                director: director,
-                genre_list: genres, 
+                movie: result.SelectedMovie,
+                director: result.SelectedMovie.director,
+                genre_list: result.GenreList,
                 updateURL: `/catalog/${category}/${req.params.id}/update`,
                 deleteURL: `/catalog/${category}/${req.params.id}/update`,
-                logo: logo,
+                logoURL: "../../images/FilmDashLogo.png",
                 burgerMenu: "../../icon/hamburger_menu_white.png",
             })
         }
@@ -128,14 +188,19 @@ exports.MovieCreate_Get = (req, res, next) => {
         (err, result) => {
             if (err)
                 return next(err);
+
+            if (!Array.isArray(result.DirectorList)) {
+                result.DirectorList = typeof result.DirectorList != "undefined" ? [result.DirectorList] : []; 
+            }
+
             res.render("movie_form", {
                 title: "Add a movie to the database", 
                 genre_list: result.GenreList, 
                 actor_list: result.ActorList, 
                 director_list: result.DirectorList,
                 MPAA_ratings: MPAA, 
-                logo: logo,
-                burgerMenu: burgerMenu,
+                logoURL: '/images/FilmDashLogo.png',
+                burgerMenu: "../../../icon/hamburger_menu_white.png",
                 errors: [], 
             })
 
@@ -148,12 +213,12 @@ exports.MovieCreate_Post = [
         if (!Array.isArray(req.body.genre)) {
             req.body.genre = typeof req.body.genre != 'undefined' ? [req.body.genre] : []; 
         }
-
-        req.body.director = typeof req.body.director != 'undefined' ? req.body.director : []; 
         if (!Array.isArray(req.body.actor)) {
             req.body.actor = typeof req.body.actor != 'undefined' ? [req.body.actor] : [] 
         }
-
+        if (!Array.isArray(req.body.director)) {
+            req.body.director = typeof req.body.director != "undefined" ? [req.body.director] : [];
+        }
         next();     
     },
     body('title', 'Title must not be empty')
@@ -214,6 +279,8 @@ exports.MovieCreate_Post = [
                         actor_list: result.ActorList,
                         director_list: result.DirectorList,
                         MPAA_ratings: MPAA,
+                        logoURL: '/images/FilmDashLogo.png',
+                        burgerMenu: "../../../icon/hamburger_menu_white.png",
                         errors: errors.array()
                     })
 
@@ -288,7 +355,6 @@ exports.Update_Get = (req, res, next) => {
             else {
                 defaultDirector.push(results.SelectedMovie.director._id)
             }
-
             var defaultActors = []
             results.SelectedMovie.actors.forEach(actor => {
                 defaultActors.push((actor._id))
@@ -309,7 +375,6 @@ exports.Update_Get = (req, res, next) => {
                 defaultGenres: defaultGenres, 
                 genre_list: results.GenreList, 
                 MPAA_ratings: MPAA,
-                logo: logo,
                 logoURL: '/images/FilmDashLogo.png', 
                 burgerMenu: "../../../icon/hamburger_menu_white.png",
                 errors: [], 
@@ -391,6 +456,8 @@ exports.Update_Post = [
                             actor_list: result.ActorList,
                             director_list: result.DirectorList,
                             MPAA_ratings: MPAA,
+                            logoURL: '/images/FilmDashLogo.png',
+                            burgerMenu: "../../../icon/hamburger_menu_white.png",
                             errors: errors.array()
                         })
                     }

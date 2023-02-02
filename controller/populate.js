@@ -186,7 +186,7 @@ exports.populateDatabase = (req, res) => {
             //PopulateActor,
            // PopulateDirector,
             //PopulateGenre,
-          //()=>GenerateMovieInstance(60)
+            //()=>GenerateMovieInstance(60)
         ],
         function (err, results) {
             if (err) {

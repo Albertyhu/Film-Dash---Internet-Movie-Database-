@@ -61,12 +61,12 @@
                         name= 'director'
                         required= 'true' 
                         class = "rounded-lg"
-                        value = <%= typeof defaultDirector != 'undefined' ? defaultDirector : null %>
                         multiple
+                        value = <%= typeof defaultDirector != 'undefined' ? defaultDirector : null %>
                     >   
                         <% director_list.forEach(person => { %> 
                             <option 
-                            value = '<%= person._id.toString() %>'
+                            value = '<%= person._id %>'
                             <% if(typeof defaultDirector != 'undefined') { %> 
                                 <% if(defaultDirector.some(val => val._id.toString() == person._id.toString())) { %> 
                                     selected
@@ -84,8 +84,9 @@
                         name= 'actor'
                         required= 'true' 
                         class = "rounded-lg"
+                        multiple
                         value = <%= typeof defaultActors != "undefined" ? defaultActors : null%>
-                        multiple>
+                        >
                         <% actor_list.forEach(person => { %> 
                             <option 
                                 value = '<%= person._id %>'
@@ -104,8 +105,9 @@
                         name= 'genre'
                         required= 'true' 
                         class = "rounded-lg"
+                        multiple
                         value = <%= typeof defaultGenres != 'undefined' ? defaultGenres : null %>
-                        multiple>
+                        >
                         <% genre_list.forEach(item => { %> 
                             <option 
                                 value = '<%= item._id %>'
@@ -206,13 +208,7 @@
                         value = "<%= typeof movie != 'undefined' ? movie.poster : null %>"
                         />
                 </div>
-                <div class = 'w-full my-[10px]'>
-                    <button 
-                    type = "submit"
-                    class = "rounded-full p-[10px] active:translate-x-[5px] active:translate-y-[5px] cursor-pointer
-                    border-white border-2 text-center w-[150px] select-none text-white mx-auto
-                    hover:bg-gray-800">Submit</button>
-                </div>
+                <%- include('partials/FormButtons')%>
             </form>
         </div>
   </div>

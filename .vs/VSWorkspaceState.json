@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
+    "\\asset",
+    "\\asset\\icon",
+    "\\controller",
     "\\public",
-    "\\public\\icon",
-    "\\public\\images",
     "\\public\\stylesheets",
     "\\public\\video",
     "\\routes",
@@ -11,5 +12,6 @@
     "\\views",
     "\\views\\partials"
   ],
+  "SelectedNode": "\\controller\\movieController.js",
   "PreviewInSolutionExplorer": false
 }

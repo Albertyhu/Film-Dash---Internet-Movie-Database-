@@ -6,6 +6,10 @@ const GenreController = require('../controller/genreController')
 //Movie
 router.get('/', MovieController.MovieList);
 
+//router.get('/', (req, res, next) => {
+//    res.send('Under construction')
+//})
+
 router.get('/movie/create', MovieController.MovieCreate_Get);
 
 router.post('/movie/create', MovieController.MovieCreate_Post); 
