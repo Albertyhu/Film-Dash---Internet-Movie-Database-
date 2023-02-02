@@ -35,14 +35,14 @@
 >
 	<a href = "/" class = "">
 		<img 
-			src = <%= typeof logo != 'undefined' ? logo : typeof logoURL != 'undefined' ? logoURL : null %> 
+			src = <%= typeof logoURL != 'undefined' ? logoURL : "../../images/FilmDashLogo.png"  %>
 			class = "h-full w-auto cursor-pointer" 
 			alt = "logo"/>
 	</a>
 	<div class="my-auto cursor-pointer" onclick="openMenu()">
 		<img
 			id="MobileMenuIcon"
-			src = "../../icon/hamburger_menu_white.png" 
+			src = <%= typeof burgerMenu  != "undefined" ? burgerMenu : "/../icon/hamburger_menu_white.png"  %>
 			class = " z-20 my-auto ml-auto mr-5 w-[35px] h-[35px] " 
 			alt = "logo"/>
 	</div>
@@ -53,10 +53,10 @@
 >
 		<a href = "/">
 			<img 
-				src = "../../images/FilmDashLogo.png" 
-				class = "h-full w-auto cursor-pointer" 
-				alt = "logo"/>
-		</a>
+				src = <%= typeof logoURL != 'undefined' ? logoURL : "../../images/FilmDashLogo.png"  %>
+					class = "h-full w-auto cursor-pointer"
+					alt = "logo"/>
+				</a>
 		<div 
 			id= "HeaderMenu"
 			class = "flex text-white ml-auto mr-5 [&>*]:mx-[10px] my-auto cursor-pointer">

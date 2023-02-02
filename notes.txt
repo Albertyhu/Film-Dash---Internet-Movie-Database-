@@ -1,3 +1,26 @@
+2/1/23
+    form.addEventListener("submit", (event)=>{
+        event.preventDefault(); 
+        let encodedTitle = encodeURIComponent(titleInput.value)
+        titleInput.value = encodedTitle;
+        
+        let encodedTagline = encodeURIComponent(taglineInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+
+        taglineInput.value = encodedTagline; 
+
+        let encodedPcompanyInput = encodeURIComponent(PcompanyInput.value)
+        PcompanyInput.value = encodedPcompanyInput;
+
+        let encodedbudget = encodeURIComponent(budgetInput.value)
+        budgetInput.value = encodedbudget;
+
+        let encodedposter = encodeURIComponent(posterInput.value)
+        posterInput.value = encodedposter;
+        
+        form.submit(); 
+    });
+
+
 1/28/23
 
 //async.series method

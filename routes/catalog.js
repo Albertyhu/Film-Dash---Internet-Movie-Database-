@@ -18,7 +18,7 @@ router.get('/movie/:id', MovieController.MovieDetail);
 
 router.get('/movie/:id/update', MovieController.Update_Get);
 
-router.post('movie/:id/update', MovieController.Update_Post); 
+router.post('/movie/:id/update', MovieController.Update_Post); 
 
 
 //Genre

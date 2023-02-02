@@ -10,8 +10,19 @@ const MobileFunctions = require('../util/mobileMenuFunctions');
 const MovieData = require('../data/movie.json');
 const MPAA = require('../data/MPAA_ratings.js');
 const path = require('path'); 
+const ParseText = require('../util/parseText')
+
 const logo = fs.readFileSync(path.join(__dirname, '../public/images/FilmDashLogo.png')).toString('base64');
 const burgerMenu = fs.readFileSync(path.join(__dirname, '../public/icon/hamburger_menu_white.png')).toString('base64');
+
+
+const htmlEntities = {
+    "&amp;": "&",
+    "&lt;": "<", 
+    "&gt;": ">",
+    "&quot;": '"',
+    "&#x27" : "'"
+};
 
 exports.MovieList = (req, res, next) => {
     async.parallel(
@@ -44,7 +55,7 @@ exports.MovieList = (req, res, next) => {
                     genre_list: result.GenreList, 
                     video: "video/red_glitter.mp4",
                     logo: logo,
-                    burgerMenu: burgerMenu,
+                    burgerMenu: "../../icon/hamburger_menu_white.png",
                 })
             }
         }
@@ -95,7 +106,7 @@ exports.MovieDetail = (req, res, next) => {
                 updateURL: `/catalog/${category}/${req.params.id}/update`,
                 deleteURL: `/catalog/${category}/${req.params.id}/update`,
                 logo: logo,
-                burgerMenu: burgerMenu,
+                burgerMenu: "../../icon/hamburger_menu_white.png",
             })
         }
     )
@@ -134,9 +145,15 @@ exports.MovieCreate_Get = (req, res, next) => {
 
 exports.MovieCreate_Post = [
     (req, res, next) => {
-        req.body.genre = !Array.isArray(req.body.genre) ? typeof req.body.genre != 'undefined' ? [req.body.genre] : [] : req.body.genre; 
+        if (!Array.isArray(req.body.genre)) {
+            req.body.genre = typeof req.body.genre != 'undefined' ? [req.body.genre] : []; 
+        }
+
         req.body.director = typeof req.body.director != 'undefined' ? req.body.director : []; 
-        req.body.actor = !Array.isArray(req.body.actor) ? typeof req.body.actor != 'undfined' ? [req.body.actor] : [] : req.body.actor; 
+        if (!Array.isArray(req.body.actor)) {
+            req.body.actor = typeof req.body.actor != 'undefined' ? [req.body.actor] : [] 
+        }
+
         next();     
     },
     body('title', 'Title must not be empty')
@@ -147,11 +164,11 @@ exports.MovieCreate_Post = [
     body('year') 
         .trim()
         .escape(),
-    body('director')
+    body('director.*')
         .escape(),
-    body('actor')
+    body('actor.*')
         .escape(),
-    body('genre')
+    body('genre.*')
         .escape(),
     body('tagline')
         .escape(),
@@ -170,11 +187,7 @@ exports.MovieCreate_Post = [
     body('runtime')
         .escape(), 
     body('poster')
-        //.custom(value => {
-        //    let encodedValue = encodeURI(value);
-        //    req.endcodedPoster = encodedValue;
-        //    return true;
-        //})
+        .trim()
         .escape(),
     (req, res, next) => {
     try {
@@ -206,27 +219,28 @@ exports.MovieCreate_Post = [
 
                 }
             ); 
-            return; encodeURI
+            return; 
         }
-        console.log("Tagline ", (req.body.tagline))
+
         const obj = {
-            title: decodeURIComponent(req.body.title), 
+            title: ParseText(decodeURIComponent(req.body.title)), 
             year: req.body.year, 
             director: req.body.director, 
-            actor: req.body.actor, 
-            genre: req.body.genre, 
-            tagline: decodeURIComponent(req.body.tagline), 
+            actors: req.body.actor, 
+            genres: req.body.genre, 
+            tagline: ParseText(decodeURIComponent(req.body.tagline)), 
             imdb_rating: req.body.imdb_rating, 
             parental_guide: req.body.parental_guide, 
-            production_company: decodeURIComponent(req.body.production_company),
+            production_company: ParseText(decodeURIComponent(req.body.production_company)),
             release_date: req.body.release_date, 
-            budget: decodeURIComponent(req.body.budget), 
+            budget: ParseText(decodeURIComponent(req.body.budget)), 
             runtime: req.body.runtime, 
-            poster: decodeURIComponent(req.body.poster), 
+            poster: ParseText(decodeURIComponent(req.body.poster)), 
         }
+
         const newMovie = new Movie(obj)
 
-            newMovie.save(err => {
+        newMovie.save(err => {
                 if (err) {
                     console.log("Error in saving movie to the database: ", err)
                     return next(err)
@@ -264,16 +278,40 @@ exports.Update_Get = (req, res, next) => {
                 return next(err)
             }
 
+            var defaultDirector = []
+
+            if (Array.isArray(results.SelectedMovie.director)) {
+                results.SelectedMovie.director.forEach(director => {
+                    defaultDirector.push(director._id)
+                })
+            }
+            else {
+                defaultDirector.push(results.SelectedMovie.director._id)
+            }
+
+            var defaultActors = []
+            results.SelectedMovie.actors.forEach(actor => {
+                defaultActors.push((actor._id))
+            })
+
+            var defaultGenres = []; 
+            results.SelectedMovie.genres.forEach(val => {
+                defaultGenres.push(val._id)
+            })
+
             res.render('movie_form', {
                 title: `Update details about ${results.SelectedMovie.title}`, 
                 movie: results.SelectedMovie, 
+                defaultDirector: defaultDirector,
                 director_list: results.DirectorList,
+                defaultActors: defaultActors, 
                 actor_list: results.ActorList,
+                defaultGenres: defaultGenres, 
                 genre_list: results.GenreList, 
                 MPAA_ratings: MPAA,
                 logo: logo,
-                logoURL: '../public/images/FilmDashLogo.png', 
-                burgerMenu: burgerMenu,
+                logoURL: '/images/FilmDashLogo.png', 
+                burgerMenu: "../../../icon/hamburger_menu_white.png",
                 errors: [], 
             })
         }
@@ -295,18 +333,14 @@ exports.Update_Post = [
     body('year')
         .trim()
         .escape(),
-    body('director')
+    body('director.*')
         .escape(),
-    body('actor')
+    body('actor.*')
         .escape(),
-    body('genre')
+    body('genre.*')
         .escape(),
     body('tagline')
-        //.custom(value => {
-        //    let encodedValue = encodeURIComponent(value);
-        //    req.encodedTagline = encodedValue;
-        //    return true;
-        //})
+        .trim()
         .escape(),
     body('imdb_rating')
         .escape(),
@@ -317,15 +351,13 @@ exports.Update_Post = [
         .isISO8601()
         .toDate(),
     body('budget')
+        .trim()
         .escape(),
     body('runtime')
+        .trim()
         .escape(),
     body('poster')
-        //.custom(value => {
-        //    let encodedValue = encodeURIComponent(value);
-        //    req.endcodedPoster = encodedValue;
-        //    return true;
-        //})
+        .trim()
         .escape(),
     (req, res, next) => {
         try {
@@ -366,27 +398,24 @@ exports.Update_Post = [
                 return;
             }
 
-            const encodedTitle = encodeURIComponent(req.body.title);
-            const encodedTagline = encodeURIComponent(req.encodedTagline);
-            const encodedPoster = encodeURIComponent(req.endcodedPoster)
             const obj = {
-                title: encodedTitle,
+                title: ParseText(decodeURIComponent(req.body.title)),
                 year: req.body.year,
                 director: req.body.director,
-                actor: req.body.actor,
-                genre: req.body.genre,
-                tagline: encodedTagline,
+                actors: req.body.actor,
+                genres: req.body.genre,
+                tagline: ParseText(decodeURIComponent(req.body.tagline)),
                 imdb_rating: req.body.imdb_rating,
                 parental_guide: req.body.parental_guide,
-                production_company: req.body.production_company,
+                production_company: ParseText(decodeURIComponent(req.body.production_company)),
                 release_date: req.body.release_date,
-                budget: req.body.budget,
+                budget: ParseText(decodeURIComponent(req.body.budget)),
                 runtime: req.body.runtime,
-                poster: encodedPoster,
+                poster: ParseText(decodeURIComponent(req.body.poster)), 
                 _id: req.params.id
             }
             const updatedMovie = new Movie(obj)
-
+            console.log(updatedMovie.url)
             Movie.findByIdAndUpdate(req.params.id, updatedMovie, {}, (err, result) => {
                 if (err) {
                     console.log("Error in saving movie to the database: ", err)

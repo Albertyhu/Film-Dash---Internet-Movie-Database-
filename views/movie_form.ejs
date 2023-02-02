@@ -6,6 +6,16 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel ="stylesheet" href='../../stylesheets/style.css'> 
   <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+  <style>
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+    input[type=number] { 
+        -moz-appearance: textfield;
+        appearance: textfield;
+        margin: 0; 
+    }
+  </style> 
 </head>
 <body class = "bg-black h-auto flex flex-col">
   <div class = "w-full">
@@ -19,7 +29,8 @@
                 action="" 
                 method="POST"
                 class="[&>div>label]:text-white [&>div]:grid mt-[50px] [&>div>input]:rounded-lg 
-                [&>div]:w-full [&>div]:my-[10px] [&>div>input]:pl-3"
+                [&>div]:w-full [&>div]:my-[10px] [&>div>input]:pl-3 [&>div>input]:bg-[rgba(0,0,0,0)] 
+                [&>div>input]:text-white [&>div>input]:border-white [&>div>input]:border-[1px]" 
                 >
                 <div>
                     <label for = "title">Title</label>
@@ -43,62 +54,63 @@
                         />
                 </div>
                 <div>
-                    <label for="director">Director</label>
+                    <label for="director">Director (use CRTL + click on PC or Command + click on Mac to select multiple)</label>
                     <select
                         type="select"
                         placeholder="select director"
                         name= 'director'
                         required= 'true' 
                         class = "rounded-lg"
+                        value = <%= typeof defaultDirector != 'undefined' ? defaultDirector : null %>
                         multiple
                     >   
                         <% director_list.forEach(person => { %> 
                             <option 
-                            value = <%= person._id %>
-                            <% if(typeof movie != 'undefined') { %> 
-                                <% if(Array.isArray(movie.director)) { %> 
-                                    <% movie.director.some(val => val._id.toString() == person._id.toString()) ? 'selected' : null %>
-                                <%} else { %> 
-                                    <% movie.director.toString() == person._id.toString ? "selected" : null  %>
-                                <%}%>
+                            value = '<%= person._id.toString() %>'
+                            <% if(typeof defaultDirector != 'undefined') { %> 
+                                <% if(defaultDirector.some(val => val._id.toString() == person._id.toString())) { %> 
+                                    selected
+                                <% } %>
                             <%}%>
                             ><%= person.name %></option>
                         <%}) %>
                     </select>
                 </div>
                 <div>
-                    <label for="actor">Actor</label>
+                    <label for="actor">Actor (use CRTL + click on PC or Command + click on Mac to select multiple)</label>
                     <select
                         type="select"
                         placeholder="select actors"
                         name= 'actor'
                         required= 'true' 
                         class = "rounded-lg"
+                        value = <%= typeof defaultActors != "undefined" ? defaultActors : null%>
                         multiple>
                         <% actor_list.forEach(person => { %> 
                             <option 
-                                value = <%= person._id %>
-                                <% if(typeof movie != 'undefined') { %> 
-                                    <% movie.actors.some(val => val._id.toString() == person._id.toString()) ? 'selected' : null %>
+                                value = '<%= person._id %>'
+                                <% if(typeof defaultActors != 'undefined') { %> 
+                                    <% if(defaultActors.some(val => val._id.toString() == person._id.toString())) { %> selected <% } %>
                                 <%}%>
                                 ><%= person.name %></option>
                         <%}) %>
                     </select>
                 </div>
                 <div>
-                    <label for="genre">Genres</label>
+                    <label for="genre">Genres (use CRTL + click on PC or Command + click on Mac to select multiple)</label>
                     <select
                         type="select"
                         placeholder="select genre(s)"
                         name= 'genre'
                         required= 'true' 
                         class = "rounded-lg"
+                        value = <%= typeof defaultGenres != 'undefined' ? defaultGenres : null %>
                         multiple>
                         <% genre_list.forEach(item => { %> 
                             <option 
-                                value = <%= item._id %>
-                                <% if(typeof movie != 'undefined') { %> 
-                                        <% movie.genres.some(val => val._id.toString() == item._id.toString()) ? 'selected' : null %>
+                                value = '<%= item._id %>'
+                                <% if(typeof defaultGenres != 'undefined') { %> 
+                                        <% if(defaultGenres.some(val => val._id.toString() == item._id.toString())) { %> selected <% } %>
                                 <%}%>
                                 ><%= item.name %></option>
                         <%}) %>
@@ -136,8 +148,12 @@
                             >
                             <% MPAA_ratings.forEach(rating => { %> 
                                 <option 
-                                value = "<%= rating %>" 
-                                <%= typeof movie != 'undefined' ? movie.parental_guide == rating ? "selected" : null : null %>
+                                    class = "pl-5"
+                                    value = "<%= rating %>" 
+                                <% if(typeof movie != 'undefined') { %>
+                                    <% if(movie.parental_guide == rating) { %> 
+                                        selected 
+                                    <% }}%>
                                  ><%= rating %></option>
                             <%})%>
                         </select>
@@ -245,4 +261,5 @@
         
         form.submit(); 
     });
+
 </script>

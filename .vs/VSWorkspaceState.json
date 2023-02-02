@@ -1,16 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\controller",
-    "\\data",
     "\\public",
+    "\\public\\icon",
     "\\public\\images",
+    "\\public\\stylesheets",
     "\\public\\video",
     "\\routes",
     "\\util",
     "\\views",
     "\\views\\partials"
   ],
-  "SelectedNode": "\\views\\movie_form.ejs",
   "PreviewInSolutionExplorer": false
 }
