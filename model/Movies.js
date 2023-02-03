@@ -33,4 +33,9 @@ MovieSchema.virtual("url").get(function () {
     return `/catalog/movie/${this._id}`
 })
 
+//MovieSchema.pre('findByIdAndRemove', (next) => {
+//    const MovieID = this._id
+//    MovieID.model('MovieInstance').deleteMany({movie: MovieID._id}, next)
+//})
+
 module.exports = mongoose.model('Movies', MovieSchema); 

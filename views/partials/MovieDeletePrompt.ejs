@@ -1,0 +1,29 @@
+<div 
+id="MovieDeletePromptPanel"
+class = "w-11/12 mx-auto rounded-lg bg-gray-800">
+	<form 
+		id = "shell"
+		class = "w-11/12 mx-auto mt-[20px]"
+	>
+		<h3>You are about to delete <%= movie.title %> and its references listed below</h3>
+		<p>Are you sure you want to do this?</p>
+		<div 
+			class = "flex justify-around mt-[20px]" 
+		>
+			<button 
+				type = "submit"
+				class = "rounded-full p-[10px] active:translate-x-[5px] active:translate-y-[5px] cursor-pointer
+				border-white border-2 text-center w-[150px] select-none text-white mx-auto
+				hover:bg-gray-800"
+			>Yes</button>
+			<button 
+				type = "button"
+				onClick = "history.back()"
+				class = "rounded-full p-[10px] active:translate-x-[5px] active:translate-y-[5px] cursor-pointer
+				border-white border-2 text-center w-[150px] select-none text-black mx-auto
+				hover:bg-gray-300 bg-[#dbdbdb]"
+			>No</button>
+		</div>
+		<h3></h3>
+	</form>
+</div>

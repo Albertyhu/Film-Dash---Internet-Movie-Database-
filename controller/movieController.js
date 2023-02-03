@@ -10,7 +10,8 @@ const MobileFunctions = require('../util/mobileMenuFunctions');
 const MovieData = require('../data/movie.json');
 const MPAA = require('../data/MPAA_ratings.js');
 const path = require('path'); 
-const ParseText = require('../util/parseText')
+const ParseText = require('../util/parseText');
+const { ifError } = require('assert');
 
 const logo = fs.readFileSync(path.join(__dirname, '../public/images/FilmDashLogo.png')).toString('base64');
 const burgerMenu = fs.readFileSync(path.join(__dirname, '../public/icon/hamburger_menu_white.png')).toString('base64');
@@ -62,6 +63,7 @@ exports.MovieList = (req, res, next) => {
     )
 }
 
+//Waterfall example for future reference
 //exports.MovieDetail = (req, res, next) => {
 //    //The waterfall method must be written an array of functions as the first argument
 //    async.waterfall(
@@ -113,32 +115,6 @@ exports.MovieList = (req, res, next) => {
 //    )
 //}
 
-
-//exports.MovieDetail = (req, res, next) => {
-//    Movie.findById(req.params.id)
-//        .populate('actors')
-//        .populate('genres')
-//        .populate('director')
-//        .exec((err, result) => {
-//            if (err) {
-//                return next(err)
-//            }
-//            const category = 'movie'
-//            res.render('movie_detail', {
-//                movie: result,
-//                director: result.director,
-//                genre_list: result.genres,
-//                actor_list: result.actors,
-//                updateURL: `/catalog/${category}/${req.params.id}/update`,
-//                deleteURL: `/catalog/${category}/${req.params.id}/update`,
-//                logoURL: "../../images/FilmDashLogo.png",
-//                burgerMenu: "../../icon/hamburger_menu_white.png",
-//            })
-
-//    })
-//}
-
-
 exports.MovieDetail = (req, res, next) => {
     async.parallel(
         {
@@ -152,6 +128,9 @@ exports.MovieDetail = (req, res, next) => {
             GenreList(callback) {
                 Genre.find({})
                     .exec(callback)
+            },
+            MovieInstanceList(callback) {
+                MovieInstance.find({movie: req.params.id}).exec(callback)
             }
         },
         (err, result) => {
@@ -163,6 +142,7 @@ exports.MovieDetail = (req, res, next) => {
                 movie: result.SelectedMovie,
                 director: result.SelectedMovie.director,
                 genre_list: result.GenreList,
+                movieinstances: result.MovieInstanceList, 
                 updateURL: `/catalog/${category}/${req.params.id}/update`,
                 deleteURL: `/catalog/${category}/${req.params.id}/update`,
                 logoURL: "../../images/FilmDashLogo.png",
@@ -496,3 +476,66 @@ exports.Update_Post = [
         }
     }
 ]
+
+exports.Delete_Get = (req, res, next) => {
+    async.parallel(
+        {
+            SelectedMovie(callback) {
+                Movie.findById(req.params.id)
+                    .populate('actors')
+                    .populate('genres')
+                    .populate('director')
+                    .exec(callback)
+            },
+            SelectedMovieInstances(callabck) {
+                MovieInstance.find({ movie: req.params.id })
+                .exec(callback)
+            },
+            GenreList(callback) {
+                Genre.find({})
+                    .exec(callback)
+            }
+        },
+        (err, result) => {
+            if (err) {
+                return next(err)
+            }
+            const category = 'movie'
+            res.render('movie_detail', {
+                movie: result.SelectedMovie,
+                movieInstance: result.SelectedMovieInstances,
+                director: result.SelectedMovie.director,
+                genre_list: result.GenreList,
+                updateURL: `/catalog/${category}/${req.params.id}/update`,
+                deleteURL: `/catalog/${category}/${req.params.id}/update`,
+                logoURL: "../../images/FilmDashLogo.png",
+                burgerMenu: "../../icon/hamburger_menu_white.png",
+            })
+        }
+    )
+}
+
+exports.Delete_Post = (req, res, next)=>{
+    async.parallel(
+        {
+            SelectedMovie(callback) {
+                Movie.findById(req.params.movieID).exec(callback)
+            },
+            MovieInstanceList(callback) {
+                MovieInstance.find({movie: req.params.movideID}).exec(callback)
+            }
+        },
+        (err, result) => {
+            if (err)
+                return next(err);
+            async.parallel({
+
+            })
+            Movie.findByIdAndRemove(req, body.movieID, (err) => {
+                if (err)
+                    return next(err); 
+                res.redirect('/')
+            })
+        }
+    )
+};  

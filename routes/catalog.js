@@ -16,9 +16,9 @@ router.post('/movie/create', MovieController.MovieCreate_Post);
 
 router.get('/movie/:id', MovieController.MovieDetail);
 
-//router.get('/movie/:id/delete', MovieController.Delete_Get);
+router.get('/movie/:id/delete', MovieController.Delete_Get);
 
-//router.post('/movie/:id/delete', MovieController.Delete_Post);
+router.post('/movie/:id/delete', MovieController.Delete_Post);
 
 router.get('/movie/:id/update', MovieController.Update_Get);
 

@@ -3,6 +3,7 @@ const express = require('express');
 const { body, validationRequest } = require('express-validator'); 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema; 
+const {DateTime } = require('luxon')
 
 const MovieInstanceSchema = new Schema({
     movie: { type: Schema.Types.ObjectId, ref: "Movie", required: true },
@@ -25,7 +26,7 @@ const MovieInstanceSchema = new Schema({
 
 MovieInstanceSchema.virtual('FormattedDueBack').get(function () {
     return this.due_back ?
-        DateTime.formJSDate(This.due_back).toFormatted('yyyy-MM-dd')
+        DateTime.fromJSDate(this.due_back).toFormat('yyyy-MM-dd')
         :
         null; 
 })

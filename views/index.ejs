@@ -7,11 +7,18 @@
   <link rel ="stylesheet" href='stylesheets/style.css'> 
   <link rel="icon" type="image/x-icon" href="/images/favicon.png">
 </head>
-<body class = "bg-black h-auto flex flex-col">
-  <div class = "w-full">
+<body class = "bg-black h-auto">
+  <div 
+	id = "container"
+	class = "w-full grow relative flex flex-col min-h-[120vh]">
   <%- include("partials/header") %>
   <%- include("partials/MobileMenu") %>
-  <div class = "relative">
+  <div 
+	id = "contentWrapper"
+	class = "pb-[5.5rem]"
+  >
+  <div 
+	class = "relative">
 		<video  
 			loop = 'true' 
 			muted = 'muted'
@@ -88,8 +95,9 @@
 			<%})%>
 		</div>
 	<%}else {}%>
+	</div>
+	<%- include('partials/footer') %>
   </div>
-  <%- include('partials/footer') %>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <script>
   </script>
