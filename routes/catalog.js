@@ -1,38 +1,37 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-const MovieController = require('../controller/movieController')
-const GenreController = require('../controller/genreController')
+const MovieController = require("../controller/movieController");
+const GenreController = require("../controller/genreController");
 
 //Movie
-router.get('/', MovieController.MovieList);
+router.get("/", MovieController.MovieList);
 
 //router.get('/', (req, res, next) => {
 //    res.send('Under construction')
 //})
 
-router.get('/movie/create', MovieController.MovieCreate_Get);
+router.get("/movie/create", MovieController.MovieCreate_Get);
 
-router.post('/movie/create', MovieController.MovieCreate_Post); 
+router.post("/movie/create", MovieController.MovieCreate_Post);
 
-router.get('/movie/:id', MovieController.MovieDetail);
+router.get("/movie/:id", MovieController.MovieDetail);
 
-router.get('/movie/:id/delete', MovieController.Delete_Get);
+router.get("/movie/:id/delete", MovieController.Delete_Get);
 
-router.post('/movie/:id/delete', MovieController.Delete_Post);
+router.post("/movie/:id/delete", MovieController.Delete_Post);
 
-router.get('/movie/:id/update', MovieController.Update_Get);
+router.get("/movie/:id/update", MovieController.Update_Get);
 
-router.post('/movie/:id/update', MovieController.Update_Post); 
-
+router.post("/movie/:id/update", MovieController.Update_Post);
 
 //Genre
-router.get('/genre/:id', GenreController.GenreDetail)
+router.get("/genre/:id", GenreController.GenreDetail);
 
-router.get('/genres', GenreController.GenreList)
+router.get("/genres", GenreController.GenreList);
 
-router.get('/genre/create', GenreController.GenreCreate_Get);
+router.get("/genre/create", GenreController.GenreCreate_Get);
 
-router.post('/genre/create/', GenreController.GenreCreate_Get)
+router.post("/genre/create/", GenreController.GenreCreate_Get);
 
 //router.get('/genre/:id/delete', GenreController.Delete_Get);
 
@@ -40,7 +39,7 @@ router.post('/genre/create/', GenreController.GenreCreate_Get)
 
 //router.get('/genre/:id/update', GenreController.Update_Get);
 
-//router.post('genre/:id/update', GenreController.Update_Post); 
+//router.post('genre/:id/update', GenreController.Update_Post);
 
 //Director
 //router.get('/director/:id', DirectorController.DirectorDetail)
@@ -57,7 +56,7 @@ router.post('/genre/create/', GenreController.GenreCreate_Get)
 
 //router.get('/director/:id/update', DirectorController.Update_Get);
 
-//router.post('director/:id/update', DirectorController.Update_Post); 
+//router.post('director/:id/update', DirectorController.Update_Post);
 
 //Actor
 //router.get('/actor/:id', ActorController.ActorDetail)
@@ -74,7 +73,7 @@ router.post('/genre/create/', GenreController.GenreCreate_Get)
 
 //router.get('/actor/:id/update', ActorController.Update_Get);
 
-//router.post('actor/:id/update', ActorController.Update_Post); 
+//router.post('actor/:id/update', ActorController.Update_Post);
 
 //Movie Instances
 //router.get('/movieinstance/:id', MovieInstanceController.MovieInstanceDetail)
@@ -91,6 +90,6 @@ router.post('/genre/create/', GenreController.GenreCreate_Get)
 
 //router.get('/movieinstance/:id/update', MovieInstanceController.Update_Get);
 
-//router.post('movieinstance/:id/update', MovieInstanceController.Update_Post); 
+//router.post('movieinstance/:id/update', MovieInstanceController.Update_Post);
 
 module.exports = router;

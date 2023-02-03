@@ -10,15 +10,15 @@ a {
 }*/
 
 .white-box-shadow {
-    box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
+  box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
 }
 
 .closed-menu {
-    transform: translateX(300px);
-    transition: transform 500ms linear; 
+  transform: translateX(300px);
+  transition: transform 500ms linear;
 }
 
 .opened-menu {
-    transform: translateX(0px);
-    transition: transform 500ms linear;
+  transform: translateX(0px);
+  transition: transform 500ms linear;
 }

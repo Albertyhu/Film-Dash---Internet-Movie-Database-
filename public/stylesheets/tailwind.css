@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /*@import "tailwindcss/base";
 
 @import "tailwindcss/components";
@@ -10,7 +9,7 @@
 @import "tailwindcss/utilities";*/
 
 @layer components {
-    .mobileMenuLink {
-        @apply my-2 cursor-pointer hover:underline hover:text-gray-500 active:text-lg;
-    }
+  .mobileMenuLink {
+    @apply my-2 cursor-pointer hover:underline hover:text-gray-500 active:text-lg;
+  }
 }

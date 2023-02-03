@@ -7,11 +7,7 @@
       "height": "6'0",
       "spouse": "Laurie Holden",
       "occupation": "Film director, screenwriter, and producer",
-      "known_for": [
-        "The Shawshank Redemption",
-        "The Green Mile",
-        "The Mist"
-      ],
+      "known_for": ["The Shawshank Redemption", "The Green Mile", "The Mist"],
       "education": {
         "degree": "Bachelor of Arts",
         "field": "Film",
@@ -34,11 +30,7 @@
       "height": "5'7",
       "spouse": "Eleanor Coppola",
       "occupation": "Film director, producer, and screenwriter",
-      "known_for": [
-        "The Godfather",
-        "Apocalypse Now",
-        "The Godfather Part II"
-      ],
+      "known_for": ["The Godfather", "Apocalypse Now", "The Godfather Part II"],
       "education": {
         "degree": "Bachelor of Arts",
         "field": "Drama",
@@ -61,11 +53,7 @@
       "height": "6'0",
       "spouse": "Emma Thomas",
       "occupation": "Film director, screenwriter, and producer",
-      "known_for": [
-        "The Dark Knight",
-        "Inception",
-        "Interstellar"
-      ],
+      "known_for": ["The Dark Knight", "Inception", "Interstellar"],
       "education": {
         "degree": "",
         "field": "",
@@ -88,11 +76,7 @@
       "height": "",
       "spouse": "Gloria Vanderbilt, Helen Beverley",
       "occupation": "Film director, producer, and screenwriter",
-      "known_for": [
-        "12 Angry Men",
-        "Dog Day Afternoon",
-        "Network"
-      ],
+      "known_for": ["12 Angry Men", "Dog Day Afternoon", "Network"],
       "education": {
         "degree": "",
         "field": "",
@@ -115,11 +99,7 @@
       "height": "5'7",
       "spouse": "Frances Walsh",
       "occupation": "Film director, producer, and screenwriter",
-      "known_for": [
-        "The Lord of the Rings",
-        "The Hobbit",
-        "King Kong"
-      ],
+      "known_for": ["The Lord of the Rings", "The Hobbit", "King Kong"],
       "education": {
         "degree": "",
         "field": "",
@@ -169,11 +149,7 @@
       "height": "6'1",
       "spouse": "Dawn Fincher",
       "occupation": "Film director, producer, and screenwriter",
-      "known_for": [
-        "Fight Club",
-        "The Social Network",
-        "Gone Girl"
-      ],
+      "known_for": ["Fight Club", "The Social Network", "Gone Girl"],
       "education": {
         "degree": "",
         "field": "",
@@ -196,11 +172,7 @@
       "height": "",
       "spouse": "Leslie Harter Zemeckis",
       "occupation": "Film director, producer, and screenwriter",
-      "known_for": [
-        "Back to the Future",
-        "Forrest Gump",
-        "Cast Away"
-      ],
+      "known_for": ["Back to the Future", "Forrest Gump", "Cast Away"],
       "education": {
         "degree": "Bachelor of Arts",
         "field": "Television and Radio",
@@ -223,11 +195,7 @@
       "height": "",
       "spouse": "Thea Bloom",
       "occupation": "Film directors, producers, and screenwriters",
-      "known_for": [
-        "The Matrix",
-        "V for Vendetta",
-        "Cloud Atlas"
-      ],
+      "known_for": ["The Matrix", "V for Vendetta", "Cloud Atlas"],
       "education": {
         "degree": "",
         "field": "",
@@ -250,11 +218,7 @@
       "height": "",
       "spouse": "Alisa Blasingame",
       "occupation": "Film directors, producers, and screenwriters",
-      "known_for": [
-        "The Matrix",
-        "V for Vendetta",
-        "Cloud Atlas"
-      ],
+      "known_for": ["The Matrix", "V for Vendetta", "Cloud Atlas"],
       "education": {
         "degree": "",
         "field": "",
@@ -277,11 +241,7 @@
       "height": "5'5",
       "spouse": "Helen Morris, Isabella Rossellini, Julia Cameron",
       "occupation": "Film director, producer, and screenwriter",
-      "known_for": [
-        "Goodfellas",
-        "The Departed",
-        "The Irishman"
-      ],
+      "known_for": ["Goodfellas", "The Departed", "The Irishman"],
       "education": {
         "degree": "Bachelor of Arts",
         "field": "English",
@@ -331,11 +291,7 @@
       "height": "",
       "spouse": "Yoshiko Yamaguchi, Yôko Yaguchi",
       "occupation": "Film director, producer, and screenwriter",
-      "known_for": [
-        "Rashomon",
-        "Seven Samurai",
-        "Ikiru"
-      ],
+      "known_for": ["Rashomon", "Seven Samurai", "Ikiru"],
       "education": {
         "degree": "",
         "field": "",
