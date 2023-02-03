@@ -144,7 +144,7 @@ exports.MovieDetail = (req, res, next) => {
         genre_list: result.GenreList,
         movieinstances: result.MovieInstanceList,
         updateURL: `/catalog/${category}/${req.params.id}/update`,
-        deleteURL: `/catalog/${category}/${req.params.id}/update`,
+        deleteURL: `/catalog/${category}/${req.params.id}/delete`,
         logoURL: "../../images/FilmDashLogo.png",
         burgerMenu: "../../icon/hamburger_menu_white.png",
       });
@@ -471,7 +471,7 @@ exports.Delete_Get = (req, res, next) => {
           .populate("director")
           .exec(callback);
       },
-      SelectedMovieInstances(callabck) {
+      SelectedMovieInstances(callback) {
         MovieInstance.find({ movie: req.params.id }).exec(callback);
       },
       GenreList(callback) {
@@ -483,37 +483,25 @@ exports.Delete_Get = (req, res, next) => {
         return next(err);
       }
       const category = "movie";
-      res.render("movie_detail", {
+        res.render("movie_delete", {
+        title: 'Delete movie',
         movie: result.SelectedMovie,
-        movieInstance: result.SelectedMovieInstances,
+        movieinstances: result.SelectedMovieInstances,
         director: result.SelectedMovie.director,
         genre_list: result.GenreList,
         updateURL: `/catalog/${category}/${req.params.id}/update`,
         deleteURL: `/catalog/${category}/${req.params.id}/update`,
-        logoURL: "../../images/FilmDashLogo.png",
-        burgerMenu: "../../icon/hamburger_menu_white.png",
+        logoURL: "../../../images/FilmDashLogo.png",
+        burgerMenu: "../../../icon/hamburger_menu_white.png",
       });
     }
   );
 };
 
 exports.Delete_Post = (req, res, next) => {
-  async.parallel(
-    {
-      SelectedMovie(callback) {
-        Movie.findById(req.params.movieID).exec(callback);
-      },
-      MovieInstanceList(callback) {
-        MovieInstance.find({ movie: req.params.movideID }).exec(callback);
-      },
-    },
-    (err, result) => {
-      if (err) return next(err);
-      async.parallel({});
-      Movie.findByIdAndRemove(req, body.movieID, (err) => {
-        if (err) return next(err);
-        res.redirect("/");
-      });
-    }
-  );
+    Movie.findByIdAndRemove(req.params.id, (err) => {
+        if (err)
+            return next(err);
+         res.redirect("/");
+    });
 };

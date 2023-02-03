@@ -78,46 +78,7 @@
                     </div>
                 </div>
                 <%- include('partials/CRUDButtons') %>
-                <% if(typeof movieinstances != "undefined" && movieinstances.length > 0){ %> 
-                    <div 
-                        id="MovieInstanceField"
-                        class = "my-[50px] w-fit mx-auto" 
-                    >
-                        <h3>Current Copies</h3>
-                        <ul>
-                            <% movieinstances.forEach((instance, index) => { %> 
-                                <li class="flex my-[30px] grid border-white border-[1px] rounded-lg p-5">
-                                    <div class = "mx-1"><%= index + 1%>.) ID: <%= instance._id%> </div>
-                                    <div class = "">Status: <span
-                                    class = "<% 
-                                            let statusClass;
-                                            switch(instance.status) {
-                                            case 'Available':
-                                                statusClass = 'bg-[#50C819]';
-                                                break;
-                                            case 'Maintenance':
-                                                statusClass = 'bg-[#FFFF00]';
-                                                break;
-                                            case 'Loaned':
-                                                statusClass = 'bg-[#FF0000]';
-                                                break;
-                                            case 'Reserved':
-                                                statusClass = 'bg-[#9fc5e8]';
-                                                break;
-                                            default:
-                                                statusClass = '';
-                                                break;
-                                            }
-                                            %> <%= statusClass %> !text-black"
-                                    ><%= instance.status%></span></div> 
-                                    <% if(typeof instance.due_back != 'undefined' && instance.due_back != "") { %> 
-                                        <span class = "mx-1">Due Back Date: <%= instance.due_back %></span>
-                                    <% } %>
-                                </li>
-                            <%}) %>
-                        </ul>
-                    </div>
-                <%}%>
+                <%- include('partials/movieInstanceList') %>
               </div>
          </div>
     </div>

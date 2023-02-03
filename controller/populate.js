@@ -145,7 +145,7 @@ const PopulateGenre = () => {
   });
 };
 
-const GenerateMovieInstance = (num) => {
+const GenerateMovieInstanceOfMany = (num) => {
   const InstanceStatus = ["Available", "Maintenance", "Loaned", "Reserved"];
   const InstanceFormat = ["DVD", "Blue-ray", "Video Tape", "Film Reel"];
   Movie.find({}, (err, result) => {
@@ -190,14 +190,71 @@ const GenerateMovieInstance = (num) => {
   });
 };
 
+const GenerateMovieInstanceOfOne = (Title, num) => {
+    const InstanceStatus = ["Available", "Maintenance", "Loaned", "Reserved"];
+    const InstanceFormat = ["DVD", "Blue-ray", "Video Tape", "Film Reel"];
+    Movie.findOne({title: Title}, (err, result) => {
+        if (err) {
+            console.log(
+                "Error in retrieving movies for generating movie instances: ",
+                err
+            );
+            return;
+        }
+        for (var i = 0; i < num; i++) {
+            const status = InstanceStatus[genNum(InstanceStatus.length)];
+            var newDate = null;
+            if (status == "Loaned") {
+                newDate = new Date(
+                    new Date() + Math.floor(Math.random() * 10000000000)
+                );
+            }
+
+            const obj = {
+                movie: result._id,
+                status: status,
+                NumberOfDiscs: genNum(3) + 1,
+                Sku: genKey(10),
+                physical_format: InstanceFormat[genNum(InstanceFormat.length)],
+                due_back:
+                    newDate != null
+                        ? DateTime.fromJSDate(newDate).toFormat("yyyy-MM-dd")
+                        : "",
+            };
+
+            const newMovieInstance = new MovieInstance(obj);
+            newMovieInstance.save((err) => {
+                if (err) {
+                    console.log("Error in uploading movie instance: ", err);
+                    return;
+                } else {
+                    console.log(`Movie instances of ${Title} are successfully uploaded`);
+                }
+            });
+        }
+    });
+};
+
+const DeleteMovieInstances = (ID) => {
+    try {
+        MovieInstance.deleteMany({ movie: ID }).then(function () {
+            console.log("Movie instances successfully deleted")
+        })
+    } catch (e) {
+        console.log("Error in delete movie instances: ", e)
+    }
+}
+
 exports.populateDatabase = (req, res) => {
-  async.parallel(
-    [
-      //() => PopulateMovie(MovieData),
-      //PopulateActor,
-      // PopulateDirector,
-      //PopulateGenre,
-      //()=>GenerateMovieInstance(60)
+    async.parallel(
+        [
+            //() => PopulateMovie(MovieData),
+            //PopulateActor,
+            // PopulateDirector,
+            //PopulateGenre,
+            //()=>GenerateMovieInstanceOfMany(60)
+            //() => GenerateMovieInstanceOfOne("Ratatouille", 10)
+            //() => DeleteMovieInstances("63dcc9b9c3560b50965ce551"),
     ],
     function (err, results) {
       if (err) {

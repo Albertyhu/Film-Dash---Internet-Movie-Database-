@@ -1,0 +1,57 @@
+<% if(typeof movieinstances != "undefined" && movieinstances.length > 0){ %> 
+                    <div 
+                        id="MovieInstanceField"
+                        class = "my-[50px] w-fit mx-auto" 
+                    >
+                        <h3>Current Copies</h3>
+                        <ul>
+                            <% movieinstances.forEach((instance, index) => { %> 
+                                <li class="flex my-[30px] grid border-white border-[1px] rounded-lg p-5">
+                                    <div class = "mx-1"><%= index + 1%>.) ID: <%= instance._id%> </div>
+                                    <div class = "">Status: <span
+                                    class = "<% 
+                                            let statusClass;
+                                            switch(instance.status) {
+                                            case 'Available':
+                                                statusClass = 'bg-[#50C819]';
+                                                break;
+                                            case 'Maintenance':
+                                                statusClass = 'bg-[#FFFF00]';
+                                                break;
+                                            case 'Loaned':
+                                                statusClass = 'bg-[#FF0000]';
+                                                break;
+                                            case 'Reserved':
+                                                statusClass = 'bg-[#9fc5e8]';
+                                                break;
+                                            default:
+                                                statusClass = '';
+                                                break;
+                                            }
+                                            %> <%= statusClass %> !text-black"
+                                    ><%= instance.status%></span></div> 
+                                    <% if(typeof instance.due_back != 'undefined' && instance.due_back != "") { %> 
+                                        <span class = "mx-1">Due Back Date: <%= instance.due_back %></span>
+                                    <% } %>
+                                    <div 
+                                        id="MovieInstanceButtons"
+                                        class = "grid sm:flex sm:jusitfy-between text-center [&>a]:mx-auto sm:[&>a]:mx-5">
+                                        <a href ="<%= instance.updateURL %>">
+                                            <div 
+                                            id = "UpdateButton" 
+                                            class = "rounded-full p-1 active:translate-x-[5px] active:translate-y-[5px] cursor-pointer
+                                            border-white border-2 text-center w-[150px] select-none my-1 hover:bg-slate-200 hover:text-black">Update Copy</div>
+                                        </a>
+                                        <a href="<%= instance.deleteURL%>">
+                                        <div 
+                                            id = "DeleteButton"
+                                            class = "rounded-full text-black p-1 active:translate-x-[5px] active:translate-y-[5px] cusor-pointer
+                                            text-center w-[150px] bg-gray-300 cursor-pointer select-none my-1 border-gray-300 border-2
+                                            hover:bg-slate-400">Delete Copy</div>
+                                        </a>
+                                    </div>
+                                </li>
+                            <%}) %>
+                        </ul>
+                    </div>
+                <%}%>

@@ -30,8 +30,16 @@ MovieInstanceSchema.virtual("FormattedDueBack").get(function () {
     : null;
 });
 
+MovieInstanceSchema.virtual("updateURL").get(function () {
+    return `/MovieInstance/${this._id}/update`    
+})
+
+MovieInstanceSchema.virtual("deleteURL").get(function () {
+    return `/MovieInstance/${this._id}/delete`
+})
+
 MovieInstanceSchema.virtual("url").get(function () {
-  return `/MovieInstances/:id`;
+  return `/MovieInstance/${this._id}`;
 });
 
 module.exports = mongoose.model("MovieInstance", MovieInstanceSchema);
