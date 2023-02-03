@@ -502,6 +502,11 @@ exports.Delete_Post = (req, res, next) => {
     Movie.findByIdAndRemove(req.params.id, (err) => {
         if (err)
             return next(err);
+        MovieInstance.deleteMany({ movie: req.params.id }, (err) => {
+            if (err)
+                return next(err);
+            console.log("Movie Instances successfully deleted.")
+        })
          res.redirect("/");
     });
 };

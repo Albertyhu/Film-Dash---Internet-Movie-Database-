@@ -245,6 +245,32 @@ const DeleteMovieInstances = (ID) => {
     }
 }
 
+const CreateRatatouille = () => {
+    const obj = {
+        title: "Ratatouille",
+        year: 2007,
+        director: ['63d10a9f605a01fcb0a578f1'],
+        actors: ['63d10649f27cea2a803b9f98'],
+        genres: ['63d1081383be1610779032a3'],
+        tagline: "He is a chef",
+        imdb_rating: 8.1,
+        parental_guide: "G",
+        production_company: "Pixar",
+        release_date: "2023-02-03",
+        budget: "$150 million",
+        runtime: 111,
+        poster: "https://lumiere-a.akamaihd.net/v1/images/p_ratatouille_19736_0814231f.jpeg",
+    };
+    const newMovie = new Movie(obj)
+    newMovie.save((err) => {
+        if (err) {
+            console.log("Error in saving movie to the database: ", err);
+            return next(err);
+        }
+        console.log("Dummy movie created")
+    })
+}
+
 exports.populateDatabase = (req, res) => {
     async.parallel(
         [
@@ -253,8 +279,9 @@ exports.populateDatabase = (req, res) => {
             // PopulateDirector,
             //PopulateGenre,
             //()=>GenerateMovieInstanceOfMany(60)
-            //() => GenerateMovieInstanceOfOne("Ratatouille", 10)
-            //() => DeleteMovieInstances("63dcc9b9c3560b50965ce551"),
+            () => GenerateMovieInstanceOfOne("Ratatouille", 2)
+            //() => DeleteMovieInstances("63dcd2a317ad34548f793c56"),
+            //() => CreateRatatouille(),
     ],
     function (err, results) {
       if (err) {
