@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Film Dash</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel ="stylesheet" href='stylesheets/style.css'> 
+  <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+</head>
+<body class = "bg-black h-auto">
+  <div 
+  id="container"
+  class = "w-full flex flex-col relative grow min-h-[120vh]">
+      <div 
+        id = "contentWrapper"
+        class = "pb-[5.5rem] mb-[50px]">
+          <div class = "w-full mb-[100px]">
+            <%- include("partials/header") %>
+            <%- include("partials/MobileMenu") %>
+          </div>
+          <h1 class = "text-white text-center text-4xl"><%= title %></h1>
+          <% if(typeof director.portrait != undefined ) { %> 
+          <div 
+            id="ImageDiv"
+            class = "h-[300px] w-[200px] mx-auto rounded-lg overflow-hidden my-5"
+          >
+            <img 
+                src = "<%= director.portrait  %>"
+                alt = "<%= director.name %> portrait"/>"
+                class="max-h-full max-w-full"
+          </div>
+          <%}%>
+
+          <%- include('partials/CRUDButtons') %> 
+
+          <div
+            id="DirectorDetailPanel"
+            class = "w-11/12 mx-auto text-white sm:w-6/12"
+          >
+              <% if(typeof director.birthdate != 'undefined') {%> <p class = "mb-3"><b>Birth Date: </b> <%= director.birthdate%> </p><% } %>
+              <% if(typeof director.birthplace != 'undefined') {%>  <p class = "mb-3"><b>Birth Place: </b> <%= director.birthplace%> </p><% } %>
+              <% if(typeof director.height != 'undefined') {%>  <p class = "mb-3"><b>Birth Height: </b> <%= director.height%> </p><% } %>
+              <% if(typeof director.spouse != 'undefined') {%> <p class = "mb-3"><b>Spouse: </b> <%= director.spouse %> </p><% } %>
+              <% if(typeof director.occupation != "undefined" && director.occupation.length > 0) {%> 
+                  <div class = "mb-3">
+                    <p><b>Occupation: </b></p>
+                    <ul>
+                        <% director.occupation.forEach(val => {%> 
+                            <li><%= val %></li>
+                        <%})%>
+                    </ul>
+                  </div>
+              <%}%>
+              <% if(typeof director.known_for != 'undefined') {%> 
+                  <div class = "mb-3">
+                    <p><b>Known for: </b></p>
+                    <ul>
+                        <% director.known_for.forEach(val => {%> 
+                            <li><%= val %></li>
+                        <%})%>
+                    </ul>
+                  </div>
+              <%}%>
+              <% if (typeof director.education != "undefined") {%>
+                  <div 
+                    id="EducationField"
+                    class = "mb-3"
+                  >
+                    <h3 class ="font-bold">Education</h3>
+                    <hr>
+                    <% if(typeof director.education.degree != 'undefined' && director.education.degree != '') {%> <p><b>Degree: </b> <%= director.education.degree %> </p><% } %>
+                    <% if(typeof director.education.field != 'undefined' && director.education.field != '') {%> <p><b>Field: </b> <%= director.education.field %> </p><% } %>
+                    <% if(typeof director.education.school != 'undefined' && director.education.school != '') {%> <p><b>School: </b> <%= director.education.school %> </p><% } %>
+                  </div>
+              <% } %>
+              <% if(typeof director.awards != 'undefined' && director.awards.length > 0) {%> 
+                <div class = "mb-3">
+                    <p><b>Awards: </b></p>
+                    <ul>
+                        <% director.awards.forEach(val => {%> 
+                            <li><%= val %></li>
+                        <%})%>
+                    </ul>
+                </div>
+              <%}%>
+              <% if(typeof director.quotes != 'undefined' && director.quotes.length > 0) {%> 
+                <div class = "mb-3">
+                    <p><b>Quotes: </b></p>
+                    <ul>
+                        <% director.quotes.forEach(val => {%> 
+                            <li class = "my-1">"<%= val %>"</li>
+                        <%})%>
+                    </ul>
+                </div>
+              <%}%>
+              <% if(typeof director.imdb_page != 'undefined') {%>
+                <a href ="<%= director.imdb_page %>">
+                    <img 
+                        src = "<%= imdbLogo %>" 
+                        alt = "imdb" 
+                        class = "w-[100px] text-center mx-auto cursor-pointer"/>
+                </a>
+              <% } %>
+
+              <!-- end of director details div -->
+          </div>
+      </div>
+      <%- include('partials/footer') %>
+  </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</body>
+</html>

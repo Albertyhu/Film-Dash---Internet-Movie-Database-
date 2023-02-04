@@ -1,0 +1,19 @@
+<% if(typeof director_list != 'undefined && director_list.length > 0) { %> 
+<div class = "sm:grid sm:grid-cols-2 md:grid-cols-3">
+	<% director_list.forEach(person =>{ %> 
+		<div
+			id = "Director_Panel"
+			class = "rounded-lg w-11/12 mx-auto my-[25px] p-10 text-white
+					before:bg-[url('<%= movie.poster %>')] relative before:absolute 
+					before:block before:left-0 before:right-0 before:top-0 before:w-full before:h-full
+					before:opacity-60 before:z-[-2] before:bg-no-repeat before:bg-cover before:backdrop-blur-3xl before:rounded-md
+					before:brightness-50 before:bg-center sm:max-w-[350px]"
+		>
+		<h2><%= person.name%></h2>
+		<% if(typeof person.portrait != 'undefined') { %> 
+			<img src = <%= person.portrait %> alt='<%=person.name%>' />
+		<%}%>
+		</div>
+	<%})%>
+</div>
+<%}%>

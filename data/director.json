@@ -6,8 +6,8 @@
       "birthplace": "Montbéliard, France",
       "height": "6'0",
       "spouse": "Laurie Holden",
-      "occupation": "Film director, screenwriter, and producer",
-      "known_for": ["The Shawshank Redemption", "The Green Mile", "The Mist"],
+      "occupation": [ "film director", "screenwriter", "producer" ],
+      "known_for": [ "The Shawshank Redemption", "The Green Mile", "The Mist" ],
       "education": {
         "degree": "Bachelor of Arts",
         "field": "Film",
@@ -21,7 +21,8 @@
         "Hope is a good thing, maybe the best of things, and no good thing ever dies.",
         "I believe in the power of cinema to transcend all barriers, to reach across all borders, to heal all wounds, to unite us all as one human family."
       ],
-      "imdb_page": "https://www.imdb.com/name/nm0001104/"
+      "imdb_page": "https://www.imdb.com/name/nm0001104/",
+      "portrait": "https://www.hollywoodreporter.com/wp-content/uploads/2011/07/frank_darabont_2011_a_p.jpg?w=2000&h=1126&crop=1"
     },
     {
       "name": "Francis Ford Coppola",
@@ -29,8 +30,8 @@
       "birthplace": "Detroit, Michigan, U.S.",
       "height": "5'7",
       "spouse": "Eleanor Coppola",
-      "occupation": "Film director, producer, and screenwriter",
-      "known_for": ["The Godfather", "Apocalypse Now", "The Godfather Part II"],
+      "occupation": [ "film director", "screenwriter", "producer" ],
+      "known_for": [ "The Godfather", "Apocalypse Now", "The Godfather Part II" ],
       "education": {
         "degree": "Bachelor of Arts",
         "field": "Drama",
@@ -44,7 +45,8 @@
         "I think cinema, movies, and magic have always been closely associated. The very earliest people who made film were magicians.",
         "The film of tomorrow will be an act of love."
       ],
-      "imdb_page": "https://www.imdb.com/name/nm0000338/"
+      "imdb_page": "https://www.imdb.com/name/nm0000338/",
+      "portrait": "https://m.media-amazon.com/images/I/51R8AiNd92L._AC_UF894,1000_QL80_.jpg"
     },
     {
       "name": "Christopher Nolan",
@@ -52,8 +54,8 @@
       "birthplace": "London, England, U.K.",
       "height": "6'0",
       "spouse": "Emma Thomas",
-      "occupation": "Film director, screenwriter, and producer",
-      "known_for": ["The Dark Knight", "Inception", "Interstellar"],
+      "occupation": [ "film director", "screenwriter", "producer" ],
+      "known_for": [ "The Dark Knight", "Inception", "Interstellar" ],
       "education": {
         "degree": "",
         "field": "",
@@ -67,7 +69,8 @@
         "I try to approach the storytelling in a very classical way, which is to say that I try to find a way to tell the story that has the most impact and the most resonance.",
         "The idea of the film is the first thing that comes to you, and it's the thing that you're most excited about, but it's also the thing that you have to be the most ruthless with."
       ],
-      "imdb_page": "https://www.imdb.com/name/nm0634240/"
+      "imdb_page": "https://www.imdb.com/name/nm0634240/",
+      "portrait": "https://m.media-amazon.com/images/S/pv-target-images/3cb11430cb603da9f14220eead4077d88a2e6ee937326336bdc32f135f6ce6fd.jpg"
     },
     {
       "name": "Sidney Lumet",
@@ -75,8 +78,8 @@
       "birthplace": "Philadelphia, Pennsylvania, U.S.",
       "height": "",
       "spouse": "Gloria Vanderbilt, Helen Beverley",
-      "occupation": "Film director, producer, and screenwriter",
-      "known_for": ["12 Angry Men", "Dog Day Afternoon", "Network"],
+      "occupation": [ "film director", "screenwriter", "producer" ],
+      "known_for": [ "12 Angry Men", "Dog Day Afternoon", "Network" ],
       "education": {
         "degree": "",
         "field": "",
@@ -90,7 +93,8 @@
         "Making a film is like putting on a play. There are actors, costumes, sets, and lights.",
         "The director is the one who creates the atmosphere in which the actors work."
       ],
-      "imdb_page": "https://www.imdb.com/name/nm0525266/"
+      "imdb_page": "https://www.imdb.com/name/nm0525266/",
+      "portrait": "https://m.media-amazon.com/images/I/81brxpu0TrL.jpg"
     },
     {
       "name": "Peter Jackson",
@@ -98,8 +102,8 @@
       "birthplace": "Pukerua Bay, New Zealand",
       "height": "5'7",
       "spouse": "Frances Walsh",
-      "occupation": "Film director, producer, and screenwriter",
-      "known_for": ["The Lord of the Rings", "The Hobbit", "King Kong"],
+      "occupation": [ "film director", "screenwriter", "producer" ],
+      "known_for": [ "The Lord of the Rings", "The Hobbit", "King Kong" ],
       "education": {
         "degree": "",
         "field": "",
@@ -113,7 +117,8 @@
         "I'm interested in the way the audience can be manipulated through cinema, and how cinema can be used to tell stories.",
         "I always want to make the audience feel like they're in the movie, and not just watching it."
       ],
-      "imdb_page": "https://www.imdb.com/name/nm0413168/"
+      "imdb_page": "https://www.imdb.com/name/nm0413168/",
+      "portrait": "https://m.media-amazon.com/images/I/51Ojj7HF5bL._AC_SY780_.jpg"
     },
     {
       "name": "Sergio Leone",
@@ -121,7 +126,7 @@
       "birthplace": "Rome, Italy",
       "height": "",
       "spouse": "Carla Leone",
-      "occupation": "Film director, producer, and screenwriter",
+      "occupation": [ "film director", "screenwriter", "producer" ],
       "known_for": [
         "The Good, the Bad and the Ugly",
         "Once Upon a Time in the West",
@@ -140,7 +145,8 @@
         "A film is - or should be - more like music than like fiction. It should be a progression of moods and feelings. The theme, what's behind the emotion, the meaning, all that comes later.",
         "I have always been a big admirer of American Westerns and wanted to do one myself."
       ],
-      "imdb_page": "https://www.imdb.com/name/nm0001466/"
+      "imdb_page": "https://www.imdb.com/name/nm0001466/",
+      "portrait": "https://m.media-amazon.com/images/S/pv-target-images/1406724a0f22c05b041eb8e6d931dd952656b899714398a1676bbb77aeef995b.jpg"
     },
     {
       "name": "David Fincher",
@@ -148,8 +154,8 @@
       "birthplace": "Denver, Colorado, U.S.",
       "height": "6'1",
       "spouse": "Dawn Fincher",
-      "occupation": "Film director, producer, and screenwriter",
-      "known_for": ["Fight Club", "The Social Network", "Gone Girl"],
+      "occupation": [ "film director", "screenwriter", "producer" ],
+      "known_for": [ "Fight Club", "The Social Network", "Gone Girl" ],
       "education": {
         "degree": "",
         "field": "",
@@ -163,7 +169,8 @@
         "I think that the audience is smart enough to be able to put together the pieces and figure out what's going on. I don't think that you have to spell everything out.",
         "I've always been interested in the idea that you can't really know somebody until you know what they want."
       ],
-      "imdb_page": "https://www.imdb.com/name/nm0000399/"
+      "imdb_page": "https://www.imdb.com/name/nm0000399/",
+      "portrait": "https://m.media-amazon.com/images/S/pv-target-images/16187ab5a81ee96f89c95fe77ed38059eb4c1076e4de6bfd61eb6b2e19053794.jpg"
     },
     {
       "name": "Robert Zemeckis",
@@ -171,8 +178,8 @@
       "birthplace": "Chicago, Illinois, U.S.",
       "height": "",
       "spouse": "Leslie Harter Zemeckis",
-      "occupation": "Film director, producer, and screenwriter",
-      "known_for": ["Back to the Future", "Forrest Gump", "Cast Away"],
+      "occupation": [ "film director", "screenwriter", "producer" ],
+      "known_for": [ "Back to the Future", "Forrest Gump", "Cast Away" ],
       "education": {
         "degree": "Bachelor of Arts",
         "field": "Television and Radio",
@@ -186,7 +193,8 @@
         "I'm not interested in how people move, I'm interested in how people move the audience.",
         "I'm a storyteller and the medium I work in happens to be film."
       ],
-      "imdb_page": "https://www.imdb.com/name/nm0000709/"
+      "imdb_page": "https://www.imdb.com/name/nm0000709/",
+      "portrait": "https://m.media-amazon.com/images/S/pv-target-images/0902a8e18f5f3f4a96afe8fae1b60fb7479dc3ce28b162ac50489caa55b5a90e.jpg"
     },
     {
       "name": "Larry Wachowski",
@@ -194,8 +202,8 @@
       "birthplace": "Chicago, Illinois, U.S",
       "height": "",
       "spouse": "Thea Bloom",
-      "occupation": "Film directors, producers, and screenwriters",
-      "known_for": ["The Matrix", "V for Vendetta", "Cloud Atlas"],
+      "occupation": "film directors, producers, and screenwriters",
+      "known_for": [ "The Matrix", "V for Vendetta", "Cloud Atlas" ],
       "education": {
         "degree": "",
         "field": "",
@@ -209,7 +217,8 @@
         "We always try to be true to our own vision, and that's all you can do as a filmmaker.",
         "The story is everything."
       ],
-      "imdb_page": "https://www.imdb.com/name/nm0905152/"
+      "imdb_page": "https://www.imdb.com/name/nm0905152/",
+      "portait":"https://resizing.flixster.com/jD5gzy9pc5cWh4CkpL-mqUIwsso=/fit-in/1152x864/v2/https://flxt.tmsimg.com/assets/150673_v9_ba.jpg"
     },
     {
       "name": "Andy Wachowski",
@@ -217,8 +226,8 @@
       "birthplace": "Chicago, Illinois, U.S.",
       "height": "",
       "spouse": "Alisa Blasingame",
-      "occupation": "Film directors, producers, and screenwriters",
-      "known_for": ["The Matrix", "V for Vendetta", "Cloud Atlas"],
+      "occupation": "film directors, producers, and screenwriters",
+      "known_for": [ "The Matrix", "V for Vendetta", "Cloud Atlas" ],
       "education": {
         "degree": "",
         "field": "",
@@ -232,7 +241,8 @@
         "We always try to be true to our own vision, and that's all you can do as a filmmaker.",
         "The story is everything."
       ],
-      "imdb_page": "https://www.imdb.com/name/nm0905154/"
+      "imdb_page": "https://www.imdb.com/name/nm0905154/",
+      "portrait": "https://m.media-amazon.com/images/M/MV5BMTU1Mjc1MjkzNV5BMl5BanBnXkFtZTgwOTc1NDQ1ODE@._V1_.jpg"
     },
     {
       "name": "Martin Scorsese",
@@ -240,8 +250,8 @@
       "birthplace": "Queens, New York City, New York, U.S.",
       "height": "5'5",
       "spouse": "Helen Morris, Isabella Rossellini, Julia Cameron",
-      "occupation": "Film director, producer, and screenwriter",
-      "known_for": ["Goodfellas", "The Departed", "The Irishman"],
+      "occupation": [ "film director", "screenwriter", "producer" ],
+      "known_for": [ "Goodfellas", "The Departed", "The Irishman" ],
       "education": {
         "degree": "Bachelor of Arts",
         "field": "English",
@@ -255,7 +265,8 @@
         "Cinema is a matter of what's in the frame and what's out.",
         "The most personal is the most creative."
       ],
-      "imdb_page": "https://www.imdb.com/name/nm0000217/"
+      "imdb_page": "https://www.imdb.com/name/nm0000217/",
+      "portrait": "https://m.media-amazon.com/images/I/61tZR79CWNL._AC_UF894,1000_QL80_.jpg"
     },
     {
       "name": "Milos Forman",
@@ -263,7 +274,7 @@
       "birthplace": "Caslav, Czechoslovakia",
       "height": "",
       "spouse": "Jana Brejchová, Věra Křesadlová, Martina Zborilová",
-      "occupation": "Film director, producer, and screenwriter",
+      "occupation": [ "film director", "screenwriter", "producer" ],
       "known_for": [
         "One Flew Over the Cuckoo's Nest",
         "Amadeus",
@@ -282,7 +293,8 @@
         "I'm not interested in how people move, I'm interested in how people move the audience.",
         "I hate intellectual dialogue in the movies. I want to reach the people who understand emotions, not words."
       ],
-      "imdb_page": "https://www.imdb.com/name/nm0001228/"
+      "imdb_page": "https://www.imdb.com/name/nm0001228/",
+      "portrait": "https://m.media-amazon.com/images/S/pv-target-images/5ded51ede8aecf776b19a852be7e0e338400ad4cfea06cceb0e6145085889178._SX300_.jpg"
     },
     {
       "name": "Akira Kurosawa",
@@ -290,8 +302,8 @@
       "birthplace": "Tokyo, Japan",
       "height": "",
       "spouse": "Yoshiko Yamaguchi, Yôko Yaguchi",
-      "occupation": "Film director, producer, and screenwriter",
-      "known_for": ["Rashomon", "Seven Samurai", "Ikiru"],
+      "occupation": [ "film director", "screenwriter", "producer" ],
+      "known_for": [ "Rashomon", "Seven Samurai", "Ikiru" ],
       "education": {
         "degree": "",
         "field": "",
@@ -305,7 +317,8 @@
         "Man is a genius when he is dreaming.",
         "There is no such thing as an empty space or an empty time. There is always something to see, something to hear. In fact, try as we may to make a silence, we cannot."
       ],
-      "imdb_page": "https://www.imdb.com/name/nm0000041/"
+      "imdb_page": "https://www.imdb.com/name/nm0000041/",
+      "portrait": "https://m.media-amazon.com/images/S/pv-target-images/caab62963048fad57082c4227dee100de3ca354c1366f89b580a2ef2f0223c53.jpg"
     }
   ]
 }

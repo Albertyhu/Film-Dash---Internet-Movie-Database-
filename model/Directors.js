@@ -17,6 +17,7 @@ const DirectorSchema = new Schema({
   awards: [{ type: String }],
   quotes: [{ type: String }],
   imdb_page: { type: String },
+  portrait: { type:String }
 });
 
 DirectorSchema.virtual("FormattedBirthDate").get(function () {
@@ -26,7 +27,7 @@ DirectorSchema.virtual("FormattedBirthDate").get(function () {
 });
 
 DirectorSchema.virtual("url").get(function () {
-  return `/directors/:id`;
+  return `catalog/director/${this._id}`;
 });
 
 module.exports = mongoose.model("Director", DirectorSchema);

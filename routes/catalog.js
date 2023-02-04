@@ -2,7 +2,9 @@ var express = require("express");
 var router = express.Router();
 const MovieController = require("../controller/movieController");
 const GenreController = require("../controller/genreController");
-
+const DirectorController = require('../controller/directorController');
+const ActorController = require("../controller/actorController");
+const MovieInstanceController = require('../controller/movieInstanceController')
 //Movie
 router.get("/", MovieController.MovieList);
 
@@ -42,7 +44,7 @@ router.post("/genre/create/", GenreController.GenreCreate_Get);
 //router.post('genre/:id/update', GenreController.Update_Post);
 
 //Director
-//router.get('/director/:id', DirectorController.DirectorDetail)
+router.get('/director/:id', DirectorController.DirectorDetail)
 
 //router.get('/directors', DirectorController.DirectorList)
 

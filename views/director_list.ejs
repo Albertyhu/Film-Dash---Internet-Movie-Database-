@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Film Dash</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel ="stylesheet" href='stylesheets/style.css'> 
+  <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+</head>
+<body class = "bg-black h-auto">
+  <div 
+  id="container"
+  class = "w-full flex flex-col relative grow min-h-[120vh]">
+      <div 
+        id = "contentWrapper"
+        class = "pb-[5.5rem]">
+          <div class = "w-full mb-[100px]">
+            <%- include("partials/header") %>
+            <%- include("partials/MobileMenu") %>
+          </div>
+          <h1 class = "text-white text-center text-4xl"><%= title %></h1>
+          <%- include('partials/displayDirectors')%>
+      </div>
+      <%- include('partials/footer') %>
+  </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\data",
+    "\\controller",
     "\\model",
     "\\public",
     "\\public\\images",
@@ -11,6 +11,6 @@
     "\\views",
     "\\views\\partials"
   ],
-  "SelectedNode": "\\views\\movie_detail.ejs",
+  "SelectedNode": "\\model\\Movies.js",
   "PreviewInSolutionExplorer": false
 }
