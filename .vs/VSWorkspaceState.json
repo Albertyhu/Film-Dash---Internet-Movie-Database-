@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\asset",
-    "\\data",
+    "\\controller",
+    "\\model",
     "\\public",
-    "\\public\\icon",
+    "\\public\\stylesheets",
     "\\public\\video",
     "\\routes",
     "\\util",
     "\\views",
     "\\views\\partials"
   ],
-  "SelectedNode": "\\views\\partials\\CRUDButtons.ejs",
+  "SelectedNode": "\\public\\icon",
   "PreviewInSolutionExplorer": false
 }

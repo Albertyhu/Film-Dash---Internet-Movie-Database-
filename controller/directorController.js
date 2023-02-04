@@ -70,6 +70,8 @@ exports.DirectorDetail = (req, res, next) => {
     )
 }
 
+const SampleArray = ["Sample1", "Sample2"];
+
 exports.DirectorCreate_Get = (req, res, next) => {
 
     Genre.find({}).exec((err, result) => {
@@ -82,7 +84,8 @@ exports.DirectorCreate_Get = (req, res, next) => {
                 genre_list: result,
                 logoURL: "../../images/FilmDashLogo.png",
                 burgerMenu: "../../icon/hamburger_menu_white.png",
-                error:[],
+                error: [],
+                DirectorWork: SampleArray.toString(), 
             });
         }
     })
@@ -90,9 +93,10 @@ exports.DirectorCreate_Get = (req, res, next) => {
 
 exports.DirectorCreate_Post = [
     body('name').trim().escape(),
+    body('known_for')
+        .escape(),
     (req, res, next) => {
-        console.log("name: ", req.body.name)
-        next()
+        console.log("Related Work: ", req.body.known_for)
     }
     
 ]
