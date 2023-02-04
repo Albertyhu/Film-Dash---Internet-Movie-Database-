@@ -1,5 +1,9 @@
-<% if(movie_list) { %>
-	<div class = "sm:grid sm:grid-cols-2 md:grid-cols-3">
+<% if(typeof movie_list != 'undefined') { %>
+<div 
+	class = "sm:grid sm:grid-cols-2 
+	<% let GridCols = movie_list.length >= 3 ? 3 : movie_list.length %>
+	md:grid-cols-<%= GridCols %>">
+	<% movie_list.forEach(movie => { %> 
 		<div 
 		id="MoviePanel"
 		class ="rounded-lg w-11/12 mx-auto my-[25px] p-10 text-white
@@ -18,20 +22,20 @@
 			</a>
 			<p class = "font-bold text-2xl"><%= movie.title %></p>
 			<p><%= movie.year %></p>
-		<% if (!Array.isArray(movie.director)) {%>
-			<p>Directed by <%= director_list.find(val => val._id.toString() == movie.director.toString() ).name %></p>
-		<%} else { %>
-			<p>Directed by 
+
+			<% if(typeof movie.director != 'undefined') { %>
+				<p>Directed by 
 				<% movie.director.forEach((codirector, index) =>{ %> 
-					<%= director_list.find(val => val._id.toString() == codirector.toString() ).name %>
+					<%= codirector.name %>
 					<% if(index < movie.director.length - 2) { %> 
 						<span>, </span>
 					<% } else if (index == movie.director.length - 2) { %> 
 						<span> and </span>
 					<%} %> 
-				<%}) %> 
-			</p>
-		<%}%>
+				<%}) %>
+				</p>
+			<% } %>
+
 			<% if(movie.actors) {%>
 				<p>Starring <% movie.actors.forEach((actor, index) => { %>
 						<%= actor.name %>
@@ -57,5 +61,6 @@
 				</div>
 			<%} %>
 		</div>
-	</div>
+	<%})%>
+</div>
 <%}%>

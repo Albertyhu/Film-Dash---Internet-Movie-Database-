@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Film Dash</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel ="stylesheet" href='../stylesheets/style.css'> 
+  <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+</head>
+<body class = "bg-black h-auto">
+  <div 
+  id="container"
+  class = "w-full flex flex-col relative grow min-h-[120vh]">
+      <div 
+        id = "contentWrapper"
+        class = "pb-[5.5rem]">
+          <div class = "w-full mb-[100px]">
+            <%- include("partials/header") %>
+            <%- include("partials/MobileMenu") %>
+          </div>
+          <h1 class = "text-white text-center text-4xl mt-[100px]"><%= title %></h1>
+          <div class = "w-11/12 mx-auto sm:w-5/12 ">
+          <form
+            action="" 
+            method="POST"
+            class="[&>div>label]:text-white [&>div]:grid mt-[50px] [&>div>input]:rounded-lg 
+            [&>div]:w-full [&>div]:my-[10px] [&>div>input]:pl-3 [&>div>input]:bg-[rgba(0,0,0,0)] 
+            [&>div>input]:text-white [&>div>input]:border-white [&>div>input]:border-[1px]" 
+            >
+            <div>
+                <label for = "name">Name</label>
+                <input 
+                    name = "name" 
+                    id = "nameInput"
+                    type = "text"
+                    placeholder = "Name of director" 
+                    required = "true"
+                    class = ""
+                    value = "<%=  typeof director != 'undefined' ? director.name : null %>"
+                    />
+            </div>
+            <div>
+                <input 
+                    name = "name" 
+                    id = "nameInput"
+                    type = "text"
+                    placeholder = "Name of director" 
+                    required = "true"
+                    class = ""
+                    value = "<%=  typeof director != 'undefined' ? director.name : null %>"
+                    />
+                <%- include('partials/FormButtons')%>
+            </div>
+          </form>
+          </div>
+      </div>
+      <%- include('partials/footer') %>
+  </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</body>
+</html>

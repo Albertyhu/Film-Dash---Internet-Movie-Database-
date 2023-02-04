@@ -22,9 +22,9 @@ exports.DirectorList = (req, res, next) => {
             if (result != null) {
                 res.render("director_list", {
                     title: "Directors",
-                    director_list: result,GetDirectorList, 
+                    director_list: result.GetDirectorList, 
                     genre_list: result.GetGenreList, 
-                    logo: "../ images / FilmDashLogo.png",
+                    logo: "../images/FilmDashLogo.png",
                     burgerMenu: "../../icon/hamburger_menu_white.png",
                 });
             }
@@ -40,9 +40,13 @@ exports.DirectorDetail = (req, res, next) => {
         GetGenreList(callback) {
             Genre.find({}).exec(callback)
         },
-        //MovieList(callback) {
-        //    Movie.find({ director: {$in: req.params.id} }).exec(callback)
-        //}
+        MovieList(callback) {
+            Movie.find({ director: { $in: req.params.id } })
+                .populate('director')
+                .populate('actors')
+                .populate('genres')
+                .exec(callback)
+        }
     },
         (err, result) => {
             if (err) {
@@ -52,11 +56,10 @@ exports.DirectorDetail = (req, res, next) => {
             if (result != null) {
                 res.render("director_detail", {
                     title: result.GetDirector.name,
-                    //title: "director",
                     director: result.GetDirector,
-                 //   movie_list: result.MovieList,
+                    movie_list: result.MovieList,
                     genre_list: result.GetGenreList,
-                    logo: "../images/FilmDashLogo.png",
+                    logoURL: "../../images/FilmDashLogo.png",
                     burgerMenu: "../../icon/hamburger_menu_white.png",
                     imdbLogo: "../../images/IMDB_logo.png",
                     updateURL: `/catalog/${category}/${req.params.id}/update`,
@@ -67,7 +70,29 @@ exports.DirectorDetail = (req, res, next) => {
     )
 }
 
-exports.DirectorCreate_Get = (req, res, next) => { 
+exports.DirectorCreate_Get = (req, res, next) => {
 
-
+    Genre.find({}).exec((err, result) => {
+        if (err) {
+            return next(err);
+        }
+        if (result != null) {
+            res.render("director_form", {
+                title: "Add a director to the database",
+                genre_list: result,
+                logoURL: "../../images/FilmDashLogo.png",
+                burgerMenu: "../../icon/hamburger_menu_white.png",
+                error:[],
+            });
+        }
+    })
 }
+
+exports.DirectorCreate_Post = [
+    body('name').trim().escape(),
+    (req, res, next) => {
+        console.log("name: ", req.body.name)
+        next()
+    }
+    
+]

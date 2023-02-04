@@ -33,7 +33,7 @@ router.get("/genres", GenreController.GenreList);
 
 router.get("/genre/create", GenreController.GenreCreate_Get);
 
-router.post("/genre/create/", GenreController.GenreCreate_Get);
+router.post("/genre/create", GenreController.GenreCreate_Get);
 
 //router.get('/genre/:id/delete', GenreController.Delete_Get);
 
@@ -44,13 +44,14 @@ router.post("/genre/create/", GenreController.GenreCreate_Get);
 //router.post('genre/:id/update', GenreController.Update_Post);
 
 //Director
+
+
+router.get('/directors', DirectorController.DirectorList)
+
+router.get('/director/create', DirectorController.DirectorCreate_Get);
+
+router.post('/director/create', DirectorController.DirectorCreate_Post);
 router.get('/director/:id', DirectorController.DirectorDetail)
-
-//router.get('/directors', DirectorController.DirectorList)
-
-//router.get('/director/create', DirectorController.DirectorCreate_Get);
-
-//router.post('/director/create/', DirectorController.DirectorCreate_Get)
 
 //router.get('/director/:id/delete', DirectorController.Delete_Get);
 
@@ -61,13 +62,15 @@ router.get('/director/:id', DirectorController.DirectorDetail)
 //router.post('director/:id/update', DirectorController.Update_Post);
 
 //Actor
-//router.get('/actor/:id', ActorController.ActorDetail)
+
 
 //router.get('/actors', ActorController.ActorList)
 
 //router.get('/actor/create', ActorController.ActorCreate_Get);
 
-//router.post('/actor/create/', ActorController.ActorCreate_Get)
+//router.post('/actor/create', ActorController.ActorCreate_Post); 
+
+//router.get('/actor/:id', ActorController.ActorDetail)
 
 //router.get('/actor/:id/delete', ActorController.Delete_Get);
 
@@ -78,13 +81,14 @@ router.get('/director/:id', DirectorController.DirectorDetail)
 //router.post('actor/:id/update', ActorController.Update_Post);
 
 //Movie Instances
-//router.get('/movieinstance/:id', MovieInstanceController.MovieInstanceDetail)
 
 //router.get('/movieinstances', MovieInstanceController.MovieInstanceList)
 
 //router.get('/movieinstance/create', MovieInstanceController.MovieInstanceCreate_Get);
 
-//router.post('/movieinstance/create/', MovieInstanceController.MovieInstanceCreate_Get)
+//router.post('/movieinstance/create', MovieInstanceController.MovieInstanceCreate_Post)
+
+//router.get('/movieinstance/:id', MovieInstanceController.MovieInstanceDetail)
 
 //router.get('/movieinstance/:id/delete', MovieInstanceController.Delete_Get);
 

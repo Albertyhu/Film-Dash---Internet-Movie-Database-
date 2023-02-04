@@ -27,12 +27,12 @@
             <img 
                 src = "<%= director.portrait  %>"
                 alt = "<%= director.name %> portrait"/>"
-                class="max-h-full max-w-full"
+                class="max-h-full max-w-full" />
           </div>
           <%}%>
-
-          <%- include('partials/CRUDButtons') %> 
-
+          <div class = "mx-auto w-11/12 sm:w-6/12 md:w-5/12 lg:w-4/12">
+            <%- include('partials/CRUDButtons') %> 
+          </div>
           <div
             id="DirectorDetailPanel"
             class = "w-11/12 mx-auto text-white sm:w-6/12"
@@ -104,6 +104,7 @@
 
               <!-- end of director details div -->
           </div>
+          <%- include('partials/displayMovies') %>
       </div>
       <%- include('partials/footer') %>
   </div>
