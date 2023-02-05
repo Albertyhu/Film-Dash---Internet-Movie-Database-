@@ -25,7 +25,7 @@ a {
 
 
 /*director form*/
-.KnownForTag {
+.Tag {
     border-radius: 10px;
     background-color: #dbdbdb; 
     color: #000;
@@ -39,7 +39,7 @@ a {
     justify-content: space-between;
 }
 
-    .KnownForTag > div {
+    .Tag > div {
         margin: auto;
         display: block;
     }

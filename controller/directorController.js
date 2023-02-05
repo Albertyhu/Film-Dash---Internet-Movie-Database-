@@ -1,4 +1,4 @@
-const { body, validationRequest } = require("express-validator");
+const { body, validationResult } = require("express-validator");
 const async = require("async");
 
 const Director = require("../model/Directors");
@@ -92,11 +92,90 @@ exports.DirectorCreate_Get = (req, res, next) => {
 }
 
 exports.DirectorCreate_Post = [
-    body('name').trim().escape(),
+    body('name')
+        .trim()
+        .isLength({ minLength: 1 })
+        .withMessage("The name of the director needs to be specified.")
+        .escape(),
+    body('birthdate')
+        .optional({ checkFalsy: true })
+        .isISO8601()
+        .toDate(),
+    body('birthplace')
+        .trim()
+        .escape(),
+    body('height')
+        .trim()
+        .escape(),
+    body('spouse')
+        .trim()
+        .escape(),
+    body('occupation')
+        .escape(), 
     body('known_for')
         .escape(),
+    body('degree')
+        .trim()
+        .escape(),
+    body('field')
+        .trim()
+        .escape(),
+    body('school')
+        .trim()
+        .escape(),
+    body('awards')
+        .escape(),
+    body('quotes')
+        .escape(),
+    body('imdb_page')
+        .trim()
+        .escape(),
+    body('portrait')
+        .trim()
+        .escape(),
     (req, res, next) => {
-        console.log("Related Work: ", req.body.known_for)
+        const error = validationResult = validationResult(req)
+        if (!error.isEmpty()) {
+            Genre.find({}).exec((err, result) => {
+                if (err) {
+                    return next(err);
+                }
+                if (result != null) {
+                    res.render("director_form", {
+                        title: "Add a director to the database",
+                        genre_list: result,
+                        logoURL: "../../images/FilmDashLogo.png",
+                        burgerMenu: "../../icon/hamburger_menu_white.png",
+                        error: error, 
+                    });
+                }
+            })
+        }
+        var obj = {
+            name: req.body.name,
+            birthdate: req.body.birthdate,
+            birthplace: req.body.birthplace,
+            height: req.body.height,
+            spouse: req.body.spouse,
+            occupation: req.body.occupation,
+            known_for: req.body.known_for,
+            education: {
+                degree: req.body.degree,
+                field: req.body.field,
+                school: req.body.school,
+            },
+            awards: req.body.awards,
+            quotes: req.body.quotes,
+            imdb_page: req.body.imdb,
+            portrait: req.body.portrait
+        }
+
+        const newDirector = new Director(obj)
+        newDirector.save((err, result) => {
+            if (err) {
+                return next(err)
+            }
+            res.redirect(result.url)
+        })
     }
-    
 ]
