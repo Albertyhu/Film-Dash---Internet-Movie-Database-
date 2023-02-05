@@ -27,7 +27,7 @@
             class="[&>div>label]:text-white [&>div]:grid mt-[50px] [&>div>input]:rounded-lg 
             [&>div]:w-full [&>div]:my-[10px] [&>div>input]:pl-3 [&>div>input]:bg-[rgba(0,0,0,0)] 
             [&>div>input]:text-white [&>div>input]:border-white [&>div>input]:border-[1px]" 
-            >
+            id = "form">
             <div>
                 <label for = "name">Name</label>
                 <input 
@@ -156,6 +156,60 @@
       <%- include('partials/footer') %>
   </div>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-  
+  <script>
+    const form = document.querySelector("form");
+
+    const NameInput = document.getElementById('nameInput)
+    const BirthPlaceInput = document.getElementById('birthplaceInput)
+    const HeightInput = document.getElementById('heightInput)
+    const SpouseInput = document.getElementById('spouseInput)
+    const DegreeInput = document.getElementById('degreeInput)
+    const FieldInput = document.getElementById('fieldInput)
+    const SchoolInput = document.getElementById('schoolInput)
+    const IMDBPageInput = document.getElementById('IMDBPageInput)
+    const portraitInput = document.getElementById('portraitInput)
+
+    const htmlEntities = {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#x27;",
+      };
+
+    form.addEventListener("submit", (event)=>{
+        event.preventDefault(); 
+        
+        let encodedName = encodeURIComponent(NameInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+        NameInput.value = encodedName; 
+
+        let encodedBirthPlace = encodeURIComponent(BirthPlaceInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+        BirthPlaceInput.value = encodedBirthPlace;
+
+        let encodedPortrait = encodeURIComponent(PortraitInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+        PortraitInput.value = encodedPortrait;
+
+        let encodedSpouse = encodeURIComponent(SpouseInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+        SpouseInput.value = encodedSpouse;
+        
+        let encodedDegree = encodeURIComponent(DegreeInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+        DegreeInput.value = encodedDegree;
+
+        let encodedField = encodeURIComponent(FieldInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+        FieldInput.value = encodedField;
+
+        let encodedSchool = encodeURIComponent(SchoolInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+        SchoolInput.value = encodedSchool;
+
+        let encodedIMDBPage = encodeURIComponent(IMDBPageInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+        IMDBPageInput.value = encodedIMDBPage;
+
+        let encodedHeight = encodeURIComponent(HeightInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+        HeightInput.value = encodedHeight;
+
+
+        form.submit(); 
+    });
+  </script>
 </body>
 </html>

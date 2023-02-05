@@ -4,6 +4,7 @@ const async = require("async");
 const Director = require("../model/Directors");
 const Movie = require("../model/Movies");
 const Genre = require("../model/Genres");
+const ParseText = require("../util/parseText");
 
 exports.DirectorList = (req, res, next) => {
     async.parallel(
@@ -152,30 +153,30 @@ exports.DirectorCreate_Post = [
             })
         }
         var obj = {
-            name: req.body.name,
+            name: ParseText(decodeURIComponent(req.body.name)),
             birthdate: req.body.birthdate,
-            birthplace: req.body.birthplace,
-            height: req.body.height,
-            spouse: req.body.spouse,
+            birthplace: ParseText(decodeURIComponent(req.body.birthplace)),
+            height: ParseText(decodeURIComponent(req.body.height)),
+            spouse: ParseText(decodeURIComponent(req.body.spouse)),
             occupation: req.body.occupation,
             known_for: req.body.known_for,
             education: {
-                degree: req.body.degree,
-                field: req.body.field,
-                school: req.body.school,
+                degree: ParseText(decodeURIComponent(req.body.degree)),
+                field: ParseText(decodeURIComponent(req.body.field)),
+                school: ParseText(decodeURIComponent(req.body.school)),
             },
             awards: req.body.awards,
             quotes: req.body.quotes,
-            imdb_page: req.body.imdb,
-            portrait: req.body.portrait
+            imdb_page: ParseText(decodeURIComponent(req.body.imdb)),
+            portrait: ParseText(decodeURIComponent(req.body.portrait))
         }
 
         const newDirector = new Director(obj)
-        newDirector.save((err, result) => {
+        newDirector.save((err) => {
             if (err) {
                 return next(err)
             }
-            res.redirect(result.url)
+            res.redirect(newDirector.url)
         })
     }
 ]
