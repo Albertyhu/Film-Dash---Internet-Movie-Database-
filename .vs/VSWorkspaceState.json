@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\controller",
-    "\\model",
     "\\public",
     "\\public\\stylesheets",
     "\\public\\video",
     "\\routes",
     "\\util",
     "\\views",
-    "\\views\\partials"
+    "\\views\\partials",
+    "\\views\\partials\\directorForm"
   ],
-  "SelectedNode": "\\public\\icon",
+  "SelectedNode": "\\app.js",
   "PreviewInSolutionExplorer": false
 }

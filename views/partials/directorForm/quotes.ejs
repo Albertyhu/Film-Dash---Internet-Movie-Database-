@@ -1,12 +1,12 @@
 <script>
     var QuotesArray = [];
         <% if( typeof director != 'undefined') { %>
-            var temp = '<%= director.quotes %>'
+            var temp = '<%= director.quotes.toString() %>'
             QuotesArray = temp.split(',');
         <%}%>
 </script>
 <div>
-    <label for="quotes">Quotes(s)</label>
+    <label for="quotes">Quotes (Commas will automatically treat a sentence into separate phrases)</label>
     <div class = "block whitespace-nowrap">
         <input 
             id = "QuotesHiddenInput"

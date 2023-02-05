@@ -1,7 +1,7 @@
 <script>
     var AwardsArray = [];
         <% if( typeof director != 'undefined') { %>
-            var temp = '<%= director.awards %>'
+            var temp = '<%= director.awards.toString() %>'
             AwardsArray = temp.split(',');
         <%}%>
 </script>
@@ -44,6 +44,8 @@ var AwardsHiddenInput = document.getElementById('AwardsHiddenInput');
 if(AwardsArray.length > 0){
     AwardsAnswers = document.getElementById('AwardsAnswers');
     AwardsHiddenInput = document.getElementById('AwardsHiddenInput'); 
+	
+	//Unforutnately, AwardsArray will automatically be converted as a string and not an array
     AwardsHiddenInput.value = AwardsArray; 
     AwardsArray.forEach(val =>{
         const UserInput = val;
@@ -61,6 +63,7 @@ if(AwardsArray.length > 0){
         NewInput.appendChild(DeleteButton)
         AwardsAnswers.style.display = "table"
 
+        //This is allows users to delete item by clicking on it 
         NewInput.addEventListener('click', ()=>{
             var tempArr = AwardsArray; 
             tempArr = AwardsArray.filter(val => val !== UserInput)

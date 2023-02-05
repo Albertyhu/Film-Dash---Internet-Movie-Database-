@@ -60,13 +60,13 @@
                     />
             </div>
             <div>
-                <label for = "portrait">Height</label>
+                <label for = "height">Height</label>
                 <input 
-                    name = "portrait" 
-                    id = "portraitInput"
+                    name = "height" 
+                    id = "heightInput"
                     type = "text"
-                    placeholder = "Enter the director's portrait" 
-                    value = "<%=  typeof director != 'undefined' ? director.portrait : null %>"
+                    placeholder = "Enter the director's height" 
+                    value = "<%=  typeof director != 'undefined' ? director.height : null %>"
                     />
             </div>
             <div>
@@ -144,8 +144,8 @@
             <%- include('partials/FormButtons')%>
           </form>
           </div>
-          <% if(typeof error != 'undefined') {%> 
-              <div class = "my-[50px] text-white">
+          <% if(typeof error != 'undefined' && error.length > 0) {%> 
+              <div class = "my-[50px] text-white w-11/12 mx-auto sm:w-5/12">
                 <h2 class = "font-bold">Error: </h2>
                 <% error.forEach(val => { %> 
                     <p><%= val %></p>
@@ -178,37 +178,42 @@
       };
 
     form.addEventListener("submit", (event)=>{
-        event.preventDefault(); 
+        try{
+            event.preventDefault(); 
         
-        let encodedName = encodeURIComponent(NameInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
-        NameInput.value = encodedName; 
+            let encodedName = encodeURIComponent(NameInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+            NameInput.value = encodedName; 
 
-        let encodedBirthPlace = encodeURIComponent(BirthPlaceInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
-        BirthPlaceInput.value = encodedBirthPlace;
+            let encodedBirthPlace = encodeURIComponent(BirthPlaceInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+            BirthPlaceInput.value = encodedBirthPlace;
 
-        let encodedPortrait = encodeURIComponent(PortraitInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
-        PortraitInput.value = encodedPortrait;
+            let encodedPortrait = encodeURIComponent(portraitInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+            portraitInput.value = encodedPortrait;
 
-        let encodedSpouse = encodeURIComponent(SpouseInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
-        SpouseInput.value = encodedSpouse;
+            let encodedSpouse = encodeURIComponent(SpouseInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+            SpouseInput.value = encodedSpouse;
         
-        let encodedDegree = encodeURIComponent(DegreeInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
-        DegreeInput.value = encodedDegree;
+            let encodedDegree = encodeURIComponent(DegreeInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+            DegreeInput.value = encodedDegree;
 
-        let encodedField = encodeURIComponent(FieldInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
-        FieldInput.value = encodedField;
+            let encodedField = encodeURIComponent(FieldInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+            FieldInput.value = encodedField;
 
-        let encodedSchool = encodeURIComponent(SchoolInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
-        SchoolInput.value = encodedSchool;
+            let encodedSchool = encodeURIComponent(SchoolInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+            SchoolInput.value = encodedSchool;
 
-        let encodedIMDBPage = encodeURIComponent(IMDBPageInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
-        IMDBPageInput.value = encodedIMDBPage;
+            let encodedIMDBPage = encodeURIComponent(IMDBPageInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+            IMDBPageInput.value = encodedIMDBPage;
 
-        let encodedHeight = encodeURIComponent(HeightInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
-        HeightInput.value = encodedHeight;
+            let encodedHeight = encodeURIComponent(HeightInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+            HeightInput.value = encodedHeight;
 
 
-        form.submit(); 
+            form.submit(); 
+
+        } catch (error) { 
+            console.error(error)
+        }
     });
   </script>
 </body>

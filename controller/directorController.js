@@ -5,6 +5,7 @@ const Director = require("../model/Directors");
 const Movie = require("../model/Movies");
 const Genre = require("../model/Genres");
 const ParseText = require("../util/parseText");
+const directorObj = require('../data/dummyDirectorData')
 
 exports.DirectorList = (req, res, next) => {
     async.parallel(
@@ -71,14 +72,13 @@ exports.DirectorDetail = (req, res, next) => {
     )
 }
 
-const SampleArray = ["Sample1", "Sample2"];
-
 exports.DirectorCreate_Get = (req, res, next) => {
 
     Genre.find({}).exec((err, result) => {
         if (err) {
             return next(err);
         }
+
         if (result != null) {
             res.render("director_form", {
                 title: "Add a director to the database",
@@ -86,7 +86,7 @@ exports.DirectorCreate_Get = (req, res, next) => {
                 logoURL: "../../images/FilmDashLogo.png",
                 burgerMenu: "../../icon/hamburger_menu_white.png",
                 error: [],
-                DirectorWork: SampleArray.toString(), 
+                director: directorObj, 
             });
         }
     })
@@ -135,7 +135,7 @@ exports.DirectorCreate_Post = [
         .trim()
         .escape(),
     (req, res, next) => {
-        const error = validationResult = validationResult(req)
+        const error = validationResult(req)
         if (!error.isEmpty()) {
             Genre.find({}).exec((err, result) => {
                 if (err) {
@@ -158,15 +158,15 @@ exports.DirectorCreate_Post = [
             birthplace: ParseText(decodeURIComponent(req.body.birthplace)),
             height: ParseText(decodeURIComponent(req.body.height)),
             spouse: ParseText(decodeURIComponent(req.body.spouse)),
-            occupation: req.body.occupation,
-            known_for: req.body.known_for,
+            occupation: req.body.occupation.split(","),
+            known_for: req.body.known_for.split(","),
             education: {
                 degree: ParseText(decodeURIComponent(req.body.degree)),
                 field: ParseText(decodeURIComponent(req.body.field)),
                 school: ParseText(decodeURIComponent(req.body.school)),
             },
-            awards: req.body.awards,
-            quotes: req.body.quotes,
+            awards: req.body.awards.split(","),
+            quotes: req.body.quotes.split(","),
             imdb_page: ParseText(decodeURIComponent(req.body.imdb)),
             portrait: ParseText(decodeURIComponent(req.body.portrait))
         }
@@ -176,7 +176,7 @@ exports.DirectorCreate_Post = [
             if (err) {
                 return next(err)
             }
-            res.redirect(newDirector.url)
+            res.redirect(`/${newDirector.url}`)
         })
     }
 ]
