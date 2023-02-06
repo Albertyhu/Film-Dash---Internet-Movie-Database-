@@ -40,12 +40,12 @@ router.get('/genre/:id/delete', GenreController.Delete_Get);
 
 router.post('/genre/:id/delete', GenreController.Delete_Post);
 
-//router.get('/genre/:id/update', GenreController.Update_Get);
+router.get('/genre/:id/update', GenreController.Update_Get);
 
-//router.post('/genre/:id/update', GenreController.Update_Post);
+router.post('/genre/:id/update', GenreController.Update_Post);
+
 
 //Director
-
 
 router.get('/directors', DirectorController.DirectorList)
 

@@ -69,7 +69,6 @@ exports.GenreCreate_Get = (req, res, next) => {
         res.render("genre_form", {
             title: `Add a new genre`,
             genre_list: result,
-            genre: sampleGenre,
             logoURL: "/images/FilmDashLogo.png",
             burgerMenu: "../../../icon/hamburger_menu_white.png",
             error: [],
@@ -143,7 +142,7 @@ exports.Update_Get = (req, res, next) => {
             }
             res.render("genre_form", {
                 title: `Update information about ${result.SelectedGenre.name}`,
-                SelectedGenre: result.SelectedGenre, 
+                genre: result.SelectedGenre, 
                 genre_list: result.GenreList,
                 logoURL: "/images/FilmDashLogo.png",
                 burgerMenu: "../../../icon/hamburger_menu_white.png",
@@ -151,6 +150,56 @@ exports.Update_Get = (req, res, next) => {
         }
     )
 };
+
+exports.Update_Post = [
+    body('name')
+        .trim()
+        .isLength({ min: 1 })
+        .withMessage("The name of the genre cannot be empty")
+        .escape(),
+    body('image')
+        .trim()
+        .isLength({ min: 1 })
+        .withMessage("You have to have an image for this genre")
+        .escape(),
+    (req, res, next) => {
+        const error = validationResult(req);
+        if (!error.isEmpty()) {
+            async.parallel(
+                {
+                    GenreList(callback) {
+                        Genres.find({}).exec(callback)
+                    },
+                },
+                (err, result) => {
+                    if (err) {
+                        return next(err)
+                    }
+                    res.render("genre_form", {
+                        title: `Add a new genre`,
+                        genre_list: result.GenreList,
+                        logoURL: "/images/FilmDashLogo.png",
+                        burgerMenu: "../../../icon/hamburger_menu_white.png",
+                        error: error
+                    })
+                }
+            )
+            return;
+        }
+        var obj = {
+            name: ParseText(decodeURIComponent(req.body.name)),
+            image: ParseText(decodeURIComponent(req.body.image)),
+            _id: req.params.id, 
+        }
+        var updateGenre = new Genres(obj)
+        Genres.findByIdAndUpdate(req.params.id, updateGenre, {}, (err, result) => {
+            if (err) {
+                return next(err)
+            }
+            res.redirect(`../../../${result.url}`)
+        })
+    }
+];
 
 exports.Delete_Get = (req, res, next) => {
     async.parallel(
