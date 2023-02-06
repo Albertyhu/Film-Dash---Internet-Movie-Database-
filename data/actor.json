@@ -279,6 +279,201 @@
       "height": "5'9",
       "occupation": "Actress, singer, and entrepreneur",
       "biography": "Gwyneth Paltrow is an American actress, singer, and entrepreneur. She is best known for her roles in films such as Shakespeare in Love, which won her an Academy Award for Best Actress, Iron Man and The Royal Tenenbaums. She has been nominated for several awards throughout her career. She is also known for her lifestyle brand, Goop, which she founded in 2008."
+    },
+    {
+      "name": "Tom Cruise",
+      "birthdate": "1962-07-03",
+      "birthplace": "Syracuse, New York, USA",
+      "height": "5' 7\"",
+      "occupation": [ "Actor", "Producer" ],
+      "biography": "Tom Cruise is an American actor and producer who has starred in some of the most successful films of all time. He is best known for his roles in the Mission: Impossible film series and Jerry Maguire, and has received numerous awards and nominations for his work."
+    },
+    {
+      "name": "Leonardo DiCaprio",
+      "birthdate": "1974-11-11",
+      "birthplace": "Los Angeles, California, USA",
+      "height": "6' 0\"",
+      "occupation": [ "Actor", "Producer" ],
+      "biography": "Leonardo DiCaprio is an American actor and producer who has won numerous awards for his performances on film. He is best known for his roles in Titanic, The Departed, and Inception, and has been nominated for several Academy Awards."
+    },
+    {
+      "name": "Matt Damon",
+      "birthdate": "1970-10-08",
+      "birthplace": "Cambridge, Massachusetts, USA",
+      "height": "5' 10\"",
+      "occupation": [ "Actor", "Screenwriter" ],
+      "biography": "Matt Damon is an American actor and screenwriter who has won critical acclaim for his performances on film. He is best known for his roles in Good Will Hunting, The Bourne Identity film series, and The Martian, and has received several awards and nominations for his work."
+    },
+    {
+      "name": "Jodie Foster",
+      "birthdate": "1962-11-19",
+      "birthplace": "Los Angeles, California, USA",
+      "height": "5' 3\"",
+      "occupation": [ "Actor", "Director" ],
+      "biography": "Jodie Foster is an American actress and director who has won numerous awards for her work in film. She is best known for her roles in The Silence of the Lambs, Taxi Driver, and Little Man Tate, and has been nominated for several Academy Awards."
+    },
+    {
+      "name": "Gary Oldman",
+      "birthdate": "March 21, 1958",
+      "birthplace": "New Cross, London, England, UK",
+      "height": "5' 8\" (1.73 m)",
+      "occupation": [ "Actor", "Producer" ],
+      "biography": "Gary Oldman is an English actor and producer who is known for his chameleonic ability to disappear into a wide range of characters, from Sid Vicious to Winston Churchill."
+    },
+    {
+      "name": "Michael Clarke Duncan",
+      "birthdate": "1957-12-10",
+      "birthplace": "Chicago, Illinois, USA",
+      "height": "6' 5",
+      "occupation": [
+        "Actor"
+      ],
+      "biography": "Michael Clarke Duncan was an American actor, best known for his role as John Coffey in The Green Mile (1999), for which he was nominated for the Academy Award for Best Supporting Actor. He also appeared in several other films, including Armageddon (1998), The Whole Nine Yards (2000), and Daredevil (2003). Duncan was known for his deep, distinctive voice and towering stature, and was considered one of the most powerful presences on screen."
+    },
+    {
+      "name": "Hugh Jackman",
+      "birthdate": "1968-10-12",
+      "birthplace": "Sydney, New South Wales, Australia",
+      "height": "6' 2",
+      "occupation": [
+        "Actor",
+        "Producer",
+        "Musician"
+      ],
+      "biography": "Hugh Jackman is an Australian actor, singer, and producer. He is best known for his role as Wolverine in the X-Men film series (2000-2018), for which he received widespread recognition and critical acclaim. Jackman has also appeared in several other successful films, including Kate & Leopold (2001), Van Helsing (2004), and The Prestige (2006). In addition to his acting career, Jackman is a talented performer and has won Tony Awards for his roles in The Boy from Oz (2003) and Broadway's The River (2014)."
+    },
+    {
+      "name": "Emma Stone",
+      "birthdate": "1988-11-06",
+      "birthplace": "Scottsdale, Arizona, USA",
+      "height": "5'6",
+      "occupation": [ "Actress" ],
+      "biography": "Emma Stone is an American actress known for her versatility and charming performances in a variety of film genres. She rose to fame in the early 2010s with her roles in comedies like 'Easy A' and musicals like 'La La Land.' Over the years, she has established herself as one of the most talented and sought-after actresses in Hollywood."
+    },
+    {
+      "name": "Andrew Garfield",
+      "birthdate": "1983-08-20",
+      "birthplace": "Los Angeles, California, USA",
+      "height": "6'2",
+      "occupation": [ "Actor" ],
+      "biography": "Andrew Garfield is an American-British actor who has made a name for himself in both Hollywood and the UK. He first gained recognition for his role in the film 'The Social Network' and went on to star in the Spider-Man franchise. He is known for his intense and nuanced performances, and has received critical acclaim for his work."
+    },
+    {
+      "name": "Tilda Swinton",
+      "birthdate": "1960-11-05",
+      "birthplace": "London, England",
+      "height": "5'11",
+      "occupation": [ "Actress" ],
+      "biography": "Tilda Swinton is a Scottish actress who has made a name for herself in the independent film world. She is known for her quirky and eclectic roles in films like 'The Chronicles of Narnia' and 'Doctor Strange.' She has received numerous awards and accolades for her work, and is widely regarded as one of the most talented and innovative actresses working today."
+    },
+    {
+      "name": "Emily Blunt",
+      "birthdate": "1983-02-23",
+      "birthplace": "London, England",
+      "height": "5' 7\"",
+      "occupation": [ "Actress" ],
+      "biography": "Emily Olivia Leah Blunt is an English actress. She is the recipient of several awards, including a Golden Globe Award, and has been nominated for two British Academy Film Awards."
+    },
+    {
+      "name": "Saoirse Ronan",
+      "birthdate": "1994-04-12",
+      "birthplace": "The Bronx, New York City, New York, USA",
+      "height": "5' 7\"",
+      "occupation": [ "Actress" ],
+      "biography": "Saoirse Una Ronan is an Irish and American actress. She received a nomination for the Academy Award for Best Actress for her role in the 2007 film Atonement, and has since received two other Academy Award nominations."
+    },
+    {
+      "name": "Ewan McGregor",
+      "birthdate": "1971-03-31",
+      "birthplace": "Perth, Scotland",
+      "height": "5' 9½\"",
+      "occupation": [ "Actor", "Director", "Producer" ],
+      "biography": "Ewan McGregor is a Scottish actor and director known for his roles in films such as 'Trainspotting', 'Moulin Rouge!', and the 'Star Wars' prequel trilogy. He has received numerous award nominations and has won several awards, including a Golden Globe for his performance in 'Fargo' television series. McGregor has also lent his voice to various animated films, including the lead character in the English version of 'Valiant'. Throughout his career, McGregor has been known for his versatility, adapting easily to different genres and styles."
+    },
+    {
+      "name": "Uma Thurman",
+      "birthdate": "1970-04-29",
+      "birthplace": "Boston, Massachusetts",
+      "height": "5' 11½\"",
+      "occupation": [ "Actor", "Model" ],
+      "biography": "Uma Thurman is an American actress and model who is best known for her role as the 'Bride' in the 'Kill Bill' films. She has received critical acclaim for her work in films such as 'Pulp Fiction', 'Gattaca', and 'Les Misérables'. Thurman has received several award nominations, including a BAFTA nomination for her role in 'Dangerous Liaisons' and a Golden Globe nomination for her performance in 'Hysterical Blindness'. Thurman has also been recognized for her contributions to the film industry, receiving a star on the Hollywood Walk of Fame."
+    },
+    {
+      "name": "Cate Blanchett",
+      "birthdate": "1969-05-14",
+      "birthplace": "Melbourne, Victoria, Australia",
+      "height": "5' 8\"",
+      "occupation": [ "Actor" ],
+      "biography": "Cate Blanchett is an Australian actress known for her versatile acting skills and her ability to bring depth and nuance to her roles. She has received numerous accolades, including two Academy Awards, three Screen Actors Guild Awards, and three Golden Globe Awards. Blanchett has also been recognized for her work in the theater, receiving several awards for her performances on stage. Some of her notable film roles include 'Elizabeth', 'The Lord of the Rings' trilogy, 'The Curious Case of Benjamin Button', and 'Thor: Ragnarok'. Throughout her career, Blanchett has been known for her elegance and poise, both on and off screen."
+    },
+    {
+      "name": "Natalie Portman",
+      "birthdate": "1981-06-09",
+      "birthplace": "Jerusalem, Israel",
+      "height": "5' 3\"",
+      "occupation": [
+        "Actor",
+        "Film Producer"
+      ],
+      "biography": "Natalie Portman is an Academy Award-winning actress, film producer, and director. Born in Jerusalem, she moved to the United States when she was three years old. Portman is best known for her role as Padmé Amidala in the Star Wars prequel trilogy, for which she received critical acclaim. She has also appeared in several independent films, including The Professional, Garden State, and Closer. In 2010, Portman won the Academy Award for Best Actress for her performance in Black Swan."
+    },
+    {
+      "name": "Meryl Streep",
+      "birthdate": "1949-06-22",
+      "birthplace": "Summit, New Jersey, USA",
+      "height": "5' 6\"",
+      "occupation": [
+        "Actor"
+      ],
+      "biography": "Meryl Streep is a multi-award-winning actress, widely regarded as one of the greatest actresses of all time. She has been nominated for the Academy Award 21 times, and has won three times, for her performances in Kramer vs. Kramer, Sophie's Choice, and The Iron Lady. Streep has also won several Golden Globe Awards, and has been awarded several honorary degrees. She has appeared in many films, including The Devil Wears Prada, Doubt, and Julie & Julia, and is considered one of the greatest interpreters of the works of William Shakespeare."
+    },
+    {
+      "name": "Kate Winslet",
+      "birthdate": "1975-10-05",
+      "birthplace": "Reading, Berkshire, England",
+      "height": "5' 6½\" (1.69 m)",
+      "occupation": [ "Actress", "Singer" ],
+      "biography": "Kate Elizabeth Winslet is an English actress. She has received numerous awards and nominations, including three Academy Award nominations, and has won three BAFTA Awards, a Grammy Award, and a Primetime Emmy Award. She is best known for her roles in the films Sense and Sensibility, Titanic, and The Reader."
+    },
+    {
+      "name": "Viola Davis",
+      "birthdate": "1965-08-11",
+      "birthplace": "St. Matthews, South Carolina, USA",
+      "height": "",
+      "occupation": [ "Actress" ],
+      "biography": ""
+    },
+    {
+      "name": "Jennifer Lawrence",
+      "birthdate": "1990-08-15",
+      "birthplace": "Louisville, Kentucky, USA",
+      "height": "5' 8\" (1.73 m)",
+      "occupation": [ "Actress" ],
+      "biography": ""
+    },
+    {
+      "name": "Robert Downey Jr.",
+      "birthdate": "1965-04-04",
+      "birthplace": "New York City, New York, USA",
+      "height": "5' 8\" (1.73 m)",
+      "occupation": [ "Actor" ],
+      "biography": "Robert Downey Jr. is an American actor and producer who made his film debut in the movie 'Pound' in 1970. He is best known for his role as Tony Stark / Iron Man in the Marvel Cinematic Universe, a role he reprised in several movies including 'The Avengers' and 'Iron Man.' Downey Jr. received critical acclaim for his performance in the film 'Chaplin' and was nominated for an Academy Award for Best Actor. He has won several awards for his roles in 'Tropic Thunder,' 'The Judge,' and 'Iron Man 3.' Downey Jr. is considered one of the highest-grossing actors of all time and continues to be one of Hollywood's most sought-after leading men."
+    },
+    {
+      "name": "Emma Watson",
+      "birthdate": "1990-04-15",
+      "birthplace": "Paris, France",
+      "height": "5' 5\"",
+      "occupation": [ "Actress", "Model", "Activist" ],
+      "biography": "Emma Watson is a British actress best known for her role as Hermione Granger in the Harry Potter film series. She was born on April 15, 1990 in Paris, France. Watson has also starred in several other films, including Beauty and the Beast, The Perks of Being a Wallflower, and Little Women. In addition to her acting career, Watson is also an activist, advocating for women's rights and equality. She is 5' 5\", tall.\""
+    },
+    {
+      "name": "Jeremy Irons",
+      "birthdate": "1948-09-19",
+      "birthplace": "Cowes, Isle of Wight, England",
+      "height": "6' 1\"",
+      "occupation": [ "Actor", "Voice Artist" ],
+      "biography": "Jeremy Irons is a British actor best known for his roles in the films Reversal of Fortune, The Lion King, and Die Hard with a Vengeance. He was born on September 19, 1948 in Cowes, Isle of Wight, England. Irons has also appeared in numerous stage productions and has done voice work for animated films. He is 6' 1\",tall."
     }
   ]
 }

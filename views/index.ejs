@@ -67,7 +67,7 @@
 						<%}) %> 
 					</p>
 				<%}%>
-					<% if(movie.actors) {%>
+					<% if(typeof movie.actors != 'undefined' && movie.actors.length > 0) {%>
 						<p>Starring <% movie.actors.forEach((actor, index) => { %>
 								<%= actor.name %>
 								<% if(index < movie.actors.length - 2){ %>

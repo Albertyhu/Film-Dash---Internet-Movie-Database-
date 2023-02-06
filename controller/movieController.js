@@ -441,8 +441,8 @@ exports.Update_Post = [
         _id: req.params.id,
       };
       const updatedMovie = new Movie(obj);
-      console.log(updatedMovie.url);
-      Movie.findByIdAndUpdate(
+
+        Movie.findByIdAndUpdate(
         req.params.id,
         updatedMovie,
         {},

@@ -218,7 +218,7 @@
         "The story is everything."
       ],
       "imdb_page": "https://www.imdb.com/name/nm0905152/",
-      "portait":"https://resizing.flixster.com/jD5gzy9pc5cWh4CkpL-mqUIwsso=/fit-in/1152x864/v2/https://flxt.tmsimg.com/assets/150673_v9_ba.jpg"
+      "portait": "https://resizing.flixster.com/jD5gzy9pc5cWh4CkpL-mqUIwsso=/fit-in/1152x864/v2/https://flxt.tmsimg.com/assets/150673_v9_ba.jpg"
     },
     {
       "name": "Andy Wachowski",
@@ -319,6 +319,240 @@
       ],
       "imdb_page": "https://www.imdb.com/name/nm0000041/",
       "portrait": "https://m.media-amazon.com/images/S/pv-target-images/caab62963048fad57082c4227dee100de3ca354c1366f89b580a2ef2f0223c53.jpg"
+    },
+    {
+      "name": "Brad Bird",
+      "birthdate": "1957-09-24",
+      "birthplace": "Kalamazoo, Michigan, USA",
+      "height": "5' 8\"",
+      "spouse": "Elizabeth Canney",
+      "occupation": [ "animator", "film director", "screenwriter", "producer" ],
+      "known_for": [ "The Incredibles", "Ratatouille" ],
+      "education": {
+        "degree": "",
+        "field": "",
+        "school": ""
+      },
+      "awards": [],
+      "quotes": [],
+      "imdb_page": "https://www.imdb.com/name/nm0083348/",
+      "portrait": "https://image.tmdb.org/t/p/original/ZX1hAfWK1zslpB6ifwgDP2uBqn.jpg"
+    },
+    {
+      "name": "Gore Verbinski",
+      "birthdate": "1964-03-16",
+      "birthplace": "Oak Ridge, Tennessee, USA",
+      "height": "6′ 1\"",
+      "spouse": null,
+      "occupation": [ "Director", "Writer", "Producer" ],
+      "known_for": [ "Rango", "The Pirates of the Caribbean: The Curse of the Black Pearl" ],
+      "education": {
+        "degree": null,
+        "field": null,
+        "school": null
+      },
+      "awards": [],
+      "quotes": [ "I like horror movies and in fact I like them even more now after making one. I just think they're much more liberating because you don't really have to apply a very strict logic. You can experiment a lot more with sound and image. -- on making a horror film" ],
+      "imdb_page": "https://www.imdb.com/name/nm0893659/?ref_=fn_al_nm_1",
+      "portrait": "https://ca-times.brightspotcdn.com/dims4/default/b744973/2147483647/strip/false/crop/2048x1152+0+0/resize/1486x836!/quality/80/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fac%2F83%2Fb5d62edbab04ab89960ac2d7e4c2%2Fla-1487226948-qjfkgxeaph-snap-photo"
+    },
+    {
+      "name": "Pete Doctor",
+      "birthdate": "1964-03-16",
+      "birthplace": "Oak Ridge, Tennessee, USA",
+      "height": "6′ 1\"",
+      "spouse": null,
+      "occupation": [ "Director", "Writer", "Producer" ],
+      "known_for": [],
+      "education": {
+        "degree": null,
+        "field": null,
+        "school": null
+      },
+      "awards": [],
+      "quotes": [],
+      "imdb_page": "https://www.imdb.com/name/nm0230032/",
+      "portrait": "https://image.tmdb.org/t/p/original/xz46mHzo8apkVMxmrkMQvqakOL0.jpg"
+    },
+    {
+      "name": "Bob Peterson",
+      "birthdate": "1961-01-09",
+      "birthplace": "Wooster, Ohio, USA",
+      "height": "6′ 2\"",
+      "spouse": null,
+      "occupation": [ "Director", "Writer", "Producer" ],
+      "known_for": [ "Up", "Monsters Inc", "Finding Nemo" ],
+      "education": {
+        "degree": null,
+        "field": null,
+        "school": null
+      },
+      "awards": [],
+      "quotes": [],
+      "imdb_page": "https://www.imdb.com/name/nm0677037/?ref_=tt_ov_dr",
+      "portrait": "https://image.tmdb.org/t/p/original/dJe3nTCIToebjj1WHFHP7LmZKyk.jpg"
+    },
+    {
+      "name": "Mark Osbourne",
+      "birthdate": "1970-09-17",
+      "birthplace": "Trenton, New Jersey, USA",
+      "height": "6′ 2\"",
+      "spouse": null,
+      "occupation": [ "Director", "Writer", "Producer" ],
+      "known_for": [ "Kung Fu Panda" ],
+      "education": {
+        "degree": null,
+        "field": null,
+        "school": null
+      },
+      "awards": [],
+      "quotes": [],
+      "imdb_page": "https://www.imdb.com/name/nm0651706/?ref_=fn_al_nm_1",
+      "portrait": "https://image.tmdb.org/t/p/original/6mIJet9Jhpwd2PuVlBzG4VqItAj.jpg"
+    },
+    {
+      "name": "John Stevenson",
+      "birthdate": "1970-09-17",
+      "birthplace": "Trenton, New Jersey, USA",
+      "height": "6′ 2\"",
+      "spouse": null,
+      "occupation": [ "Director", "Writer", "Producer" ],
+      "known_for": [ "Kung Fu Panda" ],
+      "education": {
+        "degree": null,
+        "field": null,
+        "school": null
+      },
+      "awards": [],
+      "quotes": [],
+      "imdb_page": "https://www.imdb.com/name/nm0828970/?ref_=fn_al_nm_1",
+      "portrait": "https://www.koimoi.com/wp-content/new-galleries/2019/12/kung-fu-panda-director-john-stevenson-is-open-to-working-in-india001.jpg"
+    },
+    {
+      "name": "Jonathan Nolan",
+      "birthdate": "1976-06-06",
+      "birthplace": "London, England, UK",
+      "height": "6′ 2\"",
+      "spouse": null,
+      "occupation": [ "Director", "Writer", "Producer" ],
+      "known_for": [ "The Dark Knight" ],
+      "education": {
+        "degree": null,
+        "field": null,
+        "school": null
+      },
+      "awards": [],
+      "quotes": [],
+      "imdb_page": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Jonathan_Nolan_%2848452507037%29_%28cropped%29.jpg/1200px-Jonathan_Nolan_%2848452507037%29_%28cropped%29.jpg",
+      "portrait": "https://www.koimoi.com/wp-content/new-galleries/2019/12/kung-fu-panda-director-john-stevenson-is-open-to-working-in-india001.jpg"
+    },
+    {
+      "name": "Christopher McQuarrie",
+      "birthdate": "1976-06-06",
+      "birthplace": "London, England, UK",
+      "height": "6′ 2\"",
+      "spouse": null,
+      "occupation": [ "Director", "Writer", "Producer" ],
+      "known_for": [ "The Dark Knight" ],
+      "education": {
+        "degree": null,
+        "field": null,
+        "school": null
+      },
+      "awards": [],
+      "quotes": [],
+      "imdb_page": "https://www.imdb.com/name/nm0003160/?ref_=fn_al_nm_1",
+      "portrait": "https://m.media-amazon.com/images/M/MV5BMzQyMzg1NjUxN15BMl5BanBnXkFtZTgwNDAyMjAwMDE@._V1_.jpg"
+    },
+    {
+      "name": "Gus Van Sant",
+      "birthdate": "1976-06-06",
+      "birthplace": "London, England, UK",
+      "height": "6′ 2\"",
+      "spouse": null,
+      "occupation": [ "Director", "Writer", "Producer" ],
+      "known_for": [ "The Dark Knight" ],
+      "education": {
+        "degree": null,
+        "field": null,
+        "school": null
+      },
+      "awards": [],
+      "quotes": [],
+      "imdb_page": "https://www.imdb.com/name/nm0001814/?ref_=fn_al_nm_1",
+      "portrait": "https://www.oregonlive.com/resizer/C6UC3UfQIw8kwdiWNPrTQTF3u4o=/1280x0/smart/advancelocal-adapter-image-uploads.s3.amazonaws.com/image.oregonlive.com/home/olive-media/width2048/img/ent_impact_arts/photo/gusvansantjpg-21b0f5cb50e91821.jpg"
+    },
+    {
+      "name": "Jonathan Demme",
+      "birthdate": "1976-06-06",
+      "birthplace": "London, England, UK",
+      "height": "6′ 2\"",
+      "spouse": null,
+      "occupation": [ "Director", "Writer", "Producer" ],
+      "known_for": [ "The Dark Knight" ],
+      "education": {
+        "degree": null,
+        "field": null,
+        "school": null
+      },
+      "awards": [],
+      "quotes": [],
+      "imdb_page": "https://www.imdb.com/name/nm0001814/?ref_=fn_al_nm_1",
+      "portrait": "https://m.media-amazon.com/images/M/MV5BMTY1NzY0OTQ0OF5BMl5BanBnXkFtZTcwNDY1Njk5Mg@@._V1_.jpg"
+    },
+    {
+      "name": "Guillermo del Toro",
+      "birthdate": "1976-06-06",
+      "birthplace": "London, England, UK",
+      "height": "6′ 2\"",
+      "spouse": null,
+      "occupation": [ "Director", "Writer", "Producer" ],
+      "known_for": [ "The Dark Knight" ],
+      "education": {
+        "degree": null,
+        "field": null,
+        "school": null
+      },
+      "awards": [],
+      "quotes": [],
+      "imdb_page": "https://www.imdb.com/name/nm0868219/?ref_=fn_al_nm_1",
+      "portrait": "https://image.tmdb.org/t/p/original/gldeyCtKcaqnK1v4Vu9vqayhzUQ.jpg"
+    },
+    {
+      "name": "Luc Besson",
+      "birthdate": "1976-06-06",
+      "birthplace": "London, England, UK",
+      "height": "6′ 2\"",
+      "spouse": null,
+      "occupation": [ "Director", "Writer", "Producer" ],
+      "known_for": [ "The Dark Knight" ],
+      "education": {
+        "degree": null,
+        "field": null,
+        "school": null
+      },
+      "awards": [],
+      "quotes": [],
+      "imdb_page": "https://www.imdb.com/name/nm0868219/?ref_=fn_al_nm_1",
+      "portrait": "https://image.tmdb.org/t/p/original/dXJdczT1NcvcZtnoWVGT0NmG11v.jpg"
+    },
+    {
+      "name": "Doug Liman",
+      "birthdate": "1976-06-06",
+      "birthplace": "London, England, UK",
+      "height": "6′ 2\"",
+      "spouse": null,
+      "occupation": [ "Director", "Writer", "Producer" ],
+      "known_for": [ "The Dark Knight" ],
+      "education": {
+        "degree": null,
+        "field": null,
+        "school": null
+      },
+      "awards": [],
+      "quotes": [],
+      "imdb_page": "https://www.imdb.com/name/nm0510731/?ref_=fn_al_nm_1",
+      "portrait": "https://images.nymag.com/news/features/liman080121_560.jpg"
     }
   ]
 }

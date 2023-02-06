@@ -6,7 +6,46 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel ="stylesheet" href='../../stylesheets/style.css'> 
   <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+<style>
 
+.closed-menu {
+  transform: translateX(300px);
+  transition: transform 500ms linear;
+}
+
+.opened-menu {
+  transform: translateX(0px);
+  transition: transform 500ms linear;
+}
+
+
+/*director form*/
+.Tag {
+    border-radius: 10px;
+    background-color: #dbdbdb; 
+    color: #000;
+    padding: 0 10px; 
+    white-space: nowrap; 
+    margin:4px auto; 
+    min-width: fit-content;
+    display: flex;
+    grid-template-columns: 90% 10%;
+    cursor: pointer; 
+    justify-content: space-between;
+}
+
+    .Tag > div {
+        margin: auto;
+        display: block;
+    }
+
+.MiniDeleteButton {
+    width: 15px;
+    height: 15px; 
+    margin: auto 0;
+    display: block;
+}
+</style>
 </head>
 <body class = "bg-black h-auto">
   <div 
@@ -159,15 +198,15 @@
   <script>
     const form = document.querySelector("form");
 
-    const NameInput = document.getElementById('nameInput)
-    const BirthPlaceInput = document.getElementById('birthplaceInput)
-    const HeightInput = document.getElementById('heightInput)
-    const SpouseInput = document.getElementById('spouseInput)
-    const DegreeInput = document.getElementById('degreeInput)
-    const FieldInput = document.getElementById('fieldInput)
-    const SchoolInput = document.getElementById('schoolInput)
-    const IMDBPageInput = document.getElementById('IMDBPageInput)
-    const portraitInput = document.getElementById('portraitInput)
+    const NameInput = document.getElementById('nameInput')
+    const BirthPlaceInput = document.getElementById('birthplaceInput')
+    const HeightInput = document.getElementById('heightInput')
+    const SpouseInput = document.getElementById('spouseInput')
+    const DegreeInput = document.getElementById('degreeInput')
+    const FieldInput = document.getElementById('fieldInput')
+    const SchoolInput = document.getElementById('schoolInput')
+    const IMDBPageInput = document.getElementById('IMDBPageInput')
+    const portraitInput = document.getElementById('portraitInput')
 
     const htmlEntities = {
         "&": "&amp;",
@@ -175,6 +214,7 @@
         ">": "&gt;",
         '"': "&quot;",
         "'": "&#x27;",
+        "/": '&#x2F;',
       };
 
     form.addEventListener("submit", (event)=>{

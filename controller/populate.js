@@ -40,37 +40,33 @@ const PopulateMovie = (MovieArray) => {
       }
       MovieArray.movies.forEach((item) => {
         //get the id of the director
-        var directorObj;
-        if (!Array.isArray(item.director)) {
-          directorObj = results.GetDirectors.find(
-            (val) => val.name == item.director
-          )._id;
-        } else {
-          directorObj = [];
+        var directorObj = [];
           item.director.forEach((coDirector) => {
-            directorObj.push(
-              results.GetDirectors.find((val) => val.name == coDirector)._id
-            );
-          });
-        }
+              var DirectorVariable = results.GetDirectors.find((val) => val.name == coDirector);
+              if (DirectorVariable != null && DirectorVariable != 'undefined') {
+                  directorObj.push(DirectorVariable._id)
+                }
+        });
 
         const ActorIDArray = [];
         const GenreIDArray = [];
         try {
-          item.actors.forEach((actor) => {
-            ActorIDArray.push(
-              results.GetActors.find((val) => val.name == actor)._id
-            );
+            item.actors.forEach((actor) => {
+                var ActorVariable = results.GetActors.find((val) => val.name == actor);
+                if (ActorVariable != null && ActorVariable != "undefined") {
+                    ActorIDArray.push(ActorVariable._id);
+                }
           });
         } catch (e) {
           console.log("Error in pushing actors in to array: ", e.message);
         }
 
         try {
-          item.genres.forEach((genre) => {
-            GenreIDArray.push(
-              results.GetGenres.find((val) => val.name == genre)._id
-            );
+            item.genres.forEach((genre) => {
+                var GenreVariable = results.GetGenres.find((val) => val.name == genre);
+                if (GenreVariable != null && GenreVariable != "undefined") {
+                    GenreIDArray.push(GenreVariable._id);
+                }
           });
         } catch (e) {
           console.log("Error in pushing genres in to array: ", e.message);
@@ -275,7 +271,7 @@ exports.populateDatabase = (req, res) => {
     async.parallel(
         [
             //() => PopulateMovie(MovieData),
-            //PopulateActor,
+            //()=>PopulateActor(ActorData),
             //() => PopulateDirector(DirectorData),
             //PopulateGenre,
             //()=>GenerateMovieInstanceOfMany(60)

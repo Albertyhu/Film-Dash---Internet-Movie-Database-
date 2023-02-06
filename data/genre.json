@@ -1,28 +1,76 @@
 {
   "genres": [
-    { "name": "Crime" },
-    { "name": "Drama" },
     {
-      "name": "Action"
+      "name": "Crime",
+      "image": "https://support.musicgateway.com/wp-content/uploads/2021/04/Copy-of-800-x-500-Blog-Post-12-6.png"
+
     },
     {
-      "name": "Sci-Fi"
+      "name": "Drama",
+      "image": "https://media.glamour.com/photos/5ec2e910ccfbc8c1a8fe8cbb/master/w_2425,h_1623,c_limit/MSDGOWI_EC062.jpg"
     },
     {
-      "name": "Adventure"
+      "name": "Action",
+      "image": "https://static1.colliderimages.com/wordpress/wp-content/uploads/2022/11/action-movies-of-the-2010s.jpg"
     },
     {
-      "name": "Fantasy"
+      "name": "Sci-Fi",
+      "image": "https://c8.alamy.com/comp/A31WEW/the-matrix-poster-for-1999-warner-film-with-keanu-reeves-A31WEW.jpg"
     },
     {
-      "name": "Thriller"
+      "name": "Adventure",
+      "image": "https://m.media-amazon.com/images/I/81UOBSDQh0L.jpg"
     },
     {
-      "name": "Romance"
+      "name": "Fantasy",
+      "image": "https://m.media-amazon.com/images/I/71TZ8BmoZqL.jpg"
     },
     {
-      "name": "Western"
+      "name": "Thriller",
+      "image": "https://assets-prd.ignimgs.com/2022/06/17/best-thriller-thumbnail-1655499110276.jpg"
     },
-    { "name": "Mystery" }
+    {
+      "name": "Romance",
+      "image": "https://www.brides.com/thmb/VBUDEGSgR4CzSMRT0bk6ygvGO-k=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/The-Fault-in-Our-Stars-2014-673a1c4c94a14160a128372ae3302cf0.jpg"
+    },
+    {
+      "name": "Western",
+      "image": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/02/22/15/westerns-good-bad-ugly.jpeg?width=1200"
+    },
+    {
+      "name": "Mystery",
+      "image": "https://m.media-amazon.com/images/M/MV5BZDgyZmY5MmItY2I3Ny00NjA4LWFhNmItMGQ4ZGJhZDk5YjU3XkEyXkFqcGdeQXVyMTAzMDM4MjM0._V1_.jpg"
+    },
+    {
+      "name": "Comedy",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTU2MTIyNzAyMV5BMl5BanBnXkFtZTcwMDE3NDkxNA@@._V1_.jpg"
+
+    },
+    {
+      "name": "Horror",
+      "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/horror-movies-1597961000.jpg?crop=0.502xw:1.00xh;0.498xw,0&resize=640:*"
+    },
+    {
+      "name": "Foreign",
+      "image": "https://m.media-amazon.com/images/I/717c+6MsdDL._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+      "name": "Film Noir",
+      "image": "https://www.liveabout.com/thmb/29FSWnz8ySbqQeocQIi9JTadCRU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/maltesefalcon-5bca7250c9e77c00519ea186.jpg"
+    },
+    {
+      "name": "Documentary",
+      "image": "https://www.exodusrefugee.org/wp-content/uploads/2020/06/32675626-5125-42af-9a5d-d2f566009444.jpeg"
+    },
+    {
+      "name": "Animation",
+      "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/index-best-animated-movies-1529431410.jpg"
+
+    },
+    {
+      "name": "Musical",
+      "image": "https://d.newsweek.com/en/full/1063386/00.jpg?w=737&f=787a39f6886cdbbcf89dd2a6989918ef"
+
+    }
   ]
 }

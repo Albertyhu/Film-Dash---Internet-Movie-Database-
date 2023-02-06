@@ -4,27 +4,24 @@
   <meta charset="utf-8">
   <title>Film Dash</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel ="stylesheet" href='../stylesheets/style.css'> 
+  <link rel ="stylesheet" href='stylesheets/style.css'> 
   <link rel="icon" type="image/x-icon" href="/images/favicon.png">
 </head>
-<body class = "bg-black h-auto flex flex-col">
-  <div class = "w-full">
-    <%- include("partials/header") %>
-    <%- include("partials/MobileMenu") %>
+<body class = "bg-black h-auto">
+  <div 
+  id="container"
+  class = "w-full flex flex-col relative grow min-h-[120vh]">
+      <div 
+        id = "contentWrapper"
+        class = "pb-[5.5rem]">
+          <div class = "w-full mb-[100px]">
+            <%- include("partials/header") %>
+            <%- include("partials/MobileMenu") %>
+          </div>
+          <h1 class = "text-white text-center text-4xl"><%= title %></h1>
+      </div>
+      <%- include('partials/footer') %>
   </div>
-  <div class = "text-white  min-h-[100vh]">
-    <h2 class = "mt-[50px] "><%= title %></h2>
-    <% if(genre_list){ %> 
-        <ul>
-        <% genre_list.forEach(val =>{ %> 
-            <li><%= val.name %></li>
-        <%})%>    
-        </ul>
-    <%} else { %> 
-    
-    <%}%>
-  </div>
-  <%- include('partials/footer') %>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 </body>
-</html
+</html>

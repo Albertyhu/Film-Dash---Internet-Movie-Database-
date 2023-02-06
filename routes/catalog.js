@@ -41,7 +41,7 @@ router.post("/genre/create", GenreController.GenreCreate_Get);
 
 //router.get('/genre/:id/update', GenreController.Update_Get);
 
-//router.post('genre/:id/update', GenreController.Update_Post);
+//router.post('/genre/:id/update', GenreController.Update_Post);
 
 //Director
 
@@ -51,15 +51,16 @@ router.get('/directors', DirectorController.DirectorList)
 router.get('/director/create', DirectorController.DirectorCreate_Get);
 
 router.post('/director/create', DirectorController.DirectorCreate_Post);
+
 router.get('/director/:id', DirectorController.DirectorDetail)
 
-//router.get('/director/:id/delete', DirectorController.Delete_Get);
+router.get('/director/:id/delete', DirectorController.Delete_Get);
 
-//router.post('/director/:id/delete', DirectorController.Delete_Post);
+router.post('/director/:id/delete', DirectorController.Delete_Post);
 
-//router.get('/director/:id/update', DirectorController.Update_Get);
+router.get('/director/:id/update', DirectorController.Update_Get);
 
-//router.post('director/:id/update', DirectorController.Update_Post);
+router.post('/director/:id/update', DirectorController.Update_Post);
 
 //Actor
 
@@ -78,7 +79,7 @@ router.get('/director/:id', DirectorController.DirectorDetail)
 
 //router.get('/actor/:id/update', ActorController.Update_Get);
 
-//router.post('actor/:id/update', ActorController.Update_Post);
+//router.post('/actor/:id/update', ActorController.Update_Post);
 
 //Movie Instances
 
