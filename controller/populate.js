@@ -274,7 +274,7 @@ exports.populateDatabase = (req, res) => {
             //()=>PopulateActor(ActorData),
             //() => PopulateDirector(DirectorData),
             //PopulateGenre,
-            //()=>GenerateMovieInstanceOfMany(60)
+            //()=>GenerateMovieInstanceOfMany(80)
             //() => GenerateMovieInstanceOfOne("Ratatouille", 2)
             //() => DeleteMovieInstances("63dcd2a317ad34548f793c56"),
             //() => CreateRatatouille(),

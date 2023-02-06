@@ -27,17 +27,18 @@ router.get("/movie/:id/update", MovieController.Update_Get);
 router.post("/movie/:id/update", MovieController.Update_Post);
 
 //Genre
-router.get("/genre/:id", GenreController.GenreDetail);
 
 router.get("/genres", GenreController.GenreList);
 
 router.get("/genre/create", GenreController.GenreCreate_Get);
 
-router.post("/genre/create", GenreController.GenreCreate_Get);
+router.post("/genre/create", GenreController.GenreCreate_Post);
 
-//router.get('/genre/:id/delete', GenreController.Delete_Get);
+router.get("/genre/:id", GenreController.GenreDetail);
 
-//router.post('/genre/:id/delete', GenreController.Delete_Post);
+router.get('/genre/:id/delete', GenreController.Delete_Get);
+
+router.post('/genre/:id/delete', GenreController.Delete_Post);
 
 //router.get('/genre/:id/update', GenreController.Update_Get);
 

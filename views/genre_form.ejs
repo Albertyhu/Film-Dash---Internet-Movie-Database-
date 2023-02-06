@@ -4,45 +4,88 @@
   <meta charset="utf-8">
   <title>Film Dash</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel ="stylesheet" href='stylesheets/style.css'> 
+  <link rel ="stylesheet" href='../../stylesheets/style.css'> 
   <link rel="icon" type="image/x-icon" href="/images/favicon.png">
 </head>
-<body class = "bg-black h-auto flex flex-col">
-  <div class = "w-full">
-    <%- include("partials/header") %>
-    <%- include("partials/MobileMenu") %>
-  </div>
-  <h1 class = "text-white text-center text-4xl"><%= title %></h1>
-  <div class = "w-11/12 mx-auto sm:w-5/12 ">
-        <form 
-        action="" 
-        method="POST"
-        class="[&>div>label]:text-white [&>div]:grid mt-[50px] [&>div>input]:rounded-lg 
-        [&>div]:w-full [&>div]:my-[10px] [&>div>input]:pl-3"
-        >
-            <div>
-                <label for = "genre">Name</label>
-                    <input 
-                        name = "genre" 
-                        type = "text"
-                        placeholder = "Type name of genre here" 
-                        required = "true"
-                        class = "" 
-                        value = "<%=  typeof genre != 'undefined' ? genre.name : null %>"
-                        />
-                <div class = 'w-full my-[10px]'>
-                    <button 
-                    type = "submit"
-                    class = "rounded-full p-[10px] active:translate-x-[5px] active:translate-y-[5px] cursor-pointer
-                    border-white border-2 text-center w-[150px] select-none text-white mx-auto
-                    hover:bg-gray-800">Submit</button>
+<body class = "bg-black h-auto">
+  <div 
+  id="container"
+  class = "w-full flex flex-col relative grow min-h-[120vh]">
+      <div 
+        id = "contentWrapper"
+        class = "pb-[5.5rem]">
+          <div class = "w-full mb-[100px]">
+            <%- include("partials/header") %>
+            <%- include("partials/MobileMenu") %>
+          </div>
+          <h1 class = "text-white text-center text-4xl"><%= title %></h1>
+          <div class = "w-11/12 mx-auto sm:w-5/12 ">
+            <form 
+            id="form"
+            action="" 
+            method="POST"
+            class="[&>div>label]:text-white [&>div]:grid mt-[50px] [&>div>input]:rounded-lg 
+                        [&>div]:w-full [&>div]:my-[10px] [&>div>input]:pl-3 [&>div>input]:bg-[rgba(0,0,0,0)] 
+                        [&>div>input]:text-white [&>div>input]:border-white [&>div>input]:border-[1px]"
+            >
+                <div>
+                    <label for = "name">Name of Genre</label>
+                        <input 
+                            id = "NameInput"
+                            name = "name" 
+                            type = "text"
+                            placeholder = "Type name of genre here" 
+                            required = "true"
+                            class = "" 
+                            value = "<%=  typeof genre != 'undefined' ? genre.name : null %>"
+                            />
                 </div>
-            </div>
-        </form>
+                <div>
+                    <label for = "image">Image</label>
+                        <input 
+                            id = "ImageInput"
+                            name = "image" 
+                            type = "text"
+                            placeholder = "Enter the url of the image for the genre" 
+                            required = "true"
+                            class = "" 
+                            value = "<%=  typeof genre != 'undefined' ? genre.image : null %>"
+                            />
+                </div>
+                <%- include('partials/FormButtons')%>
+            </form>
+         </div>
+      </div>
+      <%- include('partials/footer') %>
   </div>
-  <%- include('partials/footer') %>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <script>
+      const form = document.querySelector("form"); 
+      const NameInput = document.getElementById('NameInput');
+      const ImageInput = document.getElementById('ImageInput'); 
+      const htmlEntities = {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#x27;",
+      };
+    form.addEventListener("submit", (event)=>{
+    try{
+        event.preventDefault(); 
+
+        let encodedName = encodeURIComponent(NameInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+        NameInput.value = encodedName; 
+
+        let encodedImage = encodeURIComponent(ImageInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+        ImageInput.value = encodedImage; 
+        
+        form.submit(); 
+        } catch(error){
+            console.error("There is an error in creating/updating the genre: ", error)
+        }
+    });
+
   </script>
 </body>
-</htmla
+</html>

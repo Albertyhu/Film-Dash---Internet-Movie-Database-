@@ -4,20 +4,28 @@
   <meta charset="utf-8">
   <title>Film Dash</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel ="stylesheet" href='stylesheets/style.css'> 
+  <link rel ="stylesheet" href='../stylesheets/style.css'> 
   <link rel="icon" type="image/x-icon" href="/images/favicon.png">
 </head>
-<body class = "bg-black h-auto flex flex-col">
-  <div class = "w-full">
-    <%- include("partials/header") %>
-    <%- include("partials/MobileMenu") %>
+<body class = "bg-black h-auto">
+  <div 
+  id="container"
+  class = "w-full flex flex-col relative grow min-h-[120vh]">
+      <div 
+        id = "contentWrapper"
+        class = "pb-[5.5rem] mb-[50px]">
+          <div class = "w-full mb-[100px]">
+            <%- include("partials/header") %>
+            <%- include("partials/MobileMenu") %>
+          </div>
+          <h1 class = "text-white text-center text-4xl"><%= title %></h1>
+          <div class = "mx-auto w-11/12 sm:w-6/12 md:w-5/12 lg:w-4/12">
+            <%- include('partials/CRUDButtons') %> 
+          </div>
+          <%- include('partials/displayMovies') %>
+      </div>
+      <%- include('partials/footer') %>
   </div>
-  <h1 class = "text-white text-center text-4xl"><%= title %></h1>
-  <%- include('partials/CRUDButtons') %>
-  <%- include('partials/displayMovies') %>
-  <%- include('partials/footer') %>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-  <script>
-  </script>
 </body>
-</htmla
+</html>

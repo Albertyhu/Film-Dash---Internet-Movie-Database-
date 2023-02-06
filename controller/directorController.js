@@ -151,6 +151,7 @@ exports.DirectorCreate_Post = [
                     });
                 }
             })
+            return;
         }
         var obj = {
             name: ParseText(decodeURIComponent(req.body.name)),
@@ -278,6 +279,7 @@ exports.Update_Post = [
                     })
                 }
             )
+            return; 
         }
         var obj = {
             name: ParseText(decodeURIComponent(req.body.name)),
