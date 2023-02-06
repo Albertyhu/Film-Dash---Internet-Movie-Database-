@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Film Dash</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel ="stylesheet" href='stylesheets/style.css'> 
+  <link rel ="stylesheet" href='../../stylesheets/style.css'> 
   <link rel="icon" type="image/x-icon" href="/images/favicon.png">
 </head>
 <body class = "bg-black h-auto">
@@ -25,7 +25,7 @@
             class = "h-[300px] w-[200px] mx-auto rounded-lg overflow-hidden my-5"
           >
             <img 
-                src = "<%= director.portrait  %>"
+                src = "<%= director.portrait != 'undefined' && director.portrait != null ? director.portrait : avatarPic %>"
                 alt = "<%= director.name %> portrait"/>"
                 class="max-h-full max-w-full" />
           </div>

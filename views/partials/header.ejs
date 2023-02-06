@@ -96,7 +96,23 @@
 					</span>
 				</div>
 			</div>
-			<div class = "hover:underline hover:font-bold">Actors</div>
+			<div 
+				id="ActorLink"
+				class ="relative"
+				>
+				<span 
+					class = "hover:underline hover:font-bold">
+					<a href ="/catalog/actors">Actors</a>
+					<div
+						id="ActorMenu"
+						class = "absolute z-50 text-center bg-white [&>*]:text-black [&>*]:min-w-[100px]
+						[&>*]:my-5 whitespace-nowrap hidden">
+						<span class ="hover:bg-gray-300 p-1">
+							<a href ="/catalog/actor/create">Add Actor</a>
+						</span>
+					</div>
+				</span>
+			</div>
 			<div class = "hover:underline hover:font-bold"><a href = "/catalog/movie/create">Add Movie</a></div>
 			<div class = "hover:underline hover:font-bold">Contact</div>
 		</div>
@@ -137,5 +153,23 @@
 
 	DirectorLink.addEventListener('mouseover', OpenDirectorMenu)
 	DirectorLink.addEventListener('mouseout', CloseDirectorMenu)
+
+	var ActorMenu = document.getElementById('ActorMenu');
+	var ActorLink = document.getElementById("ActorLink");
+
+	const OpenActorMenu = () =>{
+	ActorMenu = document.getElementById('ActorMenu');
+	ActorMenu.classList.remove('hidden')
+	ActorMenu.classList.add('block');
+	}
+
+	const CloseActorMenu = evt =>{
+	ActorMenu = document.getElementById('ActorMenu');
+	ActorMenu.classList.remove('block')
+	ActorMenu.classList.add('hidden');
+	}
+
+	ActorLink.addEventListener('mouseover', OpenActorMenu)
+	ActorLink.addEventListener('mouseout', CloseActorMenu)
 
 </script>

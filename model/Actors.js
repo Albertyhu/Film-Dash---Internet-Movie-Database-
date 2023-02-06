@@ -3,12 +3,16 @@ const { DateTime, setLocale } = require("luxon");
 const Schema = mongoose.Schema;
 
 const ActorSchema = new Schema({
-  name: { type: String, required: true, maxLength: 100 },
-  birthdate: { type: Date },
-  birthplace: { type: String, required: false, maxLength: 100 },
-  height: { type: String, required: false, maxLength: 100 },
-  occupation: [{ type: String, required: false, maxLength: 100 }],
-  biography: { type: String, required: false },
+    name: { type: String, required: true, maxLength: 100 },
+    birthdate: { type: Date },
+    birthplace: { type: String, required: false, maxLength: 100 },
+    height: { type: String, required: false, maxLength: 100 },
+    occupation: [{ type: String, required: false, maxLength: 100 }],
+    biography: { type: String, required: false },
+    portrait: { type: String },
+    awards: [{ type: String }],
+    quotes: [{ type: String }],
+    imdb: {type: String},
 });
 
 ActorSchema.virtual("birthdate_formatted").get(function () {
@@ -18,7 +22,7 @@ ActorSchema.virtual("birthdate_formatted").get(function () {
 });
 
 ActorSchema.virtual("url").get(function () {
-  return `/actors/:id`;
+  return `catalog/actor/${this._id}`;
 });
 
 module.exports = mongoose.model("Actor", ActorSchema);

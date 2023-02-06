@@ -28,6 +28,7 @@ exports.DirectorList = (req, res, next) => {
                     genre_list: result.GetGenreList, 
                     logo: "../images/FilmDashLogo.png",
                     burgerMenu: "../../icon/hamburger_menu_white.png",
+                    avatarPic: "../images/avatar-silhouette.jpg"
                 });
             }
         }
@@ -66,6 +67,7 @@ exports.DirectorDetail = (req, res, next) => {
                     imdbLogo: "../../images/IMDB_logo.png",
                     updateURL: `/catalog/${category}/${req.params.id}/update`,
                     deleteURL: `/catalog/${category}/${req.params.id}/delete`,
+                    avatarPic: "../../images/avatar-silhouette.jpg"
                 });
             }
         }

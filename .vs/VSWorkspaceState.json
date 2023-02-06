@@ -1,9 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\data",
-    "\\model",
+    "\\controller",
     "\\public",
+    "\\public\\stylesheets",
     "\\public\\video",
     "\\routes",
     "\\util",
@@ -11,6 +11,6 @@
     "\\views\\partials",
     "\\views\\partials\\directorForm"
   ],
-  "SelectedNode": "\\util\\parseText.js",
+  "SelectedNode": "\\views\\genre_list.ejs",
   "PreviewInSolutionExplorer": false
 }

@@ -39,7 +39,7 @@ MovieInstanceSchema.virtual("deleteURL").get(function () {
 })
 
 MovieInstanceSchema.virtual("url").get(function () {
-  return `/MovieInstance/${this._id}`;
+  return `catalog/MovieInstance/${this._id}`;
 });
 
 module.exports = mongoose.model("MovieInstance", MovieInstanceSchema);
