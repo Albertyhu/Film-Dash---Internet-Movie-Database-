@@ -5,6 +5,9 @@ const Genre = require("../model/Genres");
 const Actor = require("../model/Actors")
 const Movie = require("../model/Movies");
 
+const ParseText = require('../util/parseText.js'); 
+const Join = require('../util/join.js'); 
+
 exports.ActorList = (req, res, next) => {
     async.parallel(
         {
@@ -115,11 +118,23 @@ exports.ActorCreate_Get = (req, res, next) => {
                 return next(err);
             }
 
+            var movie_titles = []; 
+            var movie_id = []
+
+            if (typeof result.GetMovies != undefined && result.GetMovies.length > 0) {
+                result.GetMovies.forEach(movie => {
+                    movie_titles.push(movie.title);
+                    movie_id.push(movie._id.toString()); 
+                })
+            }
+
             if (result != null) {
                 res.render("actor_form", {
                     title: "Add a Actor to the database",
                     genre_list: result.GetGenres,
                     movie_list: result.GetMovies, 
+                    movie_titles: Join(movie_titles), 
+                    movie_id: Join(movie_id), 
                     logoURL: "../../images/FilmDashLogo.png",
                     burgerMenu: "../../icon/hamburger_menu_white.png",
                     error: [],
