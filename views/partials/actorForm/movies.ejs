@@ -1,0 +1,154 @@
+<script>
+    var MoviesArray = [];
+	var IDArray = []
+        <% if( typeof actor != 'undefined') { %>
+			<%
+				var IDArray = [];
+				var titleArray = [];
+				actor.movies.forEach(item =>{
+					titleArray.push(item.title)
+					IDArray.push(item._id)
+				}) 
+			%>
+			var tempMoviesArray = '<%= titleArray.toString() %>'
+            MoviesArray = tempMoviesArray.split(',');
+			var tempIDArray = '<%= IDArray.toString() %>'
+			IDArray = tempIDArray.split(',')
+			console.log("MoviesArray: ", MoviesArray)
+        <%}%>
+</script>
+<div>
+    <label for="movies">Movies(s)</label>
+	<input 
+		id = "MoviesHiddenInput"
+		type = 'hidden' 
+		name = "movies" 
+	/>
+	<% if(typeof movie_list != 'undefined' && movie_list != null && movie_list.length > 0 ) {%>
+    <div class = "block whitespace-nowrap">
+		<select
+			type='select'
+			placeholder='Use ctrl + click or command + click to select multiple movies'
+			name='movies'
+			class = 'rounded-lg'
+			required='false' 
+			id="MoviesInput"
+			multiple
+			value = <% typeof actor != 'undefined' && typeof actor.movies != 'undefined' && actor.movies != null && actor.movies.length > 0 ? actor.movies.title : null %> 
+		>
+			<% movie_list.forEach(item => { %> 
+				<option
+					value = "<%= item._id %>"
+					<% if(typeof actor != 'undefined' && typeof actor.movies != 'undefined' && actor.movies != null && actor.movies.length > 0 ? actor.movies : null ) { %> 
+                        <% if(actor.movies.some(val => val.toString() == item._id.toString())) { %> selected <% } %>
+                    <%}%>
+				><%= item.title %></option>
+			<%})%>
+		</select>
+        <div
+            id="AddMoviesButton"
+            class = "inline-block text-sm rounded-full p-1 active:translate-x-[5px] active:translate-y-[5px] cursor-pointer
+            border-white border-2 text-center select-none text-white mx-1
+            hover:bg-gray-800 min-w-[50px] w-auto"
+            onClick = "AddRelatedMovies"
+        >Add</div>
+    </div>
+	<% } %>
+</div>
+<div 
+    id = "MoviesAnswers"
+    class = 'w-full my-5 mx-auto flex h-[20px] bg-black max-w-[200px] overflow-y-auto'
+    >
+</div>
+<script>
+
+	var MoviesInput = document.getElementById('MoviesInput');
+	var AddMoviesButton = document.getElementById('AddMoviesButton');
+	var MoviesAnswers = document.getElementById('MoviesAnswers');
+	var MoviesHiddenInput = document.getElementById('MoviesHiddenInput');
+	
+	if(MoviesArray.length > 0 && MoviesArray.length == IDArray.length){
+		MoviesAnswers = document.getElementById('MoviesAnswers');
+		MoviesHiddenInput = document.getElementById('MoviesHiddenInput');
+
+		//Unfortunately, MoviesArray will automatically be converted as a string and not an array
+		MoviesHiddenInput.value = IDArray;
+		MoviesArray.forEach(val =>{		
+			const UserInput = val;
+			const NewInput = document.createElement('div')
+			const NewInputDiv = document.createElement('div');
+			NewInputDiv.innerHTML = UserInput;
+			NewInput.classList.add('Tag');
+			NewInput.appendChild(NewInputDiv)
+			MoviesAnswers.appendChild(NewInput);
+
+			const DeleteButton = document.createElement('img')
+			DeleteButton.alt = "Delete";
+			DeleteButton.classList.add("MiniDeleteButton")
+			DeleteButton.src = "/icon/cancel.png"
+			NewInput.appendChild(DeleteButton)
+			MoviesAnswers.style.display = "table"
+	
+			//This is allows users to delete item by clicking on it
+			NewInput.addEventListener('click', ()=>{
+				var index = MoviesArray.findIndex(val => val == UserInput)
+				var tempIDArr = IDArray.filter((val, ind) => ind != index)
+				IDArray = tempIDArr;
+				var tempMoviesArr = MoviesArray.filter(val => val !== UserInput)
+				MoviesArray = tempMoviesArr;
+				MoviesAnswers.removeChild(NewInput)
+
+				MoviesHiddenInput = document.getElementById('MoviesHiddenInput');
+				MoviesHiddenInput.value = MoviesArray.toString();
+			})
+		})
+	}
+
+
+	const AddRelatedMovies = () => {
+		MoviesInput = document.getElementById('MoviesInput');
+		MoviesAnswers = document.getElementById('MoviesAnswers');
+		const UserInput = MoviesInput.selectedOptions;
+		console.log("MoviesInput: ", MoviesInput.selectedOptions)
+		for(var chosen in MoviesInput.selectedOptions){
+			if(!IDArray.some(ID => ID.toString() == chosen.toString())){
+				IDArray.push(chosen); 
+				
+				//movie_list is undefined
+				const MovieTitle = movie_list.find(movie => movie._id.toString() == ID.toString()).title;
+				MoviesArray.push(MovieTitle); 
+					
+				const NewInput = document.createElement('div')
+				const NewInputDiv = document.createElement('div');
+				NewInputDiv.innerHTML = MovieTitle;
+				NewInput.classList.add('Tag');
+				NewInput.appendChild(NewInputDiv)
+				MoviesAnswers.appendChild(NewInput);
+
+				const DeleteButton = document.createElement('img')
+				DeleteButton.alt = "Delete";
+				DeleteButton.classList.add("MiniDeleteButton")
+				DeleteButton.src = "/icon/cancel.png"
+				NewInput.appendChild(DeleteButton)
+				MoviesAnswers.style.display = "table"
+
+				NewInput.addEventListener('click', ()=>{
+					var index = MoviesArray.findIndex(item => item == chosen)
+					var tempIDArr = IDArray.filter((item, ind) => ind != index)
+					IDArray = tempIDArr;
+					var tempMoviesArr = MoviesArray.filter(item => item !== chosen)
+					MoviesArray = tempMoviesArr;
+					MoviesAnswers.removeChild(NewInput)
+					MoviesHiddenInput = document.getElementById('MoviesHiddenInput');
+					MoviesHiddenInput.value = IDArray;
+				})
+				MoviesInput.value = ""
+
+				MoviesHiddenInput = document.getElementById('MoviesHiddenInput');
+				MoviesHiddenInput.value = IDArray;
+			}
+		}
+	}
+
+	AddMoviesButton.addEventListener('click', AddRelatedMovies)
+</script>

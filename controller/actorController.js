@@ -87,7 +87,17 @@ const actorObj = {
     quotes: ["There is no black and white.", "Never start a land war in Asia."],
     imdb_page: "",
     portrait: "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-732x549.jpg",
-    biography: "Teddy Dunski was born on March 15th, 1995, in New York City. He grew up in a family of artists, with his mother being a dancer and his father a musician. This early exposure to the performing arts sparked Teddy\'s interest in acting, and he began performing in local theater productions at the age of ten. Teddy\'s talent and passion for acting led him to attend the prestigious Juilliard School in New York, where he honed his craft and graduated with honors. After graduation, he quickly landed several small roles in TV shows and movies, but it was his breakthrough performance in the indie film \"Broken Dreams\" that caught the attention of Hollywood studios."
+    biography: "Teddy Dunski was born on March 15th, 1995, in New York City. He grew up in a family of artists, with his mother being a dancer and his father a musician. This early exposure to the performing arts sparked Teddy\'s interest in acting, and he began performing in local theater productions at the age of ten. Teddy\'s talent and passion for acting led him to attend the prestigious Juilliard School in New York, where he honed his craft and graduated with honors. After graduation, he quickly landed several small roles in TV shows and movies, but it was his breakthrough performance in the indie film \"Broken Dreams\" that caught the attention of Hollywood studios.",
+    movies: [
+        {
+            _id: "63e0a14ca08291594a165b08",
+            title: "The Godfather"         
+            },
+        {
+            _id: "63e0a14ca08291594a165b12",
+            title: "The Matrix"
+        }
+    ]
 }
 
 exports.ActorCreate_Get = (req, res, next) => {
@@ -109,6 +119,7 @@ exports.ActorCreate_Get = (req, res, next) => {
                 res.render("actor_form", {
                     title: "Add a Actor to the database",
                     genre_list: result.GetGenres,
+                    movie_list: result.GetMovies, 
                     logoURL: "../../images/FilmDashLogo.png",
                     burgerMenu: "../../icon/hamburger_menu_white.png",
                     error: [],
@@ -188,16 +199,11 @@ exports.ActorCreate_Post = [
             height: ParseText(decodeURIComponent(req.body.height)),
             spouse: ParseText(decodeURIComponent(req.body.spouse)),
             occupation: req.body.occupation.split(","),
-            known_for: req.body.known_for.split(","),
-            education: {
-                degree: ParseText(decodeURIComponent(req.body.degree)),
-                field: ParseText(decodeURIComponent(req.body.field)),
-                school: ParseText(decodeURIComponent(req.body.school)),
-            },
             awards: req.body.awards.split(","),
             quotes: req.body.quotes.split(","),
             imdb_page: ParseText(decodeURIComponent(req.body.imdb)),
-            portrait: ParseText(decodeURIComponent(req.body.portrait))
+            portrait: ParseText(decodeURIComponent(req.body.portrait)),
+            biography: ParseText(decodeURIComponent(req.body.biography))
         }
 
         const newActor = new Actor(obj)
@@ -209,3 +215,39 @@ exports.ActorCreate_Post = [
         })
     }
 ]
+
+
+exports.Update_Get = (req, res, next) => {
+    async.parallel(
+        {
+            GetMovies(callback) {
+                Movie.find({}).exec(callback)
+            },
+            GetGenres(callback) {
+                Genre.find({}).exec(callback)
+            },
+        },
+        (err, result) => {
+            if (err) {
+                return next(err);
+            }
+
+            if (result != null) {
+                res.render("actor_form", {
+                    title: "Add a Actor to the database",
+                    genre_list: result.GetGenres,
+                    movie_list: result.GetMovies,
+                    logoURL: "../../images/FilmDashLogo.png",
+                    burgerMenu: "../../icon/hamburger_menu_white.png",
+                    error: [],
+                    actor: actorObj,
+                });
+            }
+        }
+    )
+
+}
+
+exports.Update_Post = (req, res, next) => {
+
+}

@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\controller",
+    "\\asset",
+    "\\data",
+    "\\model",
     "\\public",
-    "\\public\\stylesheets",
-    "\\public\\video",
-    "\\routes",
-    "\\util",
+    "\\public\\images",
     "\\views",
     "\\views\\partials",
+    "\\views\\partials\\actorForm",
     "\\views\\partials\\directorForm"
   ],
-  "SelectedNode": "\\views\\genre_list.ejs",
+  "SelectedNode": "\\views\\partials\\actorForm\\awards.ejs",
   "PreviewInSolutionExplorer": false
 }

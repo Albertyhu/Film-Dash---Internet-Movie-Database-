@@ -121,7 +121,7 @@
             </div>
 
             <%- include('partials/actorForm/occupation') %>
-
+            <%- include('partials/actorForm/movies') %>
             <%- include('partials/actorForm/awards')%>
             <%- include('partials/actorForm/quotes')%>
             <div>
@@ -183,9 +183,6 @@
     const BirthPlaceInput = document.getElementById('birthplaceInput')
     const HeightInput = document.getElementById('heightInput')
     const SpouseInput = document.getElementById('spouseInput')
-    const DegreeInput = document.getElementById('degreeInput')
-    const FieldInput = document.getElementById('fieldInput')
-    const SchoolInput = document.getElementById('schoolInput')
     const IMDBPageInput = document.getElementById('IMDBPageInput')
     const portraitInput = document.getElementById('portraitInput')
 
@@ -214,21 +211,14 @@
             let encodedSpouse = encodeURIComponent(SpouseInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
             SpouseInput.value = encodedSpouse;
         
-            let encodedDegree = encodeURIComponent(DegreeInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
-            DegreeInput.value = encodedDegree;
-
-            let encodedField = encodeURIComponent(FieldInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
-            FieldInput.value = encodedField;
-
-            let encodedSchool = encodeURIComponent(SchoolInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
-            SchoolInput.value = encodedSchool;
-
             let encodedIMDBPage = encodeURIComponent(IMDBPageInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
             IMDBPageInput.value = encodedIMDBPage;
 
             let encodedHeight = encodeURIComponent(HeightInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
             HeightInput.value = encodedHeight;
 
+            let encodedBiography = encodeURIComponent(BiographyInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+            BiographyInput.value = encodedBiography;
 
             form.submit(); 
 

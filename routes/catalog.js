@@ -78,9 +78,9 @@ router.get('/actor/:id', ActorController.ActorDetail)
 
 //router.post('/actor/:id/delete', ActorController.Delete_Post);
 
-//router.get('/actor/:id/update', ActorController.Update_Get);
+router.get('/actor/:id/update', ActorController.Update_Get);
 
-//router.post('/actor/:id/update', ActorController.Update_Post);
+router.post('/actor/:id/update', ActorController.Update_Post);
 
 //Movie Instances
 
