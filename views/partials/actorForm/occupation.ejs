@@ -1,0 +1,113 @@
+<script>
+    var OccupationArray = [];
+        <% if( typeof actor != 'undefined') { %>
+            var temp = '<%= actor.occupation.toString() %>'
+            OccupationArray = temp.split(',');
+        <%}%>
+</script>
+<div>
+    <label for="occupation">Occupation(s)</label>
+    <div class = "block whitespace-nowrap">
+        <input 
+            id = "OccupationHiddenInput"
+            type = 'hidden' 
+            name = "occupation" 
+        />
+        <input 
+            name = "occupation" 
+            id = "OccupationInput"
+            type = "text"
+            placeholder = "Enter any relevant occupation that the actor has held" 
+            class = "inline-block rounded-lg bg-[rgba(0,0,0,0)] text-white border-white border-[1px] 
+            pl-3 min-w-[80%]"
+            />
+        <div
+            id="AddOccupationButton"
+            class = "inline-block text-sm rounded-full p-1 active:translate-x-[5px] active:translate-y-[5px] cursor-pointer
+            border-white border-2 text-center select-none text-white mx-1
+            hover:bg-gray-800 min-w-[50px] w-auto"
+            onClick = "AddRelatedOccupation"
+        >Add</div>
+    </div>
+</div>
+<div 
+    id = "OccupationAnswers"
+    class = 'w-full my-5 mx-auto flex h-[20px] bg-black max-w-[200px] overflow-y-auto'
+    >
+</div>
+<script>
+var OccupationInput = document.getElementById('OccupationInput'); 
+var AddOccupationButton = document.getElementById('AddOccupationButton');
+var OccupationAnswers = document.getElementById('OccupationAnswers');
+var OccupationHiddenInput = document.getElementById('OccupationHiddenInput'); 
+
+if(OccupationArray.length > 0){
+    OccupationAnswers = document.getElementById('OccupationAnswers');
+    OccupationHiddenInput = document.getElementById('OccupationHiddenInput'); 
+    OccupationHiddenInput.value = OccupationArray; 
+    OccupationArray.forEach(val =>{
+        const UserInput = val;
+        const NewInput = document.createElement('div')
+        const NewInputDiv = document.createElement('div');
+        NewInputDiv.innerHTML = UserInput; 
+        NewInput.classList.add('Tag');
+        NewInput.appendChild(NewInputDiv)
+        OccupationAnswers.appendChild(NewInput);
+
+        const DeleteButton = document.createElement('img')
+        DeleteButton.alt = "Delete";
+        DeleteButton.classList.add("MiniDeleteButton")
+        DeleteButton.src = "/icon/cancel.png"
+        NewInput.appendChild(DeleteButton)
+        OccupationAnswers.style.display = "table"
+
+        NewInput.addEventListener('click', ()=>{
+            var tempArr = OccupationArray; 
+            tempArr = OccupationArray.filter(val => val !== UserInput)
+            OccupationArray = tempArr;
+            OccupationAnswers.removeChild(NewInput)
+            console.log("After deletion: ", OccupationArray)
+        })
+
+    })
+}
+
+const AddRelatedOccupation = () => { 
+    OccupationInput = document.getElementById('OccupationInput'); 
+    OccupationAnswers = document.getElementById('OccupationAnswers');
+    const UserInput = OccupationInput.value;
+    if(UserInput.trim() != ""){
+        OccupationArray.push(UserInput)
+   
+        console.log("OccupationArray: ", OccupationArray)
+
+        const NewInput = document.createElement('div')
+        const NewInputDiv = document.createElement('div');
+        NewInputDiv.innerHTML = UserInput; 
+        NewInput.classList.add('Tag');
+        NewInput.appendChild(NewInputDiv)
+        OccupationAnswers.appendChild(NewInput);
+
+        const DeleteButton = document.createElement('img')
+        DeleteButton.alt = "Delete";
+        DeleteButton.classList.add("MiniDeleteButton")
+        DeleteButton.src = "/icon/cancel.png"
+        NewInput.appendChild(DeleteButton)
+        OccupationAnswers.style.display = "table"
+
+        NewInput.addEventListener('click', ()=>{
+            var tempArr = OccupationArray; 
+            tempArr = OccupationArray.filter(val => val !== UserInput)
+            OccupationArray = tempArr;
+            OccupationAnswers.removeChild(NewInput)
+            console.log("After deletion: ", OccupationArray)
+        })
+        OccupationInput.value = ""
+            
+
+        OccupationHiddenInput = document.getElementById('OccupationHiddenInput'); 
+        OccupationHiddenInput.value = OccupationArray; 
+    }
+}
+AddOccupationButton.addEventListener('click', AddRelatedOccupation)
+</script>

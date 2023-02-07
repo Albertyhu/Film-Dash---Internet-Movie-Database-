@@ -68,9 +68,9 @@ router.post('/director/:id/update', DirectorController.Update_Post);
 
 router.get('/actors', ActorController.ActorList)
 
-//router.get('/actor/create', ActorController.ActorCreate_Get);
+router.get('/actor/create', ActorController.ActorCreate_Get);
 
-//router.post('/actor/create', ActorController.ActorCreate_Post); 
+router.post('/actor/create', ActorController.ActorCreate_Post); 
 
 router.get('/actor/:id', ActorController.ActorDetail)
 

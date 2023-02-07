@@ -9,13 +9,13 @@
 			>
 			<div 
 				id="ImageDiv"
-				class = "h-[300px] w-[200px] mx-auto rounded-lg overflow-hidden my-5
+				class = "h-auto w-auto mx-auto overflow-hidden my-5
 					bg-cover">
 				<a href="../<%= person.url %>">
 					<img 
 						src = "<%= person.portrait != 'undefined' && person.portrait != null ? person.portrait : avatarPic %>"
 						alt = "<%= person.name %> portrait"
-						class="max-h-full max-w-full object-cover" />
+						class="max-h-full max-w-full object-cover rounded-lg mx-auto" />
 				</a>
 			</div>
 			<h2 class = "font-bold text-center"><%= person.name%></h2>

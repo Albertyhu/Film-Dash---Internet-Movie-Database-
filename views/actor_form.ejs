@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Film Dash</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel ="stylesheet" href='../../stylesheets/style.css'> 
+  <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+<style>
+
+.closed-menu {
+  transform: translateX(300px);
+  transition: transform 500ms linear;
+}
+
+.opened-menu {
+  transform: translateX(0px);
+  transition: transform 500ms linear;
+}
+
+
+/*actor form*/
+.Tag {
+    border-radius: 10px;
+    background-color: #dbdbdb; 
+    color: #000;
+    padding: 0 10px; 
+    white-space: nowrap; 
+    margin:4px auto; 
+    min-width: fit-content;
+    display: flex;
+    grid-template-columns: 90% 10%;
+    cursor: pointer; 
+    justify-content: space-between;
+}
+
+    .Tag > div {
+        margin: auto;
+        display: block;
+    }
+
+.MiniDeleteButton {
+    width: 15px;
+    height: 15px; 
+    margin: auto 0;
+    display: block;
+}
+</style>
+</head>
+<body class = "bg-black h-auto">
+  <div 
+  id="container"
+  class = "w-full flex flex-col relative grow min-h-[120vh]">
+      <div 
+        id = "contentWrapper"
+        class = "pb-[5.5rem]">
+          <div class = "w-full mb-[100px]">
+            <%- include("partials/header") %>
+            <%- include("partials/MobileMenu") %>
+          </div>
+          <h1 class = "text-white text-center text-4xl mt-[100px]"><%= title %></h1>
+          <div class = "w-11/12 mx-auto sm:w-5/12 ">
+          <form
+            action="" 
+            method="POST"
+            class="[&>div>label]:text-white [&>div]:grid mt-[50px] [&>div>input]:rounded-lg 
+            [&>div]:w-full [&>div]:my-[10px] [&>div>input]:pl-3 [&>div>input]:bg-[rgba(0,0,0,0)] 
+            [&>div>input]:text-white [&>div>input]:border-white [&>div>input]:border-[1px]" 
+            id = "form">
+            <div>
+                <label for = "name">Name</label>
+                <input 
+                    name = "name" 
+                    id = "nameInput"
+                    type = "text"
+                    placeholder = "Name of actor" 
+                    required = "true"
+                    class = ""
+                    value = "<%=  typeof actor != 'undefined' &&  actor.name != ''? actor.name : null %>"
+                    />
+            </div>
+            <div>
+                <label for = "birthdate">Birth Date</label>
+                <input 
+                    type = "date"
+                    name='birthdate'
+                    value = "<%= typeof actor != 'undefined' && typeof actor.birthdate != 'undefined' ? actor.birthdate : null %>"
+                    />
+            </div>
+            <div>
+                <label for = "birthplace">Birth Place</label>
+                <input 
+                    name = "birthplace" 
+                    id = "birthplaceInput"
+                    type = "text"
+                    placeholder = "Type the location of  the actor's birthplace" 
+                    class = ""
+                    value = "<%=  typeof actor != 'undefined' && actor.birthplace != '' ? actor.birthplace : null %>"
+                    />
+            </div>
+            <div>
+                <label for = "height">Height</label>
+                <input 
+                    name = "height" 
+                    id = "heightInput"
+                    type = "text"
+                    placeholder = "Enter the actor's height" 
+                    value = "<%=  typeof actor != 'undefined' &&  actor.height != '' ? actor.height : null %>"
+                    />
+            </div>
+            <div>
+                <label for = "spouse">Spouse</label>
+                <input 
+                    name = "spouse" 
+                    id = "spouseInput"
+                    type = "text"
+                    placeholder = "Enter the actor's spouse" 
+                    class = ""
+                    value = "<%=  typeof actor != 'undefined' &&  actor.spouse != '' ? actor.spouse : null %>"
+                    />
+            </div>
+
+            <%- include('partials/actorForm/occupation') %>
+
+            <%- include('partials/actorForm/awards')%>
+            <%- include('partials/actorForm/quotes')%>
+            <div>
+                <label for = "imdb_page">IMDB page</label>
+                <input 
+                    name = "imdb_page" 
+                    id = "IMDBPageInput"
+                    type = "text"
+                    placeholder = "Enter the url to actor's IMDB page" 
+                    value = "<%=  typeof actor != 'undefined' && actor.imdb_page != '' ? actor.imdb_page : null %>"
+                    />
+            </div>
+            <div>
+                <label for = "portrait">Profile Picture</label>
+                <input 
+                    name = "portrait" 
+                    id = "portraitInput"
+                    type = "text"
+                    placeholder = "Enter the url of actor's profile picture" 
+                    value = "<%=  typeof actor != 'undefined' && actor.portrait != '' ? actor.portrait : null %>"
+                    />
+            </div>
+            <div>
+                <label for = "biography">Biography</label>
+                <textarea                    
+                    name = "biography" 
+                    id = "biographyInput"
+                    rows="4" 
+                    class="resize-none bg-black text-white rounded-lg w-full p-1
+                    border-[1px] border-white"
+                    placeholder = "Type the biography of the actor here. [Max 1000 characters]" 
+                    >
+                        
+                    </textarea>
+            </div>
+            <%- include('partials/FormButtons')%>
+          </form>
+          </div>
+          <% if(typeof error != 'undefined' && error.length > 0) {%> 
+              <div class = "my-[50px] text-white w-11/12 mx-auto sm:w-5/12">
+                <h2 class = "font-bold">Error: </h2>
+                <% error.forEach(val => { %> 
+                    <p><%= val %></p>
+                <% }) %>
+              </div>
+          <%}%>
+      </div>
+      <%- include('partials/footer') %>
+  </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script>
+
+    const biographyInput = document.getElementById('biographyInput');
+    biographyInput.value = "<%=  typeof actor != 'undefined' && actor.biography != "" ? actor.biography : null %>"
+
+    const form = document.querySelector("form");
+
+    const NameInput = document.getElementById('nameInput')
+    const BirthPlaceInput = document.getElementById('birthplaceInput')
+    const HeightInput = document.getElementById('heightInput')
+    const SpouseInput = document.getElementById('spouseInput')
+    const DegreeInput = document.getElementById('degreeInput')
+    const FieldInput = document.getElementById('fieldInput')
+    const SchoolInput = document.getElementById('schoolInput')
+    const IMDBPageInput = document.getElementById('IMDBPageInput')
+    const portraitInput = document.getElementById('portraitInput')
+
+    const htmlEntities = {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#x27;",
+        "/": '&#x2F;',
+      };
+
+    form.addEventListener("submit", (event)=>{
+        try{
+            event.preventDefault(); 
+        
+            let encodedName = encodeURIComponent(NameInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+            NameInput.value = encodedName; 
+
+            let encodedBirthPlace = encodeURIComponent(BirthPlaceInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+            BirthPlaceInput.value = encodedBirthPlace;
+
+            let encodedPortrait = encodeURIComponent(portraitInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+            portraitInput.value = encodedPortrait;
+
+            let encodedSpouse = encodeURIComponent(SpouseInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+            SpouseInput.value = encodedSpouse;
+        
+            let encodedDegree = encodeURIComponent(DegreeInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+            DegreeInput.value = encodedDegree;
+
+            let encodedField = encodeURIComponent(FieldInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+            FieldInput.value = encodedField;
+
+            let encodedSchool = encodeURIComponent(SchoolInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+            SchoolInput.value = encodedSchool;
+
+            let encodedIMDBPage = encodeURIComponent(IMDBPageInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+            IMDBPageInput.value = encodedIMDBPage;
+
+            let encodedHeight = encodeURIComponent(HeightInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+            HeightInput.value = encodedHeight;
+
+
+            form.submit(); 
+
+        } catch (error) { 
+            console.error(error)
+        }
+    });
+  </script>
+</body>
+</html>

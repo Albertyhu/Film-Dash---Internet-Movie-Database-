@@ -39,7 +39,8 @@
           >
               <% if(typeof actor.birthdate != 'undefined') {%> <p class = "mb-3"><b>Birth Date: </b> <%= actor.birthdate%> </p><% } %>
               <% if(typeof actor.birthplace != 'undefined') {%>  <p class = "mb-3"><b>Birth Place: </b> <%= actor.birthplace%> </p><% } %>
-              <% if(typeof actor.height != 'undefined') {%>  <p class = "mb-3"><b>Birth Height: </b> <%= actor.height%> </p><% } %>
+              <% if(typeof actor.height != 'undefined') {%>  <p class = "mb-3"><b>Height: </b> <%= actor.height%> </p><% } %>
+              <% if(typeof actor.spouse != 'undefined') {%>  <p class = "mb-3"><b>Spouse: </b> <%= actor.spouse%> </p><% } %>
               <% if(typeof actor.occupation != "undefined" && actor.occupation.length > 0) {%> 
                   <div class = "mb-3">
                     <p><b>Occupation: </b></p>
