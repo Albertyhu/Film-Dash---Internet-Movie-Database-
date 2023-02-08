@@ -1,12 +1,33 @@
 <script>
 	const BurgerMenu = document.getElementById("BurgerMenu")
+	
+	var ActorMenu = document.getElementById('ActorMenu');
+	
+	const CloseActorMenu = evt =>{
+	ActorMenu = document.getElementById('ActorMenu');
+	ActorMenu.classList.remove('block')
+	ActorMenu.classList.add('hidden');
+	}
+
 </script>
 <div id = "MobileMenu" class = "w-[300px] bg-white h-full text-center text-black z-50 fixed 
-	right-0 top-0 font-bold closed-menu">
-	<div class = "my-2 cursor-pointer hover:underline hover:text-gray-500 active:text-lg" >Home</div>
-	<div class = "my-2 cursor-pointer hover:underline hover:text-gray-500 active:text-lg" >Genres</div>
-	<div class = "my-2 cursor-pointer hover:underline hover:text-gray-500 active:text-lg">Directors</div>
-	<div class = "my-2 cursor-pointer hover:underline hover:text-gray-500 active:text-lg">Actors</div>
-	<div class = "my-2 cursor-pointer hover:underline hover:text-gray-500 active:text-lg">Contact</div>
-	<div class = "my-2 cursor-pointer hover:underline hover:text-gray-500 active:text-lg">Close Menu</div>
+	right-0 top-0 font-bold closed-menu [&>div]:select-none">
+	<div 
+		class = "mt-10 cursor-pointer hover:underline hover:text-gray-500 active:text-lg" 
+		onclick="location.href='/'">Home</div>
+	<div 
+		class = "my-5 cursor-pointer hover:underline hover:text-gray-500 active:text-lg" 
+		onclick="location.href='/catalog/genres'">Genres</div>
+	<div 
+		class = "my-5 cursor-pointer hover:underline hover:text-gray-500 active:text-lg"
+		onclick="location.href='/catalog/directors'">Directors</div>
+	<div 
+		class = "my-5 cursor-pointer hover:underline hover:text-gray-500 active:text-lg"
+		onclick="location.href='/catalog/actors'">Actors</div>
+	<div 
+		class = "my-5 cursor-pointer hover:underline hover:text-gray-500 active:text-lg"
+		onclick="location.href='/contact'">Contact</div>
+	<div 
+		class = "my-5 cursor-pointer hover:underline hover:text-gray-500 active:text-lg"
+		onclick="CloseActorMenu">Close Menu</div>
 </div>
