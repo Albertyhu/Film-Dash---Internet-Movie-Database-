@@ -1,4 +1,4 @@
-const { body, validationRequest } = require("express-validator");
+const { body, validationResult } = require("express-validator");
 const async = require("async");
 
 const Genre = require("../model/Genres");
@@ -47,13 +47,6 @@ exports.ActorDetail = (req, res, next) => {
         GetGenreList(callback) {
             Genre.find({}).exec(callback)
         },
-        MovieList(callback) {
-            Movie.find({ actors: { $in: req.params.id } })
-                .populate('director')
-                .populate('actors')
-                .populate('genres')
-                .exec(callback)
-        }
     },
         (err, result) => {
             if (err) {
@@ -64,9 +57,9 @@ exports.ActorDetail = (req, res, next) => {
                 res.render("actor_detail", {
                     title: result.GetActor.name,
                     actor: result.GetActor,
-                    movie_list: result.MovieList,
                     genre_list: result.GetGenreList,
-                    logoURL: "../../images/FilmDashLogo.png",
+                    movie_list: result.GetActor.movies, 
+                    logoURL: "/images/FilmDashLogo.png",
                     burgerMenu: "../../icon/hamburger_menu_white.png",
                     imdbLogo: "../../images/IMDB_logo.png",
                     updateURL: `/catalog/${category}/${req.params.id}/update`,
@@ -128,6 +121,9 @@ exports.ActorCreate_Get = (req, res, next) => {
                 })
             }
 
+            //Join is a function I wrote that turns an array to a string. 
+            //Each value is separated by the character "|"
+
             if (result != null) {
                 res.render("actor_form", {
                     title: "Add a Actor to the database",
@@ -138,7 +134,11 @@ exports.ActorCreate_Get = (req, res, next) => {
                     logoURL: "../../images/FilmDashLogo.png",
                     burgerMenu: "../../icon/hamburger_menu_white.png",
                     error: [],
-                    actor: actorObj,
+                    //actor: actorObj,
+                    //formattedBirthday: actorObj.birthdate,
+                    //stringQuotes: Join(actorObj.quotes),
+                    //stringOccupation: Join(actorObj.occupation),
+                    //stringAwards: Join(actorObj.awards)
                 });
             }
         }
@@ -167,17 +167,8 @@ exports.ActorCreate_Post = [
         .escape(),
     body('occupation')
         .escape(),
-    body('known_for')
-        .escape(),
-    body('degree')
-        .trim()
-        .escape(),
-    body('field')
-        .trim()
-        .escape(),
-    body('school')
-        .trim()
-        .escape(),
+    body('movies')
+        .escape(), 
     body('awards')
         .escape(),
     body('quotes')
@@ -188,23 +179,51 @@ exports.ActorCreate_Post = [
     body('portrait')
         .trim()
         .escape(),
+    body('biography')
+        .isLength({ max: 1000 })
+        .withMessage("Biography cannot be over 1000 characters.")
+        .escape(), 
     (req, res, next) => {
         const error = validationResult(req)
         if (!error.isEmpty()) {
-            Genre.find({}).exec((err, result) => {
-                if (err) {
-                    return next(err);
+            async.parallel(
+                {
+                    GetMovies(callback) {
+                        Movie.find({}).exec(callback)
+                    },
+                    GetGenres(callback) {
+                        Genre.find({}).exec(callback)
+                    },
+                },
+                (err, result) => {
+                    if (err) {
+                        return next(err);
+                    }
+
+                    var movie_titles = [];
+                    var movie_id = []
+
+                    if (typeof result.GetMovies != undefined && result.GetMovies.length > 0) {
+                        result.GetMovies.forEach(movie => {
+                            movie_titles.push(movie.title);
+                            movie_id.push(movie._id.toString());
+                        })
+                    }
+
+                    if (result != null) {
+                        res.render("actor_form", {
+                            title: "Add a Actor to the database",
+                            genre_list: result.GetGenres,
+                            movie_list: result.GetMovies,
+                            movie_titles: Join(movie_titles),
+                            movie_id: Join(movie_id),
+                            logoURL: "../../images/FilmDashLogo.png",
+                            burgerMenu: "../../icon/hamburger_menu_white.png",
+                            error: [],
+                        });
+                    }
                 }
-                if (result != null) {
-                    res.render("Actor_form", {
-                        title: "Add a Actor to the database",
-                        genre_list: result,
-                        logoURL: "../../images/FilmDashLogo.png",
-                        burgerMenu: "../../icon/hamburger_menu_white.png",
-                        error: error,
-                    });
-                }
-            })
+            )
             return;
         }
         var obj = {
@@ -214,6 +233,7 @@ exports.ActorCreate_Post = [
             height: ParseText(decodeURIComponent(req.body.height)),
             spouse: ParseText(decodeURIComponent(req.body.spouse)),
             occupation: req.body.occupation.split(","),
+            movies: req.body.movies.split(","), 
             awards: req.body.awards.split(","),
             quotes: req.body.quotes.split(","),
             imdb_page: ParseText(decodeURIComponent(req.body.imdb)),
@@ -235,6 +255,11 @@ exports.ActorCreate_Post = [
 exports.Update_Get = (req, res, next) => {
     async.parallel(
         {
+            SelectedActor(callback) {
+                Actor.findById(req.params.id)
+                    .populate('movies')
+                    .exec(callback)
+            },
             GetMovies(callback) {
                 Movie.find({}).exec(callback)
             },
@@ -246,16 +271,33 @@ exports.Update_Get = (req, res, next) => {
             if (err) {
                 return next(err);
             }
+            var movie_titles = [];
+            var movie_id = []
+
+            if (typeof result.GetMovies != undefined && result.GetMovies.length > 0) {
+                result.GetMovies.forEach(movie => {
+                    movie_titles.push(movie.title);
+                    movie_id.push(movie._id.toString());
+                })
+            }
+
+            const category = 'actor'
 
             if (result != null) {
                 res.render("actor_form", {
-                    title: "Add a Actor to the database",
+                    title: `Update information about ${result.SelectedActor.name}`,
                     genre_list: result.GetGenres,
                     movie_list: result.GetMovies,
-                    logoURL: "../../images/FilmDashLogo.png",
-                    burgerMenu: "../../icon/hamburger_menu_white.png",
+                    movie_titles: Join(movie_titles),
+                    movie_id: Join(movie_id), 
+                    logoURL: "../../../images/FilmDashLogo.png",
+                    burgerMenu: "../../../icon/hamburger_menu_white.png",
                     error: [],
-                    actor: actorObj,
+                    formattedBirthday: result.SelectedActor.birthdate_formatted, 
+                    actor: result.SelectedActor,
+                    stringQuotes: Join(result.SelectedActor.quotes),
+                    stringOccupation: Join(result.SelectedActor.occupation),
+                    stringAwards: Join(result.SelectedActor.awards)
                 });
             }
         }
@@ -263,6 +305,168 @@ exports.Update_Get = (req, res, next) => {
 
 }
 
-exports.Update_Post = (req, res, next) => {
+exports.Update_Post = [
+    body('name')
+        .trim()
+        .isLength({ minLength: 1 })
+        .withMessage("The name of the Actor needs to be specified.")
+        .escape(),
+        body('birthdate')
+            .optional({ checkFalsy: true })
+            .isISO8601()
+            .toDate(),
+        body('birthplace')
+            .trim()
+            .escape(),
+        body('height')
+            .trim()
+            .escape(),
+        body('spouse')
+            .trim()
+            .escape(),
+        body('occupation')
+            .escape(),
+        body('movies')
+            .escape(),
+        body('awards')
+            .escape(),
+        body('quotes')
+            .escape(),
+        body('imdb_page')
+            .trim()
+            .escape(),
+        body('portrait')
+            .trim()
+            .escape(),
+        body('biography')
+            .isLength({ max: 1000 })
+            .withMessage("Biography cannot be over 1000 characters.")
+            .escape(),
+        (req, res, next) => {
+            const error = validationResult(req)
+            if (!error.isEmpty()) {
+                async.parallel(
+                    {
+                        SelectedActor(callback) {
+                            Actor.findById(req.params.id)
+                                .populate('movies')
+                                .exec(callback)
+                        },
+                        GetMovies(callback) {
+                            Movie.find({}).exec(callback)
+                        },
+                        GetGenres(callback) {
+                            Genre.find({}).exec(callback)
+                        },
+                    },
+                    (err, result) => {
+                        if (err) {
+                            return next(err);
+                        }
+                        var movie_titles = [];
+                        var movie_id = []
+
+                        if (typeof result.GetMovies != undefined && result.GetMovies.length > 0) {
+                            result.GetMovies.forEach(movie => {
+                                movie_titles.push(movie.title);
+                                movie_id.push(movie._id.toString());
+                            })
+                        }
+                        console.log("birth date: ", result.SelectedActor.birthdate_formatted)
+                        if (result != null) {
+                            res.render("actor_form", {
+                                title: `Update information about ${result.SelectedActor.name}`,
+                                genre_list: result.GetGenres,
+                                movie_list: result.GetMovies,
+                                movie_titles: Join(movie_titles),
+                                movie_id: Join(movie_id),
+                                logoURL: "../../../images/FilmDashLogo.png",
+                                burgerMenu: "../../../icon/hamburger_menu_white.png",
+                                error: [],
+                                formattedBirthday: result.SelectedActor.birthdate_formatted,
+                                actor: result.SelectedActor,
+                                stringQuotes: Join(result.SelectedActor.quotes),
+                                stringOccupation: Join(result.SelectedActor.occupation),
+                                stringAwards: Join(result.SelectedActor.awards)
+                            });
+                        }
+                    }
+                )
+                return;
+            }
+            var obj = {
+                name: ParseText(decodeURIComponent(req.body.name)),
+                birthdate: req.body.birthdate,
+                birthplace: ParseText(decodeURIComponent(req.body.birthplace)),
+                height: ParseText(decodeURIComponent(req.body.height)),
+                spouse: ParseText(decodeURIComponent(req.body.spouse)),
+                occupation: req.body.occupation.split(","),
+                movies: req.body.movies.split(","),
+                awards: req.body.awards.split(","),
+                quotes: req.body.quotes.split(","),
+                imdb_page: ParseText(decodeURIComponent(req.body.imdb)),
+                portrait: ParseText(decodeURIComponent(req.body.portrait)),
+                biography: ParseText(decodeURIComponent(req.body.biography)),
+                _id: req.params.id, 
+            }
+
+            const updateActor = new Actor(obj)
+            try {
+                Actor.findByIdAndUpdate(req.params.id, updateActor, {}, (err, result) => {
+                    if (err) {
+                        return next(err)
+                    }
+                    res.redirect(`../../../${result.url}`)
+                })
+            } catch (error) {
+                console.log("There's an error with updating the actor: ", error)
+                res.send(`There's an error with updating the actor:  ${error}`)
+            }
+        }
+
+]
+
+exports.Delete_Get = (req, res, next) => {
+    async.parallel({
+        GetActor(callback) {
+            Actor.findById(req.params.id)
+                .populate("movies")
+                .exec(callback)
+        },
+        GetGenreList(callback) {
+            Genre.find({}).exec(callback)
+        },
+    },
+        (err, result) => {
+            if (err) {
+                return next(err);
+            }
+            const category = 'actor'
+            if (result != null) {
+                res.render("actor_delete", {
+                    title: result.GetActor.name,
+                    actor: result.GetActor,
+                    genre_list: result.GetGenreList,
+                    movie_list: result.GetActor.movies,
+                    logoURL: "../../images/FilmDashLogo.png",
+                    burgerMenu: "../../icon/hamburger_menu_white.png",
+                    imdbLogo: "../../images/IMDB_logo.png",
+                    updateURL: `/catalog/${category}/${req.params.id}/update`,
+                    deleteURL: `/catalog/${category}/${req.params.id}/delete`,
+                    avatarPic: "../../images/avatar-silhouette.jpg"
+                });
+            }
+        }
+    )
+
+}
+
+exports.Delete_Post = (req, res, next) => {
+    Actor.findByIdAndRemove(req.params.id, (err) => {
+        if (err) {
+            return next(err)
+        }
+        res.redirect('/catalog/actors')
+    })
 
 }

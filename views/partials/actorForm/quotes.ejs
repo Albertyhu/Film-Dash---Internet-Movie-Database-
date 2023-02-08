@@ -1,8 +1,8 @@
 <script>
     var QuotesArray = [];
         <% if( typeof actor != 'undefined') { %>
-            var temp = '<%= actor.quotes.toString() %>'
-            QuotesArray = temp.split(',');
+            var temp = '<%= stringQuotes %>'
+            QuotesArray = temp.split('|');
         <%}%>
 </script>
 <div>
@@ -14,7 +14,6 @@
             name = "quotes" 
         />
         <input 
-            name = "quotes" 
             id = "QuotesInput"
             type = "text"
             placeholder = "Enter any well known quotes that the actor has made" 
@@ -66,7 +65,6 @@ if(QuotesArray.length > 0){
             tempArr = QuotesArray.filter(val => val !== UserInput)
             QuotesArray = tempArr;
             QuotesAnswers.removeChild(NewInput)
-            console.log("After deletion: ", QuotesArray)
         })
 
     })
@@ -75,12 +73,10 @@ if(QuotesArray.length > 0){
 const AddRelatedQuotes = () => { 
     QuotesInput = document.getElementById('QuotesInput'); 
     QuotesAnswers = document.getElementById('QuotesAnswers');
-    const UserInput = QuotesInput.value;
+    const UserInput = QuotesInput.value.trim();
     if(UserInput.trim() != ""){
         QuotesArray.push(UserInput)
    
-        console.log("QuotesArray: ", QuotesArray)
-
         const NewInput = document.createElement('div')
         const NewInputDiv = document.createElement('div');
         NewInputDiv.innerHTML = UserInput; 

@@ -75,7 +75,7 @@ if(QuotesArray.length > 0){
 const AddRelatedQuotes = () => { 
     QuotesInput = document.getElementById('QuotesInput'); 
     QuotesAnswers = document.getElementById('QuotesAnswers');
-    const UserInput = QuotesInput.value;
+    const UserInput = QuotesInput.value.trim();
     if(UserInput.trim() != ""){
         QuotesArray.push(UserInput)
    

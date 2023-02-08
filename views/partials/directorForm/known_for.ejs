@@ -77,7 +77,7 @@ if(KnownForArray.length > 0){
 const AddRelatedWork = () => { 
     KnownForInput = document.getElementById('KnownForInput'); 
     KnownForAnswers = document.getElementById('KnownForAnswers');
-    const UserInput = KnownForInput.value;
+    const UserInput = KnownForInput.value.trim();
     if(UserInput.trim() != ""){
         KnownForArray.push(UserInput)
    

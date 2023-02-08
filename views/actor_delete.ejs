@@ -30,9 +30,30 @@
                 class="max-h-full max-w-full" />
           </div>
           <%}%>
-          <div class = "mx-auto w-11/12 sm:w-6/12 md:w-5/12 lg:w-4/12">
-            <%- include('partials/CRUDButtons') %> 
+          <div class = "text-center text-white my-[30px]">
+              <p>You are about to delete <%= actor.name %></p>
+              <p>Are you sure you want to proceed?</p>
           </div>
+          <form 
+            id="form"
+            action = ''
+            method ="POST"
+            class = "flex mx-auto w-11/12 sm:w-6/12 md:w-5/12 lg:w-4/12 sm:[&>button]:mx-5 
+            [&>button]:my-5 ">
+                <button 
+                    type = "submit"
+                    class = "rounded-full p-[10px] active:translate-x-[5px] active:translate-y-[5px] cursor-pointer
+                    border-white border-2 text-center w-[150px] select-none text-white mx-auto
+                    hover:bg-gray-800"
+                >Yes</button>
+                <button 
+                    type = "button"
+                    onClick = "history.back()"
+                    class = "rounded-full p-[10px] active:translate-x-[5px] active:translate-y-[5px] cursor-pointer
+                    border-white border-2 text-center w-[150px] select-none text-black mx-auto
+                    hover:bg-gray-300 bg-[#dbdbdb]"
+                >No</button>
+          </form>
           <div
             id="ActorDetailPanel"
             class = "w-11/12 mx-auto text-white sm:w-6/12"
@@ -63,16 +84,6 @@
                     </ul>
                 </div>
               <%}%>
-              <% if(typeof actor.quotes != 'undefined' && actor.quotes.length > 0) { %> 
-                <div>
-                    <p><b>Quotes</b></p>
-                    <ul>
-                    <% actor.quotes.forEach(quote => { %> 
-                        <li><%= quote %></li>
-                    <%})%>
-                    </ul>
-                </div>
-              <%} %>
               <% if(typeof actor.imdb_page != 'undefined') {%>
                 <a href ="<%= actor.imdb_page %>">
                     <img 

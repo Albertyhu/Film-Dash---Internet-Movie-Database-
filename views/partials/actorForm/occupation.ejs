@@ -1,8 +1,8 @@
 <script>
     var OccupationArray = [];
         <% if( typeof actor != 'undefined') { %>
-            var temp = '<%= actor.occupation.toString() %>'
-            OccupationArray = temp.split(',');
+            var temp = '<%= stringOccupation %>'
+            OccupationArray = temp.split('|');
         <%}%>
 </script>
 <div>
@@ -14,7 +14,6 @@
             name = "occupation" 
         />
         <input 
-            name = "occupation" 
             id = "OccupationInput"
             type = "text"
             placeholder = "Enter any relevant occupation that the actor has held" 
@@ -66,7 +65,6 @@ if(OccupationArray.length > 0){
             tempArr = OccupationArray.filter(val => val !== UserInput)
             OccupationArray = tempArr;
             OccupationAnswers.removeChild(NewInput)
-            console.log("After deletion: ", OccupationArray)
         })
 
     })
@@ -75,7 +73,7 @@ if(OccupationArray.length > 0){
 const AddRelatedOccupation = () => { 
     OccupationInput = document.getElementById('OccupationInput'); 
     OccupationAnswers = document.getElementById('OccupationAnswers');
-    const UserInput = OccupationInput.value;
+    const UserInput = OccupationInput.value.trim();
     if(UserInput.trim() != ""){
         OccupationArray.push(UserInput)
    
@@ -100,7 +98,6 @@ const AddRelatedOccupation = () => {
             tempArr = OccupationArray.filter(val => val !== UserInput)
             OccupationArray = tempArr;
             OccupationAnswers.removeChild(NewInput)
-            console.log("After deletion: ", OccupationArray)
         })
         OccupationInput.value = ""
             

@@ -80,11 +80,9 @@
 	const AddRelatedAwards = () => {
 	AwardsInput = document.getElementById('AwardsInput');
 	AwardsAnswers = document.getElementById('AwardsAnswers');
-	const UserInput = AwardsInput.value;
+	const UserInput = AwardsInput.value.trim();
 	if(UserInput.trim() != ""){
 	AwardsArray.push(UserInput)
-
-	console.log("AwardsArray: ", AwardsArray)
 
 	const NewInput = document.createElement('div')
 	const NewInputDiv = document.createElement('div');

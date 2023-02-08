@@ -75,7 +75,7 @@ if(OccupationArray.length > 0){
 const AddRelatedOccupation = () => { 
     OccupationInput = document.getElementById('OccupationInput'); 
     OccupationAnswers = document.getElementById('OccupationAnswers');
-    const UserInput = OccupationInput.value;
+    const UserInput = OccupationInput.value.trim();
     if(UserInput.trim() != ""){
         OccupationArray.push(UserInput)
    

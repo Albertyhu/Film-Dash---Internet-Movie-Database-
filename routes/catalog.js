@@ -12,6 +12,10 @@ router.get("/", MovieController.MovieList);
 //    res.send('Under construction')
 //})
 
+/**
+ * Note: Routes with :id should always go after route that do not. 
+ * */
+
 router.get("/movie/create", MovieController.MovieCreate_Get);
 
 router.post("/movie/create", MovieController.MovieCreate_Post);
@@ -74,9 +78,9 @@ router.post('/actor/create', ActorController.ActorCreate_Post);
 
 router.get('/actor/:id', ActorController.ActorDetail)
 
-//router.get('/actor/:id/delete', ActorController.Delete_Get);
+router.get('/actor/:id/delete', ActorController.Delete_Get);
 
-//router.post('/actor/:id/delete', ActorController.Delete_Post);
+router.post('/actor/:id/delete', ActorController.Delete_Post);
 
 router.get('/actor/:id/update', ActorController.Update_Get);
 

@@ -74,7 +74,9 @@
 					<% if(genre_list) {%> 
 						<% genre_list.forEach(val => {%> 
 							<div 
-							class = "hover:bg-gray-300"><a href ="<%= val.url%>"><%= val.name %></a></div>
+							class = "hover:bg-gray-300"
+							onclick ="location.href='../../../<%= val.url %>'"
+							><%= val.name %></div>
 						<%})%>
 					<%}%>
 				</div>

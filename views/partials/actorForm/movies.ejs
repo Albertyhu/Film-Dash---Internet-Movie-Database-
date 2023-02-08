@@ -1,4 +1,17 @@
 <script>
+/*
+notes:
+What is required to be passed through EJS
+movie_id 
+	This is a string containing the id's of all movies in the database. 
+	Each id is separated by the character "|"
+movie_titles
+	This is a string containing the titles of all movies in the database. 
+	Each title is separated by the character "|"
+movie_list
+	This is an array containing a list of all movies in the database. 
+
+*/
     var MoviesArray = [];
 	var IDArray = []
         <% if( typeof actor != 'undefined') { %>
@@ -16,22 +29,22 @@
 
 				}
 
-				var IDArray = [];
+				var ID_Array = [];
 				var titleArray = [];
 				actor.movies.forEach(item =>{
 					titleArray.push(item.title)
-					IDArray.push(item._id)
+					ID_Array.push(item._id)
 				}) 
 
 			%>
 			var tempMoviesArray = '<%= Join(titleArray) %>'
             MoviesArray = tempMoviesArray.split('|');
-			var tempIDArray = '<%= Join(IDArray) %>'
+			var tempIDArray = '<%= Join(ID_Array) %>'
 			IDArray = tempIDArray.split('|')
         <%}%>
 </script>
 <div>
-    <label for="movies">Movies(s)</label>
+	<label for="movies">Select and Add Movies(s)</label>
 	<input 
 		id = "MoviesHiddenInput"
 		type = 'hidden' 
@@ -42,9 +55,7 @@
 		<select
 			type='select'
 			placeholder='Use ctrl + click or command + click to select multiple movies'
-			name='movies'
 			class = 'rounded-lg'
-			required='false' 
 			id="MoviesInput"
 			multiple
 			value = <% typeof actor != 'undefined' && typeof actor.movies != 'undefined' && actor.movies != null && actor.movies.length > 0 ? actor.movies.title : null %> 
@@ -73,6 +84,19 @@
     class = 'w-full my-5 mx-auto flex h-[20px] bg-black max-w-[200px] overflow-y-auto'
     >
 </div>
+<div class = "text-white !flex my-10 justify-around">
+	<div class = "inline-block"><b>Can't find a movie in the list? </b></div>
+	<div 
+		id = "AddNewMovieToDataBase"
+		type="button"
+		onClick="location.href='/catalog/movie/create'"
+		class = "rounded-full text-white p-1 active:translate-x-[5px] active:translate-y-[5px] cusor-pointer
+		text-center w-[150px] bg-black cursor-pointer select-none hover:bg-slate-400
+		border-white border-[1px] inline-block"
+		>	
+		Add new movie
+	</div>
+</div>
 <script>
 
 	var MoviesInput = document.getElementById('MoviesInput');
@@ -100,7 +124,7 @@
 
 		//Unfortunately, MoviesArray will automatically be converted as a string and not an array
 		MoviesHiddenInput.value = IDArray;
-		MoviesArray.forEach(val =>{		
+		MoviesArray.forEach((val, ind) =>{		
 			const UserInput = val;
 			const NewInput = document.createElement('div')
 			const NewInputDiv = document.createElement('div');
@@ -118,15 +142,16 @@
 	
 			//This is allows users to delete item by clicking on it
 			NewInput.addEventListener('click', ()=>{
-				var index = MoviesArray.findIndex(val => val == UserInput)
-				var tempIDArr = IDArray.filter((val, ind) => ind != index)
+				var tempIDArr = IDArray.filter((val, this_ind) => this_ind != ind)
 				IDArray = tempIDArr;
-				var tempMoviesArr = MoviesArray.filter(val => val !== UserInput)
+				console.log("After delete default value from IDArray: ", IDArray)
+
+				var tempMoviesArr = MoviesArray.filter((val, this_ind) =>  this_ind !== ind)
 				MoviesArray = tempMoviesArr;
 				MoviesAnswers.removeChild(NewInput)
 
 				MoviesHiddenInput = document.getElementById('MoviesHiddenInput');
-				MoviesHiddenInput.value = MoviesArray.toString();
+				MoviesHiddenInput.value = IDArray
 			})
 		})
 	}
@@ -148,7 +173,6 @@
 					const MovieTitle = movie_titles[selected_index]; 
 
 					MoviesArray.push(MovieTitle); 
-					IDArray.push(selectedOpt); 
 					
 					//The purpose of newIndex is to remember the index of the value to be deleted 
 					const newIndex = MoviesArray.length - 1; 
@@ -183,6 +207,7 @@
 
 					MoviesHiddenInput = document.getElementById('MoviesHiddenInput');
 					MoviesHiddenInput.value = IDArray;
+					console.log("MoviesHiddenInput.value: ", MoviesHiddenInput)
 				}
 			}
 		}

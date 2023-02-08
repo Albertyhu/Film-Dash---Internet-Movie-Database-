@@ -18,8 +18,8 @@ const ActorSchema = new Schema({
 });
 
 ActorSchema.virtual("birthdate_formatted").get(function () {
-  return this.birthplace
-    ? DateTime.fromJSDate(this.birthplace).toFormat("yyyy-MM--dd")
+  return this.birthdate
+    ? DateTime.fromJSDate(this.birthdate).toFormat("yyyy-MM-dd")
     : null;
 });
 
