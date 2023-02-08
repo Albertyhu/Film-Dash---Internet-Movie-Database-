@@ -1,8 +1,27 @@
 <script>
-    var QuotesArray = [];
-        <% if( typeof actor != 'undefined') { %>
+	const codeEntities = {
+	"&amp;": "&",
+	"&lt;": "<",
+	"&gt;": ">",
+	"&quot;": '"',
+	"&#x27;": "'",
+	"&#x2F;": '/',
+	"&#39;": "\'",
+	"&#34;": "\""
+	};
+
+	const ParseText = (text) => {
+	var copy = text.toString();
+	return copy.replace(
+	/&lt;|&gt;|&quot;|&#x27;|&#x2F;|&amp;|&#39;|&#34;/gi,
+	(match) => codeEntities[match]
+	);
+	};
+	var QuotesArray = [];
+	<% if( typeof actor != 'undefined') { %>
             var temp = '<%= stringQuotes %>'
-            QuotesArray = temp.split('|');
+            QuotesArray = (ParseText(temp)).split('|');
+			console.log("Incoming EJS quotes array: ", QuotesArray)
         <%}%>
 </script>
 <div>
@@ -35,16 +54,6 @@
     >
 </div>
 <script>
-
-	const htmlEntities = {
-	"&": "&amp;",
-	"<": "&lt;",
-	">": "&gt;",
-	'"': "&quot;",
-	"'": "&#x27;",
-	"/": '&#x2F;',
-	};
-	
 	const Join = (arr) =>{
 	var stringData = ""
 	arr.forEach((val, ind) => {
@@ -121,8 +130,6 @@
 
 			QuotesHiddenInput = document.getElementById('QuotesHiddenInput');
 			QuotesHiddenInput.value = Join(QuotesArray);
-			let encodedQuotesHidden = encodeURIComponent(QuotesHiddenInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
-            QuotesHiddenInput.value = encodedQuotesHidden;
 		}
 	}
 	AddQuotesButton.addEventListener('click', AddRelatedQuotes)

@@ -279,7 +279,7 @@ exports.Update_Get = (req, res, next) => {
                     movie_id.push(movie._id.toString());
                 })
             }
-
+            console.log("incoming: ", Join(result.SelectedActor.quotes))
             if (result != null) {
                 res.render("actor_form", {
                     title: `Update information about ${result.SelectedActor.name}`,
@@ -389,6 +389,8 @@ exports.Update_Post = [
                 )
                 return;
             }
+
+            console.log('quotes: ', req.body.quotes)
             var obj = {
                 name: ParseText(decodeURIComponent(req.body.name)),
                 birthdate: req.body.birthdate,
@@ -404,6 +406,7 @@ exports.Update_Post = [
                 biography: ParseText(decodeURIComponent(req.body.biography)),
                 _id: req.params.id, 
             }
+            console.log("decoded: ", obj.quotes)
 
             const updateActor = new Actor(obj)
             try {

@@ -171,26 +171,6 @@
   </div>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <script>
-      <%
-          const htmlEntities = {
-          "&amp;": "&",
-          "&lt;": "<",
-          "&gt;": ">",
-          "&quot;": '"',
-          "&#x27;": "'",
-          "&#x2F;": '/',
-          "&#39;": "\'",
-          "&#34;": "\""
-        };
-
-    const ParseText = (text) => {
-      var copy = text.toString();
-      return copy.replace(
-        /&lt;|&gt;|&quot;|&#x27;|&#x2F;|&amp;|&#39;|&#34;/gi,
-        (match) => htmlEntities[match]
-      );
-    };
-    %>
     const BiographyInput = document.getElementById('biographyInput');
 
     const form = document.querySelector("form");
