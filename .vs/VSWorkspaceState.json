@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\controller",
-    "\\data",
     "\\model",
     "\\public",
     "\\public\\images",
+    "\\routes",
+    "\\util",
     "\\views",
     "\\views\\partials",
     "\\views\\partials\\actorForm",
     "\\views\\partials\\directorForm"
   ],
-  "SelectedNode": "\\views\\partials\\actorForm\\awards.ejs",
+  "SelectedNode": "\\views\\partials\\directorForm\\known_for.ejs",
   "PreviewInSolutionExplorer": false
 }

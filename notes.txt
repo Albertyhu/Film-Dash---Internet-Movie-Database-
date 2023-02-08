@@ -1,3 +1,7 @@
+2/7/23
+Before you can start any Node JS project that uses Mongo DB, you have log into your 
+MongoDB account allow access to the collaborators of this project. 
+
 2/1/23
     form.addEventListener("submit", (event)=>{
         event.preventDefault(); 

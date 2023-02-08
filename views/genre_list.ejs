@@ -19,11 +19,11 @@
             <%- include("partials/MobileMenu") %>
           </div>
           <h1 class = "text-white text-center text-4xl mb-[30px]"><%= title %></h1>
-              <div class = "rounded-full p-[10px] active:translate-x-[5px] active:translate-y-[5px] cursor-pointer
+              <div 
+                onclick="location.href='/catalog/genre/create'"
+                class = "rounded-full p-[10px] active:translate-x-[5px] active:translate-y-[5px] cursor-pointer
                 border-white border-2 text-center w-[150px] select-none text-white mx-auto
-                hover:bg-gray-800 text-center my-10">
-                 <a href ="/catalog/genre/create">Add a genre</a>
-              </div>
+                hover:bg-gray-800 text-center my-10">Add a genre</div>
           <%if(typeof genre_list != "undefined"){ %> 
             <div class = "sm:grid sm:grid-cols-2 md:grid-cols-3">
                 <% genre_list.forEach(genre => { %> 

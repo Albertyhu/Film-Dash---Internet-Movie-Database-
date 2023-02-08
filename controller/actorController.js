@@ -134,11 +134,11 @@ exports.ActorCreate_Get = (req, res, next) => {
                     logoURL: "../../images/FilmDashLogo.png",
                     burgerMenu: "../../icon/hamburger_menu_white.png",
                     error: [],
-                    //actor: actorObj,
-                    //formattedBirthday: actorObj.birthdate,
-                    //stringQuotes: Join(actorObj.quotes),
-                    //stringOccupation: Join(actorObj.occupation),
-                    //stringAwards: Join(actorObj.awards)
+                    actor: actorObj,
+                    formattedBirthday: actorObj.birthdate,
+                    stringQuotes: Join(actorObj.quotes),
+                    stringOccupation: Join(actorObj.occupation),
+                    stringAwards: Join(actorObj.awards)
                 });
             }
         }
@@ -180,8 +180,6 @@ exports.ActorCreate_Post = [
         .trim()
         .escape(),
     body('biography')
-        .isLength({ max: 1000 })
-        .withMessage("Biography cannot be over 1000 characters.")
         .escape(), 
     (req, res, next) => {
         const error = validationResult(req)
@@ -235,7 +233,7 @@ exports.ActorCreate_Post = [
             occupation: req.body.occupation.split(","),
             movies: req.body.movies.split(","), 
             awards: req.body.awards.split(","),
-            quotes: req.body.quotes.split(","),
+            quotes: req.body.quotes.split("|"),
             imdb_page: ParseText(decodeURIComponent(req.body.imdb)),
             portrait: ParseText(decodeURIComponent(req.body.portrait)),
             biography: ParseText(decodeURIComponent(req.body.biography))
@@ -339,12 +337,11 @@ exports.Update_Post = [
             .trim()
             .escape(),
         body('biography')
-            .isLength({ max: 1000 })
-            .withMessage("Biography cannot be over 1000 characters.")
             .escape(),
         (req, res, next) => {
             const error = validationResult(req)
             if (!error.isEmpty()) {
+                console.log('Error in updating info: ', error.errors[0].msg)
                 async.parallel(
                     {
                         SelectedActor(callback) {
@@ -382,7 +379,7 @@ exports.Update_Post = [
                                 movie_id: Join(movie_id),
                                 logoURL: "../../../images/FilmDashLogo.png",
                                 burgerMenu: "../../../icon/hamburger_menu_white.png",
-                                error: [],
+                                error: error,
                                 formattedBirthday: result.SelectedActor.birthdate_formatted,
                                 actor: result.SelectedActor,
                                 stringQuotes: Join(result.SelectedActor.quotes),
@@ -403,7 +400,7 @@ exports.Update_Post = [
                 occupation: req.body.occupation.split(","),
                 movies: req.body.movies.split(","),
                 awards: req.body.awards.split(","),
-                quotes: req.body.quotes.split(","),
+                quotes: req.body.quotes.split("|"),
                 imdb_page: ParseText(decodeURIComponent(req.body.imdb)),
                 portrait: ParseText(decodeURIComponent(req.body.portrait)),
                 biography: ParseText(decodeURIComponent(req.body.biography)),
@@ -416,7 +413,8 @@ exports.Update_Post = [
                     if (err) {
                         return next(err)
                     }
-                    res.redirect(`../../../${result.url}`)
+                    //res.redirect(`../../../${result.url}`);
+                    res.redirect(`/${result.url}`)
                 })
             } catch (error) {
                 console.log("There's an error with updating the actor: ", error)

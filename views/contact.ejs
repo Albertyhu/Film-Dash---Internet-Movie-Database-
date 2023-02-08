@@ -18,6 +18,14 @@
             <%- include("partials/header") %>
             <%- include("partials/MobileMenu") %>
           </div>
+            <% if(typeof error.errors != 'undefined') {%> 
+                <div class = "my-[50px] text-white w-full mb-[50px]">
+                    <h2 class = "font-bold">Error: </h2>
+                    <% error.errors.forEach(val => { %> 
+                        <p class = "text-white"><%= val.msg %></p>
+                    <% }) %>
+                </div>
+            <%}%>
             <form 
                 action="" 
                 method="POST"

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Film Dash</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel ="stylesheet" href='../../stylesheets/style.css'> 
+  <link rel ="stylesheet" href='../../../stylesheets/style.css'> 
   <link rel="icon" type="image/x-icon" href="/images/favicon.png">
 <style>
 
@@ -60,6 +60,14 @@
           </div>
           <h1 class = "text-white text-center text-4xl mt-[100px]"><%= title %></h1>
           <div class = "w-11/12 mx-auto sm:w-5/12 ">
+          <% if(typeof error.errors != 'undefined') {%> 
+              <div class = "my-[50px] text-white w-full mb-[50px]">
+                <h2 class = "font-bold">Error: </h2>
+                <% error.errors.forEach(val => { %> 
+                    <p class = "text-white"><%= val.msg %></p>
+                <% }) %>
+              </div>
+          <%}%>
           <form
             action="" 
             method="POST"
@@ -152,7 +160,7 @@
                     rows="4" 
                     class="resize-none bg-black text-white rounded-lg w-full p-1
                     border-[1px] border-white"
-                    placeholder = "Type the biography of the actor here. [Max 1000 characters]" 
+                    placeholder = "Type the biography of the actor here." 
                     >
                         
                     </textarea>
@@ -160,14 +168,6 @@
             <%- include('partials/FormButtons')%>
           </form>
           </div>
-          <% if(typeof error != 'undefined' && error.length > 0) {%> 
-              <div class = "my-[50px] text-white w-11/12 mx-auto sm:w-5/12">
-                <h2 class = "font-bold">Error: </h2>
-                <% error.forEach(val => { %> 
-                    <p><%= val %></p>
-                <% }) %>
-              </div>
-          <%}%>
       </div>
       <%- include('partials/footer') %>
   </div>

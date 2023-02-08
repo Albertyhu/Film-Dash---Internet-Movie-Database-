@@ -12,6 +12,7 @@ exports.ContactForm_Get = (req, res, next) => {
                 genre_list: result,
                 logo: "../images/FilmDashLogo.png",
                 burgerMenu: "../../icon/hamburger_menu_white.png",
+                error: [],
             })
         })
 
