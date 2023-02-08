@@ -6,6 +6,7 @@ const Actor = require("../model/Actors")
 const Movie = require("../model/Movies");
 
 const ParseText = require('../util/parseText.js'); 
+const encodeText = require('../util/encodeText.js');
 const Join = require('../util/join.js'); 
 
 exports.ActorList = (req, res, next) => {
@@ -233,7 +234,7 @@ exports.ActorCreate_Post = [
             occupation: req.body.occupation.split(","),
             movies: req.body.movies.split(","), 
             awards: req.body.awards.split(","),
-            quotes: req.body.quotes.split("|"),
+            quotes: ParseText(decodeURIComponent(req.body.quotes)).split("|"),
             imdb_page: ParseText(decodeURIComponent(req.body.imdb)),
             portrait: ParseText(decodeURIComponent(req.body.portrait)),
             biography: ParseText(decodeURIComponent(req.body.biography))
@@ -279,8 +280,6 @@ exports.Update_Get = (req, res, next) => {
                 })
             }
 
-            const category = 'actor'
-
             if (result != null) {
                 res.render("actor_form", {
                     title: `Update information about ${result.SelectedActor.name}`,
@@ -295,7 +294,7 @@ exports.Update_Get = (req, res, next) => {
                     actor: result.SelectedActor,
                     stringQuotes: Join(result.SelectedActor.quotes),
                     stringOccupation: Join(result.SelectedActor.occupation),
-                    stringAwards: Join(result.SelectedActor.awards)
+                    stringAwards: Join(result.SelectedActor.awards),
                 });
             }
         }
@@ -341,7 +340,6 @@ exports.Update_Post = [
         (req, res, next) => {
             const error = validationResult(req)
             if (!error.isEmpty()) {
-                console.log('Error in updating info: ', error.errors[0].msg)
                 async.parallel(
                     {
                         SelectedActor(callback) {
@@ -400,7 +398,7 @@ exports.Update_Post = [
                 occupation: req.body.occupation.split(","),
                 movies: req.body.movies.split(","),
                 awards: req.body.awards.split(","),
-                quotes: req.body.quotes.split("|"),
+                quotes: (ParseText(decodeURIComponent(req.body.quotes))).split("|"),
                 imdb_page: ParseText(decodeURIComponent(req.body.imdb)),
                 portrait: ParseText(decodeURIComponent(req.body.portrait)),
                 biography: ParseText(decodeURIComponent(req.body.biography)),

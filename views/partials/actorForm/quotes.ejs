@@ -35,10 +35,20 @@
     >
 </div>
 <script>
+
+	const htmlEntities = {
+	"&": "&amp;",
+	"<": "&lt;",
+	">": "&gt;",
+	'"': "&quot;",
+	"'": "&#x27;",
+	"/": '&#x2F;',
+	};
+	
 	const Join = (arr) =>{
-		var stringData = ""
-		arr.forEach((val, ind) => {
-			if (ind < arr.length - 1)
+	var stringData = ""
+	arr.forEach((val, ind) => {
+	if (ind < arr.length - 1)
 					stringData += val + "|";
 				else
 					stringData += val; 
@@ -51,69 +61,69 @@
 	var QuotesHiddenInput = document.getElementById('QuotesHiddenInput');
 
 	if(QuotesArray.length > 0){
-	QuotesAnswers = document.getElementById('QuotesAnswers');
-	QuotesHiddenInput = document.getElementById('QuotesHiddenInput');
-	QuotesHiddenInput.value = Join(QuotesArray);
-	QuotesArray.forEach(val =>{
-	const UserInput = val;
-	const NewInput = document.createElement('div')
-	const NewInputDiv = document.createElement('div');
-	NewInputDiv.innerHTML = UserInput;
-	NewInput.classList.add('Tag');
-	NewInput.appendChild(NewInputDiv)
-	QuotesAnswers.appendChild(NewInput);
+		QuotesAnswers = document.getElementById('QuotesAnswers');
+		QuotesHiddenInput = document.getElementById('QuotesHiddenInput');
+		QuotesHiddenInput.value = Join(QuotesArray);
+		QuotesArray.forEach(val =>{
+			const UserInput = val;
+			const NewInput = document.createElement('div')
+			const NewInputDiv = document.createElement('div');
+			NewInputDiv.innerHTML = UserInput;
+			NewInput.classList.add('Tag');
+			NewInput.appendChild(NewInputDiv)
+			QuotesAnswers.appendChild(NewInput);
 
-	const DeleteButton = document.createElement('img')
-	DeleteButton.alt = "Delete";
-	DeleteButton.classList.add("MiniDeleteButton")
-	DeleteButton.src = "/icon/cancel.png"
-	NewInput.appendChild(DeleteButton)
-	QuotesAnswers.style.display = "table"
+			const DeleteButton = document.createElement('img')
+			DeleteButton.alt = "Delete";
+			DeleteButton.classList.add("MiniDeleteButton")
+			DeleteButton.src = "/icon/cancel.png"
+			NewInput.appendChild(DeleteButton)
+			QuotesAnswers.style.display = "table"
 
-	NewInput.addEventListener('click', ()=>{
-	var tempArr = QuotesArray;
-	tempArr = QuotesArray.filter(val => val !== UserInput)
-	QuotesArray = tempArr;
-	QuotesAnswers.removeChild(NewInput)
-	})
-
-	})
+			NewInput.addEventListener('click', ()=>{
+				var tempArr = QuotesArray;
+				tempArr = QuotesArray.filter(val => val !== UserInput)
+				QuotesArray = tempArr;
+				QuotesAnswers.removeChild(NewInput)
+			})
+		})
 	}
 
 	const AddRelatedQuotes = () => {
-	QuotesInput = document.getElementById('QuotesInput');
-	QuotesAnswers = document.getElementById('QuotesAnswers');
-	const UserInput = QuotesInput.value.trim();
-	if(UserInput.trim() != ""){
-	QuotesArray.push(UserInput)
+		QuotesInput = document.getElementById('QuotesInput');
+		QuotesAnswers = document.getElementById('QuotesAnswers');
+		const UserInput = QuotesInput.value.trim();
+		if(UserInput.trim() != ""){
+			QuotesArray.push(UserInput)
 
-	const NewInput = document.createElement('div')
-	const NewInputDiv = document.createElement('div');
-	NewInputDiv.innerHTML = UserInput;
-	NewInput.classList.add('Tag');
-	NewInput.appendChild(NewInputDiv)
-	QuotesAnswers.appendChild(NewInput);
+			const NewInput = document.createElement('div')
+			const NewInputDiv = document.createElement('div');
+			NewInputDiv.innerHTML = UserInput;
+			NewInput.classList.add('Tag');
+			NewInput.appendChild(NewInputDiv)
+			QuotesAnswers.appendChild(NewInput);
 
-	const DeleteButton = document.createElement('img')
-	DeleteButton.alt = "Delete";
-	DeleteButton.classList.add("MiniDeleteButton")
-	DeleteButton.src = "/icon/cancel.png"
-	NewInput.appendChild(DeleteButton)
-	QuotesAnswers.style.display = "table"
+			const DeleteButton = document.createElement('img')
+			DeleteButton.alt = "Delete";
+			DeleteButton.classList.add("MiniDeleteButton")
+			DeleteButton.src = "/icon/cancel.png"
+			NewInput.appendChild(DeleteButton)
+			QuotesAnswers.style.display = "table"
 
-	NewInput.addEventListener('click', ()=>{
-	var tempArr = QuotesArray;
-	tempArr = QuotesArray.filter(val => val !== UserInput)
-	QuotesArray = tempArr;
-	QuotesAnswers.removeChild(NewInput)
-	console.log("After deletion: ", QuotesArray)
-	})
-	QuotesInput.value = ""
+			NewInput.addEventListener('click', ()=>{
+				var tempArr = QuotesArray;
+				tempArr = QuotesArray.filter(val => val !== UserInput)
+				QuotesArray = tempArr;
+				QuotesAnswers.removeChild(NewInput)
+				})
+			QuotesInput.value = ""
 
 
-	QuotesHiddenInput = document.getElementById('QuotesHiddenInput');
-	QuotesHiddenInput.value = Join(QuotesArray);
-	}
+			QuotesHiddenInput = document.getElementById('QuotesHiddenInput');
+			QuotesHiddenInput.value = Join(QuotesArray);
+			let encodedQuotesHidden = encodeURIComponent(QuotesHiddenInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+            QuotesHiddenInput.value = encodedQuotesHidden;
+		}
 	}
 	AddQuotesButton.addEventListener('click', AddRelatedQuotes)
 </script>

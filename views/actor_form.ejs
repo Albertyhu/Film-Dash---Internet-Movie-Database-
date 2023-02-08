@@ -161,9 +161,7 @@
                     class="resize-none bg-black text-white rounded-lg w-full p-1
                     border-[1px] border-white"
                     placeholder = "Type the biography of the actor here." 
-                    >
-                        
-                    </textarea>
+                    ><%=  typeof actor != 'undefined' && actor.biography != "" ? actor.biography.trim() : null %></textarea>
             </div>
             <%- include('partials/FormButtons')%>
           </form>
@@ -173,9 +171,27 @@
   </div>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <script>
+      <%
+          const htmlEntities = {
+          "&amp;": "&",
+          "&lt;": "<",
+          "&gt;": ">",
+          "&quot;": '"',
+          "&#x27;": "'",
+          "&#x2F;": '/',
+          "&#39;": "\'",
+          "&#34;": "\""
+        };
 
+    const ParseText = (text) => {
+      var copy = text.toString();
+      return copy.replace(
+        /&lt;|&gt;|&quot;|&#x27;|&#x2F;|&amp;|&#39;|&#34;/gi,
+        (match) => htmlEntities[match]
+      );
+    };
+    %>
     const BiographyInput = document.getElementById('biographyInput');
-    BiographyInput.value = "<%=  typeof actor != 'undefined' && actor.biography != "" ? actor.biography : null %>"
 
     const form = document.querySelector("form");
 
@@ -185,6 +201,7 @@
     const SpouseInput = document.getElementById('spouseInput')
     const IMDBPageInput = document.getElementById('IMDBPageInput')
     const portraitInput = document.getElementById('portraitInput')
+    var QuotesHiddenInput = document.getElementById('QuotesHiddenInput');
 
     const htmlEntities = {
         "&": "&amp;",
@@ -219,6 +236,9 @@
 
             let encodedBiography = encodeURIComponent(BiographyInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
             BiographyInput.value = encodedBiography;
+
+            //let encodedQuotesHidden = encodeURIComponent(QuotesHiddenInput.value.replace(/[&<>"']/g, (match) => htmlEntities[match]))
+            //QuotesHiddenInput.value = encodedQuotesHidden;
 
             form.submit(); 
 

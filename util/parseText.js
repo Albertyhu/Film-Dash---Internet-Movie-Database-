@@ -5,11 +5,9 @@ const htmlEntities = {
   "&quot;": '"',
   "&#x27;": "'",
   "&#x2F;": '/',
-  "&#39;": "\'",
-  "&#34;": "\""
+  "&#39;": "'",
+  "&#34;": '"',
 };
-
-const hexArray = ["&amp;", "&lt;", "&gt;", "&quot;", "&#x27;", "&#39;", "&#34;"];
 
 const ParseText = (text) => {
   var copy = text.toString();
