@@ -29,7 +29,7 @@
           <div class = "mt-[50px]">
             <h1 class = "text-white text-center text-4xl"><%= title %></h1>
                 <div class = "w-11/12 mx-auto sm:w-5/12 ">
-                    <% if(typeof error.errors != 'undefined') {%> 
+                    <% if(typeof error != 'undefined') {%> 
                         <div class = "my-[50px] text-white w-full mb-[50px]">
                             <h2 class = "font-bold">Error: </h2>
                             <% error.errors.forEach(val => { %> 

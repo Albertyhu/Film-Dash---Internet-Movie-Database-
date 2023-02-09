@@ -1,6 +1,6 @@
 <script>
     var OccupationArray = [];
-        <% if( typeof actor != 'undefined') { %>
+        <% if( typeof actor != 'undefined' && stringOccupation != "") { %>
             var temp = '<%= stringOccupation %>'
             OccupationArray = temp.split('|');
         <%}%>

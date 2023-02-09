@@ -14,7 +14,7 @@ const ActorSchema = new Schema({
     awards: [{ type: String }],
     quotes: [{ type: String }],
     imdb: { type: String },
-    movies: [{type: Schema.Types.ObjectID, ref: "Movies", required: false}], 
+    movies: [{ type: Schema.Types.ObjectId, ref: "Movies" }], 
 });
 
 ActorSchema.virtual("birthdate_formatted").get(function () {

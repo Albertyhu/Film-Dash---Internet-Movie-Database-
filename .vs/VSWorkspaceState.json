@@ -11,6 +11,6 @@
     "\\views\\partials\\actorForm",
     "\\views\\partials\\directorForm"
   ],
-  "SelectedNode": "\\views\\contact.ejs",
+  "SelectedNode": "\\views\\partials\\actorForm\\occupation.ejs",
   "PreviewInSolutionExplorer": false
 }

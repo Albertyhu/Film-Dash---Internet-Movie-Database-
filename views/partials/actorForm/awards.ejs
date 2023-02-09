@@ -1,6 +1,6 @@
 <script>
     var AwardsArray = [];
-        <% if( typeof actor != 'undefined') { %>
+        <% if( typeof actor != 'undefined' && stringAwards != "") { %>
             var temp = '<%= stringAwards %>'
             AwardsArray = temp.split('|');
         <%}%>

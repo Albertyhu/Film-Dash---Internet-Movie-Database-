@@ -48,6 +48,13 @@ exports.ActorDetail = (req, res, next) => {
         GetGenreList(callback) {
             Genre.find({}).exec(callback)
         },
+        MovieList(callback) {
+            Movie.find({ actors: { $in: req.params.id } })
+                .populate("director")
+                .populate("actors")
+                .populate("genres")
+                .exec(callback)
+        }
     },
         (err, result) => {
             if (err) {
@@ -59,7 +66,8 @@ exports.ActorDetail = (req, res, next) => {
                     title: result.GetActor.name,
                     actor: result.GetActor,
                     genre_list: result.GetGenreList,
-                    movie_list: result.GetActor.movies, 
+                   // movie_list: result.GetActor.movies, 
+                    movie_list: result.MovieList, 
                     logoURL: "/images/FilmDashLogo.png",
                     burgerMenu: "../../icon/hamburger_menu_white.png",
                     imdbLogo: "../../images/IMDB_logo.png",
@@ -135,11 +143,11 @@ exports.ActorCreate_Get = (req, res, next) => {
                     logoURL: "../../images/FilmDashLogo.png",
                     burgerMenu: "../../icon/hamburger_menu_white.png",
                     error: [],
-                    actor: actorObj,
-                    formattedBirthday: actorObj.birthdate,
-                    stringQuotes: Join(actorObj.quotes),
-                    stringOccupation: Join(actorObj.occupation),
-                    stringAwards: Join(actorObj.awards)
+                    //actor: actorObj,
+                    //formattedBirthday: actorObj.birthdate,
+                    //stringQuotes: Join(actorObj.quotes),
+                    //stringOccupation: Join(actorObj.occupation),
+                    //stringAwards: Join(actorObj.awards)
                 });
             }
         }
@@ -235,7 +243,7 @@ exports.ActorCreate_Post = [
             movies: req.body.movies.split(","), 
             awards: req.body.awards.split(","),
             quotes: ParseText(decodeURIComponent(req.body.quotes)).split("|"),
-            imdb_page: ParseText(decodeURIComponent(req.body.imdb)),
+            imdb_page: ParseText(decodeURIComponent(req.body.imdb_page)),
             portrait: ParseText(decodeURIComponent(req.body.portrait)),
             biography: ParseText(decodeURIComponent(req.body.biography))
         }
@@ -245,11 +253,100 @@ exports.ActorCreate_Post = [
             if (err) {
                 return next(err)
             }
+            obj.movies.forEach(item => {
+                LinkActorToMovie(req.params.id, item)
+            })
             res.redirect(`/${newActor.url}`)
         })
     }
 ]
 
+const LinkActorToMovie = (actorID, movieID) => {
+    Movie.findById(movieID)
+        .exec((err, result) => {
+            if (err) {
+                console.log("Error in linking actor to movie: ", err)
+                return;
+            }
+            if (!result.actors.some(actor => actor.toString() == actorID)) {
+                const tempArray = result.actors;
+                tempArray.push(actorID)
+                const newActorArray = tempArray;
+                const obj = {
+                    title: result.title,
+                    year: result.year,
+                    director: result.director,
+                    actors: newActorArray,
+                    genres: result.genres,
+                    tagline: result.tagline,
+                    imdb_rating: result.imdb_rating,
+                    parental_guide: result.parental_guide,
+                    release_date: result.release_date,
+                    production_company: result.producton_company,
+                    budget: result.budget,
+                    runtime: result.runtime,
+                    poster: result.poster,
+                    _id: result._id,
+                }
+                const updateMovie = new Movie(obj)
+                Movie.findByIdAndUpdate(movieID, updateMovie, {}, (err) => {
+                    if (err) {
+                        console.log("Error in linking actor to movie: ", err)
+                        return;
+                    }
+                })
+            }
+        })
+}
+
+const RemoveActorFromMovie = (actorID, movieIDArray) => {
+    Movie.find({ actors: { $in: actorID } }).exec((err, result) => {
+        if (err) {
+            console.log(err)
+            return; 
+        }
+
+        result.forEach(item => {
+            if (!movieIDArray.some(ID => ID.toString() == item._id.toString())) {
+                var newActorArray = [];
+
+                item.actors.forEach(ID => {
+                    if (ID.toString() != actorID.toString()) {
+                        newActorArray.push(ID)
+                    }
+                })
+
+                var obj = {
+                    title: item.title,
+                    year: item.year,
+                    director: item.director,
+                    actors: newActorArray,
+                    genres: item.genres,
+                    tagline: item.tagline,
+                    imdb_rating: item.imdb_rating,
+                    parental_guide: item.parental_guide,
+                    release_date: item.release_date,
+                    production_company: item.producton_company,
+                    budget: item.budget,
+                    runtime: item.runtime,
+                    poster: item.poster,
+                    _id: item._id,
+                }
+                const updateMovie = new Movie(obj)
+                Movie.findByIdAndUpdate(item._id, updateMovie, {}, (err) => {
+                    if (err) {
+                        console.log("Error in linking actor to movie: ", err)
+                        return;
+                    }
+                    else {
+                        console.log("Actor is successfully deleted from " + obj.title)
+                    }
+                })
+            }
+        })
+    })
+    
+}
 
 exports.Update_Get = (req, res, next) => {
     async.parallel(
@@ -279,7 +376,8 @@ exports.Update_Get = (req, res, next) => {
                     movie_id.push(movie._id.toString());
                 })
             }
-            console.log("incoming: ", Join(result.SelectedActor.quotes))
+
+            
             if (result != null) {
                 res.render("actor_form", {
                     title: `Update information about ${result.SelectedActor.name}`,
@@ -294,7 +392,7 @@ exports.Update_Get = (req, res, next) => {
                     actor: result.SelectedActor,
                     stringQuotes: Join(result.SelectedActor.quotes),
                     stringOccupation: Join(result.SelectedActor.occupation),
-                    stringAwards: Join(result.SelectedActor.awards),
+                    stringAwards: result.SelectedActor.awards.length > 0 ? Join(result.SelectedActor.awards) : 'undefined',
                 });
             }
         }
@@ -367,7 +465,6 @@ exports.Update_Post = [
                                 movie_id.push(movie._id.toString());
                             })
                         }
-                        console.log("birth date: ", result.SelectedActor.birthdate_formatted)
                         if (result != null) {
                             res.render("actor_form", {
                                 title: `Update information about ${result.SelectedActor.name}`,
@@ -390,7 +487,6 @@ exports.Update_Post = [
                 return;
             }
 
-            console.log('quotes: ', req.body.quotes)
             var obj = {
                 name: ParseText(decodeURIComponent(req.body.name)),
                 birthdate: req.body.birthdate,
@@ -406,16 +502,19 @@ exports.Update_Post = [
                 biography: ParseText(decodeURIComponent(req.body.biography)),
                 _id: req.params.id, 
             }
-            console.log("decoded: ", obj.quotes)
 
             const updateActor = new Actor(obj)
+
             try {
                 Actor.findByIdAndUpdate(req.params.id, updateActor, {}, (err, result) => {
                     if (err) {
                         return next(err)
                     }
-                    //res.redirect(`../../../${result.url}`);
-                    res.redirect(`/${result.url}`)
+                        RemoveActorFromMovie(req.params.id, obj.movies)
+                        obj.movies.forEach(item => {
+                            LinkActorToMovie(req.params.id, item)
+                        })
+                        res.redirect(`/${result.url}`)
                 })
             } catch (error) {
                 console.log("There's an error with updating the actor: ", error)

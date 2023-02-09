@@ -11,17 +11,16 @@
 	};
 
 	const ParseText = (text) => {
-	var copy = text.toString();
-	return copy.replace(
-	/&lt;|&gt;|&quot;|&#x27;|&#x2F;|&amp;|&#39;|&#34;/gi,
-	(match) => codeEntities[match]
-	);
+		var copy = text.toString();
+		return copy.replace(
+		/&lt;|&gt;|&quot;|&#x27;|&#x2F;|&amp;|&#39;|&#34;/gi,
+		(match) => codeEntities[match]
+		);
 	};
 	var QuotesArray = [];
-	<% if( typeof actor != 'undefined') { %>
+	<% if( typeof actor != 'undefined' && stringQuotes != "") { %>
             var temp = '<%= stringQuotes %>'
             QuotesArray = (ParseText(temp)).split('|');
-			console.log("Incoming EJS quotes array: ", QuotesArray)
         <%}%>
 </script>
 <div>
@@ -93,7 +92,9 @@
 				var tempArr = QuotesArray;
 				tempArr = QuotesArray.filter(val => val !== UserInput)
 				QuotesArray = tempArr;
-				QuotesAnswers.removeChild(NewInput)
+				QuotesAnswers.removeChild(NewInput);
+				QuotesHiddenInput = document.getElementById('QuotesHiddenInput');
+				QuotesHiddenInput.value = Join(QuotesArray);
 			})
 		})
 	}
@@ -124,6 +125,8 @@
 				tempArr = QuotesArray.filter(val => val !== UserInput)
 				QuotesArray = tempArr;
 				QuotesAnswers.removeChild(NewInput)
+				QuotesHiddenInput = document.getElementById('QuotesHiddenInput');
+				QuotesHiddenInput.value = Join(QuotesArray);
 				})
 			QuotesInput.value = ""
 
