@@ -245,7 +245,7 @@ exports.ActorCreate_Post = [
             movies: req.body.movies.split(","), 
             awards: req.body.awards.split(","),
             quotes: ParseText(decodeURIComponent(req.body.quotes)).split("|"),
-            imdb_page: ParseText(decodeURIComponent(req.body.imdb_page)),
+            imdb: ParseText(decodeURIComponent(req.body.imdb_page)),
             portrait: ParseText(decodeURIComponent(req.body.portrait)),
             biography: ParseText(decodeURIComponent(req.body.biography))
         }
@@ -401,7 +401,7 @@ exports.Update_Post = [
                 )
                 return;
             }
-
+            console.log("imdb: ", req.params.imdb_page)
             var obj = {
                 name: ParseText(decodeURIComponent(req.body.name)),
                 birthdate: req.body.birthdate,
@@ -412,7 +412,7 @@ exports.Update_Post = [
                 movies: req.body.movies.split(","),
                 awards: req.body.awards.split(","),
                 quotes: (ParseText(decodeURIComponent(req.body.quotes))).split("|"),
-                imdb_page: ParseText(decodeURIComponent(req.body.imdb)),
+                imdb: ParseText(decodeURIComponent(req.body.imdb_page)),
                 portrait: ParseText(decodeURIComponent(req.body.portrait)),
                 biography: ParseText(decodeURIComponent(req.body.biography)),
                 _id: req.params.id, 
