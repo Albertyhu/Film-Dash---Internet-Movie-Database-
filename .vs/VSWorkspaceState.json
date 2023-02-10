@@ -11,5 +11,6 @@
     "\\views\\partials\\actorForm",
     "\\views\\partials\\directorForm"
   ],
+  "SelectedNode": "\\views\\movie_detail.ejs",
   "PreviewInSolutionExplorer": false
 }
