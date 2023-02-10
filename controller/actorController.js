@@ -241,9 +241,10 @@ exports.ActorCreate_Post = [
             birthplace: ParseText(decodeURIComponent(req.body.birthplace)),
             height: ParseText(decodeURIComponent(req.body.height)),
             spouse: ParseText(decodeURIComponent(req.body.spouse)),
-            occupation: req.body.occupation.split(","),
+            occupation: ParseText(decodeURIComponent(req.body.occupation)).split("|"),
             movies: req.body.movies.split(","), 
-            awards: req.body.awards.split(","),
+            //awards: req.body.awards.split(","),
+            awards: ParseText(decodeURIComponent(req.body.awards)).split("|"),
             quotes: ParseText(decodeURIComponent(req.body.quotes)).split("|"),
             imdb: ParseText(decodeURIComponent(req.body.imdb_page)),
             portrait: ParseText(decodeURIComponent(req.body.portrait)),
@@ -401,16 +402,16 @@ exports.Update_Post = [
                 )
                 return;
             }
-            console.log("imdb: ", req.params.imdb_page)
             var obj = {
                 name: ParseText(decodeURIComponent(req.body.name)),
                 birthdate: req.body.birthdate,
                 birthplace: ParseText(decodeURIComponent(req.body.birthplace)),
                 height: ParseText(decodeURIComponent(req.body.height)),
                 spouse: ParseText(decodeURIComponent(req.body.spouse)),
-                occupation: req.body.occupation.split(","),
+                occupation: ParseText(decodeURIComponent(req.body.occupation)).split("|"),
                 movies: req.body.movies.split(","),
-                awards: req.body.awards.split(","),
+                //awards: req.body.awards.split(","),
+                awards: ParseText(decodeURIComponent(req.body.awards)).split("|"),
                 quotes: (ParseText(decodeURIComponent(req.body.quotes))).split("|"),
                 imdb: ParseText(decodeURIComponent(req.body.imdb_page)),
                 portrait: ParseText(decodeURIComponent(req.body.portrait)),

@@ -2,8 +2,8 @@
     var OccupationArray = [];
         <% if( typeof actor != 'undefined' && stringOccupation != "") { %>
             var temp = '<%= stringOccupation %>'
-            OccupationArray = temp.split('|');
-        <%}%>
+			OccupationArray = (ParseText(temp)).split('|');
+		<%}%>
 </script>
 <div>
     <label for="occupation">Occupation(s)</label>
@@ -35,76 +35,76 @@
     >
 </div>
 <script>
-var OccupationInput = document.getElementById('OccupationInput'); 
-var AddOccupationButton = document.getElementById('AddOccupationButton');
-var OccupationAnswers = document.getElementById('OccupationAnswers');
-var OccupationHiddenInput = document.getElementById('OccupationHiddenInput'); 
+	var OccupationInput = document.getElementById('OccupationInput');
+	var AddOccupationButton = document.getElementById('AddOccupationButton');
+	var OccupationAnswers = document.getElementById('OccupationAnswers');
+	var OccupationHiddenInput = document.getElementById('OccupationHiddenInput');
 
-if(OccupationArray.length > 0){
-    OccupationAnswers = document.getElementById('OccupationAnswers');
-    OccupationHiddenInput = document.getElementById('OccupationHiddenInput'); 
-    OccupationHiddenInput.value = OccupationArray; 
-    OccupationArray.forEach(val =>{
-        const UserInput = val;
-        const NewInput = document.createElement('div')
-        const NewInputDiv = document.createElement('div');
-        NewInputDiv.innerHTML = UserInput; 
-        NewInput.classList.add('Tag');
-        NewInput.appendChild(NewInputDiv)
-        OccupationAnswers.appendChild(NewInput);
+	if(OccupationArray.length > 0){
+	OccupationAnswers = document.getElementById('OccupationAnswers');
+	OccupationHiddenInput = document.getElementById('OccupationHiddenInput');
+	OccupationHiddenInput.value = Join(OccupationArray);
+	OccupationArray.forEach(val =>{
+	const UserInput = val;
+	const NewInput = document.createElement('div')
+	const NewInputDiv = document.createElement('div');
+	NewInputDiv.innerHTML = UserInput;
+	NewInput.classList.add('Tag');
+	NewInput.appendChild(NewInputDiv)
+	OccupationAnswers.appendChild(NewInput);
 
-        const DeleteButton = document.createElement('img')
-        DeleteButton.alt = "Delete";
-        DeleteButton.classList.add("MiniDeleteButton")
-        DeleteButton.src = "/icon/cancel.png"
-        NewInput.appendChild(DeleteButton)
-        OccupationAnswers.style.display = "table"
+	const DeleteButton = document.createElement('img')
+	DeleteButton.alt = "Delete";
+	DeleteButton.classList.add("MiniDeleteButton")
+	DeleteButton.src = "/icon/cancel.png"
+	NewInput.appendChild(DeleteButton)
+	OccupationAnswers.style.display = "table"
 
-        NewInput.addEventListener('click', ()=>{
-            var tempArr = OccupationArray; 
-            tempArr = OccupationArray.filter(val => val !== UserInput)
-            OccupationArray = tempArr;
-            OccupationAnswers.removeChild(NewInput)
-        })
+	NewInput.addEventListener('click', ()=>{
+	var tempArr = OccupationArray;
+	tempArr = OccupationArray.filter(val => val !== UserInput)
+	OccupationArray = tempArr;
+	OccupationAnswers.removeChild(NewInput)
+	})
 
-    })
-}
+	})
+	}
 
-const AddRelatedOccupation = () => { 
-    OccupationInput = document.getElementById('OccupationInput'); 
-    OccupationAnswers = document.getElementById('OccupationAnswers');
-    const UserInput = OccupationInput.value.trim();
-    if(UserInput.trim() != ""){
-        OccupationArray.push(UserInput)
-   
-        console.log("OccupationArray: ", OccupationArray)
+	const AddRelatedOccupation = () => {
+	OccupationInput = document.getElementById('OccupationInput');
+	OccupationAnswers = document.getElementById('OccupationAnswers');
+	const UserInput = OccupationInput.value.trim();
+	if(UserInput.trim() != ""){
+	OccupationArray.push(UserInput)
 
-        const NewInput = document.createElement('div')
-        const NewInputDiv = document.createElement('div');
-        NewInputDiv.innerHTML = UserInput; 
-        NewInput.classList.add('Tag');
-        NewInput.appendChild(NewInputDiv)
-        OccupationAnswers.appendChild(NewInput);
+	const NewInput = document.createElement('div')
+	const NewInputDiv = document.createElement('div');
+	NewInputDiv.innerHTML = UserInput;
+	NewInput.classList.add('Tag');
+	NewInput.appendChild(NewInputDiv)
+	OccupationAnswers.appendChild(NewInput);
 
-        const DeleteButton = document.createElement('img')
-        DeleteButton.alt = "Delete";
-        DeleteButton.classList.add("MiniDeleteButton")
-        DeleteButton.src = "/icon/cancel.png"
-        NewInput.appendChild(DeleteButton)
-        OccupationAnswers.style.display = "table"
+	const DeleteButton = document.createElement('img')
+	DeleteButton.alt = "Delete";
+	DeleteButton.classList.add("MiniDeleteButton")
+	DeleteButton.src = "/icon/cancel.png"
+	NewInput.appendChild(DeleteButton)
+	OccupationAnswers.style.display = "table"
 
-        NewInput.addEventListener('click', ()=>{
-            var tempArr = OccupationArray; 
-            tempArr = OccupationArray.filter(val => val !== UserInput)
-            OccupationArray = tempArr;
-            OccupationAnswers.removeChild(NewInput)
-        })
-        OccupationInput.value = ""
-            
+	NewInput.addEventListener('click', ()=>{
+	var tempArr = OccupationArray;
+	tempArr = OccupationArray.filter(val => val !== UserInput)
+	OccupationArray = tempArr;
+	OccupationAnswers.removeChild(NewInput)
+	OccupationHiddenInput = document.getElementById('OccupationHiddenInput');
+	OccupationHiddenInput.value = Join(OccupationArray);
+	})
+	OccupationInput.value = ""
 
-        OccupationHiddenInput = document.getElementById('OccupationHiddenInput'); 
-        OccupationHiddenInput.value = OccupationArray; 
-    }
-}
-AddOccupationButton.addEventListener('click', AddRelatedOccupation)
+
+	OccupationHiddenInput = document.getElementById('OccupationHiddenInput');
+	OccupationHiddenInput.value = Join(OccupationArray);
+	}
+	}
+	AddOccupationButton.addEventListener('click', AddRelatedOccupation)
 </script>

@@ -56,11 +56,19 @@
               <% if(typeof actor.awards != 'undefined' && actor.awards.length > 0) {%> 
                 <div class = "mb-3">
                     <p><b>Awards: </b></p>
-                    <ul>
-                        <% actor.awards.forEach(val => {%> 
-                            <li><%= val %></li>
+                    <div>
+                        <% actor.awards.forEach((val,ind) => {%> 
+                            <span>
+                                <%= val %> 
+                                <%if(ind < actor.awards.length -2 ){ %> 
+                                    <span>, </span>
+                                <%}%>
+                                <% if(ind == actor.awards.length - 2){ %> 
+                                    <span> and </span>
+                                <%} %>
+                            </span>
                         <%})%>
-                    </ul>
+                    </div>
                 </div>
               <%}%>
               <% if(typeof actor.quotes != 'undefined' && actor.quotes.length > 0) { %> 

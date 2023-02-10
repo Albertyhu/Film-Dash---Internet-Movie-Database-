@@ -1,9 +1,11 @@
 <script>
-    var AwardsArray = [];
-        <% if( typeof actor != 'undefined' && stringAwards != "") { %>
-            var temp = '<%= stringAwards %>'
-            AwardsArray = temp.split('|');
-        <%}%>
+	var AwardsArray = [];
+	<% if( typeof actor != 'undefined' && stringAwards != "") { %>
+        var temp = '<%= stringAwards %>'
+		console.log("temp: ", temp);
+        AwardsArray = (ParseText(temp)).split('|');
+		console.log("AwardsArray: ", AwardsArray); 
+    <%}%>
 </script>
 <div>
     <label for="awards">Awards(s)</label>
@@ -35,45 +37,47 @@
     >
 </div>
 <script>
+
 	var AwardsInput = document.getElementById('AwardsInput');
 	var AddAwardsButton = document.getElementById('AddAwardsButton');
 	var AwardsAnswers = document.getElementById('AwardsAnswers');
 	var AwardsHiddenInput = document.getElementById('AwardsHiddenInput');
 
 	if(AwardsArray.length > 0){
-	AwardsAnswers = document.getElementById('AwardsAnswers');
-	AwardsHiddenInput = document.getElementById('AwardsHiddenInput');
-
-	//Unforutnately, AwardsArray will automatically be converted as a string and not an array
-	AwardsHiddenInput.value = AwardsArray;
-	AwardsArray.forEach(val =>{
-	const UserInput = val;
-	const NewInput = document.createElement('div')
-	const NewInputDiv = document.createElement('div');
-	NewInputDiv.innerHTML = UserInput;
-	NewInput.classList.add('Tag');
-	NewInput.appendChild(NewInputDiv)
-	AwardsAnswers.appendChild(NewInput);
-
-	const DeleteButton = document.createElement('img')
-	DeleteButton.alt = "Delete";
-	DeleteButton.classList.add("MiniDeleteButton")
-	DeleteButton.src = "/icon/cancel.png"
-	NewInput.appendChild(DeleteButton)
-	AwardsAnswers.style.display = "table"
-
-	//This is allows users to delete item by clicking on it
-	NewInput.addEventListener('click', ()=>{
-		var tempArr = AwardsArray;
-		tempArr = AwardsArray.filter(val => val !== UserInput)
-		AwardsArray = tempArr;
-		AwardsAnswers.removeChild(NewInput)
-
+		AwardsAnswers = document.getElementById('AwardsAnswers');
 		AwardsHiddenInput = document.getElementById('AwardsHiddenInput');
-		AwardsHiddenInput.value = AwardsArray.toString();
-	})
 
-	})
+		//Unforutnately, AwardsArray will automatically be converted as a string and not an array
+		//Thus, the method "Join" will be used combine all the values into a string to be separated by the character '|'
+		AwardsHiddenInput.value = Join(AwardsArray);
+		AwardsArray.forEach(val =>{
+		const UserInput = val;
+		const NewInput = document.createElement('div')
+		const NewInputDiv = document.createElement('div');
+		NewInputDiv.innerHTML = UserInput;
+		NewInput.classList.add('Tag');
+		NewInput.appendChild(NewInputDiv)
+		AwardsAnswers.appendChild(NewInput);
+
+		const DeleteButton = document.createElement('img')
+		DeleteButton.alt = "Delete";
+		DeleteButton.classList.add("MiniDeleteButton")
+		DeleteButton.src = "/icon/cancel.png"
+		NewInput.appendChild(DeleteButton)
+		AwardsAnswers.style.display = "table"
+
+		//This is allows users to delete item by clicking on it
+		NewInput.addEventListener('click', ()=>{
+			var tempArr = AwardsArray;
+			tempArr = AwardsArray.filter(val => val !== UserInput)
+			AwardsArray = tempArr;
+			AwardsAnswers.removeChild(NewInput)
+
+			AwardsHiddenInput = document.getElementById('AwardsHiddenInput');
+			AwardsHiddenInput.value = Join(AwardsArray);
+		})
+
+		})
 	}
 
 	const AddRelatedAwards = () => {
@@ -103,13 +107,13 @@
 		AwardsArray = tempArr;
 		AwardsAnswers.removeChild(NewInput)
 		AwardsHiddenInput = document.getElementById('AwardsHiddenInput');
-		AwardsHiddenInput.value = AwardsArray.toString();
+		AwardsHiddenInput.value = Join(AwardsArray);
 	})
 	AwardsInput.value = ""
 
 
 	AwardsHiddenInput = document.getElementById('AwardsHiddenInput');
-	AwardsHiddenInput.value = AwardsArray;
+	AwardsHiddenInput.value = Join(AwardsArray);
 	}
 	}
 	AddAwardsButton.addEventListener('click', AddRelatedAwards)
