@@ -1,9 +1,9 @@
 <script>
     var AwardsArray = [];
-        <% if( typeof director != 'undefined') { %>
-            var temp = '<%= director.awards.toString() %>'
-            AwardsArray = temp.split(',');
-        <%}%>
+        <% if( typeof director != 'undefined' && stringAwards != "") { %>
+            var temp = '<%= stringAwards %>'
+			AwardsArray = (ParseText(temp)).split('|');
+		<%}%>
 </script>
 <div>
     <label for="awards">Awards(s)</label>
@@ -46,7 +46,7 @@
 	AwardsHiddenInput = document.getElementById('AwardsHiddenInput');
 
 	//Unforutnately, AwardsArray will automatically be converted as a string and not an array
-	AwardsHiddenInput.value = AwardsArray;
+	AwardsHiddenInput.value = Join(AwardsArray);
 	AwardsArray.forEach(val =>{
 	const UserInput = val;
 	const NewInput = document.createElement('div')
@@ -71,7 +71,7 @@
 		AwardsAnswers.removeChild(NewInput)
 
 		AwardsHiddenInput = document.getElementById('AwardsHiddenInput');
-		AwardsHiddenInput.value = AwardsArray.toString();
+		AwardsHiddenInput.value = Join(AwardsArray);
 	})
 
 	})
@@ -104,13 +104,13 @@
 		AwardsArray = tempArr;
 		AwardsAnswers.removeChild(NewInput)
 		AwardsHiddenInput = document.getElementById('AwardsHiddenInput');
-		AwardsHiddenInput.value = AwardsArray.toString();
+		AwardsHiddenInput.value = Join(AwardsArray);
 	})
 	AwardsInput.value = ""
 
 
 	AwardsHiddenInput = document.getElementById('AwardsHiddenInput');
-	AwardsHiddenInput.value = AwardsArray;
+	AwardsHiddenInput.value = Join(AwardsArray);
 	}
 	}
 	AddAwardsButton.addEventListener('click', AddRelatedAwards)

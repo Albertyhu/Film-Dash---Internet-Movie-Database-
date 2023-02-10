@@ -1,0 +1,125 @@
+<div
+class="relative w-full"
+> 
+	<div class = "w-11/12 mx-auto grid grid-cols-[90%_10%] sm:grid-cols-[92%_8%] md:grid-cols-[95%_5%] border-[1px] border-white rounded-lg">
+		<div class = 'flex my-auto w-full'>
+			<input
+				id="SearchInput"
+				type='text' 
+				class = "border-none p-1 text-white bg-black w-full rounded-lg outline-none"
+				placeholder="Search movie by title..."
+			/>
+		</div>
+		<div class = "my-auto">
+			<img 
+				src = "<%= typeof searchIcon != 'undefined' ? searchIcon : "/icon/search-white.png" %>"
+				alt = "search" 
+				class = "max-w-[50px] max-h-[50px] text-white m-auto p-[10px] active:translate-x-[5px] 
+					active:translate-y-[5px] cursor-pointer select-none"
+				/>  
+		</div>
+	</div>
+	<div 
+		id="SearchResultsElement"
+		class="w-11/12 mx-auto bg-white text-black absolute left-0 right-0 z-10 rounded-lg
+		overflow-y-scroll hidden" >
+		<div 
+			id = "ResultList"
+			class = "w-11/12 mx-auto [&>a]:my-10 py-1">
+
+		</div>
+	</div>
+</div>
+<script>
+	var SearchResultsElement = document.getElementById("SearchResultsElement"); 
+	var ResultList = document.getElementById('ResultList');
+	var SearchInput = document.getElementById('SearchInput'); 
+	const DataList = <%- JSON.stringify(DataList) %>
+	const SearchHandler = evt =>{
+		RemoveAllChildren()
+		var input = evt.target.value.trim(); 
+		if(input == ""){
+			SearchResultsElement.classList.remove('block')
+			SearchResultsElement.classList.add('hidden')
+		}
+		else{
+			SearchResultsElement.classList.remove('hidden')
+			SearchResultsElement.classList.add('block')
+		}
+		var result = SearchList(input)
+	}
+
+	const SearchList = (query) =>{
+		//result is an array 
+		var result = DataList.filter(val => val.title.toLowerCase().search(query.toLowerCase()) > -1) 
+		GenerateSearchResults(result)
+	}
+	const GenerateSearchResults = (arr)=>{
+		ResultList = document.getElementById('ResultList'); 
+		if(arr.length != 0){
+			arr.forEach(item => {
+				console.log("item: ", item)
+				var ItemLink = document.createElement('a'); 
+				ItemLink.href= `/catalog/movie/${item._id}`
+				ResultList.appendChild(ItemLink);
+				ItemLink.classList.add("my-[10px]")
+
+				var ItemDiv = document.createElement('div');
+				ItemLink.appendChild(ItemDiv); 
+				ItemDiv.classList.add("my-[10px]")
+				
+				var PosterElem = null; 
+				ItemDiv.classList.add('grid')
+				ItemDiv.classList.add('w-11/12')
+				ItemDiv.classList.add('mx-auto')
+				//if movie poster is available 
+				if(item.poster != 'undefined' && item.poster != '' && item.poster != null){
+					ItemDiv.classList.add('grid-cols-[50%_50%]')
+					PosterElem = document.createElement('img');
+					PosterElem.src = item.poster;
+					PosterElem.classList.add('max-h-[200px]');
+					PosterElem.classList.add('w-auto');
+					PosterElem.classList.add('mx-auto');
+					PosterElem.classList.add('rounded-lg');
+					PosterElem.alt = "Movie-poster"; 
+					ItemDiv.appendChild(PosterElem);
+				}
+				var TextDiv = document.createElement('div');
+				ItemDiv.appendChild(TextDiv); 
+				TextDiv.classList.add("!text-left");
+
+				var Title = document.createElement('h1'); 
+				Title.innerHTML = item.title; 
+				TextDiv.appendChild(Title)
+				Title.classList.add('font-bold');
+				Title.classList.add('text-2xl')
+
+				if(item.director != 'undefined' && item.director != null && item.director.length > 0){
+					var Director = document.createElement('p')
+
+					var DirectorText = ""; 
+					item.director.forEach((person, index) =>{
+						DirectorText += person.name
+						if(index == item.director.length - 2){
+							DirectorText+= " and "
+						}
+						else if(index < item.director.length - 2){
+							DirectorText+= ", "
+						}
+					})
+					Director.innerHTML = `Directed by ${DirectorText}`
+					TextDiv.appendChild(Director); 
+				}
+			})
+		}
+	}
+
+	const RemoveAllChildren= ()=>{
+		ResultList = document.getElementById('ResultList'); 
+		while(ResultList.firstChild){
+			ResultList.removeChild(ResultList.firstChild)
+		}
+	}
+
+	SearchInput.addEventListener('input', SearchHandler )
+</script>

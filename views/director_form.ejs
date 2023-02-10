@@ -46,6 +46,7 @@
     display: block;
 }
 </style>
+<%- include('partials/directorForm/util')%>
 </head>
 <body class = "bg-black h-auto">
   <div 
@@ -92,7 +93,7 @@
                 <input 
                     type = "date"
                     name='birthdate'
-                    value = "<%= typeof director != 'undefined' ? director.birthdate : null %>"
+                    value = "<%= typeof director != 'undefined' ? director.FormattedBirthDate : null %>"
                     />
             </div>
             <div>

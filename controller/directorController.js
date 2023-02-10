@@ -6,6 +6,7 @@ const Movie = require("../model/Movies");
 const Genre = require("../model/Genres");
 const ParseText = require("../util/parseText");
 const directorObj = require('../data/dummyDirectorData')
+const Join = require("../util/join")
 
 exports.DirectorList = (req, res, next) => {
     async.parallel(
@@ -88,7 +89,7 @@ exports.DirectorCreate_Get = (req, res, next) => {
                 logoURL: "../../images/FilmDashLogo.png",
                 burgerMenu: "../../icon/hamburger_menu_white.png",
                 error: [],
-                director: directorObj,
+                //director: directorObj,
             });
         }
     })
@@ -161,16 +162,16 @@ exports.DirectorCreate_Post = [
             birthplace: ParseText(decodeURIComponent(req.body.birthplace)),
             height: ParseText(decodeURIComponent(req.body.height)),
             spouse: ParseText(decodeURIComponent(req.body.spouse)),
-            occupation: req.body.occupation.split(","),
+            occupation: ParseText(decodeURIComponent(req.body.occupation)).split("|"),
             known_for: req.body.known_for.split(","),
             education: {
                 degree: ParseText(decodeURIComponent(req.body.degree)),
                 field: ParseText(decodeURIComponent(req.body.field)),
                 school: ParseText(decodeURIComponent(req.body.school)),
             },
-            awards: req.body.awards.split(","),
-            quotes: req.body.quotes.split(","),
-            imdb_page: ParseText(decodeURIComponent(req.body.imdb)),
+            awards: ParseText(decodeURIComponent(req.body.awards)).split("|"),
+            quotes: ParseText(decodeURIComponent(req.body.quotes)).split("|"),
+            imdb_page: ParseText(decodeURIComponent(req.body.imdb_page)),
             portrait: ParseText(decodeURIComponent(req.body.portrait))
         }
 
@@ -207,6 +208,9 @@ exports.Update_Get = (req, res, next) => {
                 logoURL: "/images/FilmDashLogo.png",
                 burgerMenu: "../../../icon/hamburger_menu_white.png",
                 error: [], 
+                stringQuotes: Join(result.SelectedDirector.quotes),
+                stringOccupation: Join(result.SelectedDirector.occupation),
+                stringAwards: Join(result.SelectedDirector.awards)
             })
         }
     )
@@ -289,16 +293,17 @@ exports.Update_Post = [
             birthplace: ParseText(decodeURIComponent(req.body.birthplace)),
             height: ParseText(decodeURIComponent(req.body.height)),
             spouse: ParseText(decodeURIComponent(req.body.spouse)),
-            occupation: req.body.occupation.split(","),
+            occupation: ParseText(decodeURIComponent(req.body.occupation)).split("|"),
             known_for: req.body.known_for.split(","),
             education: {
                 degree: ParseText(decodeURIComponent(req.body.degree)),
                 field: ParseText(decodeURIComponent(req.body.field)),
                 school: ParseText(decodeURIComponent(req.body.school)),
             },
-            awards: req.body.awards.split(","),
-            quotes: req.body.quotes.split(","),
-            imdb_page: ParseText(decodeURIComponent(req.body.imdb)),
+            awards: ParseText(decodeURIComponent(req.body.awards)).split("|"),
+           // quotes: req.body.quotes.split(","),
+            quotes: ParseText(decodeURIComponent(req.body.quotes)).split("|"),
+            imdb_page: ParseText(decodeURIComponent(req.body.imdb_page)),
             portrait: ParseText(decodeURIComponent(req.body.portrait)),
             _id: req.params.id, 
         }

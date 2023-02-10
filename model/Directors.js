@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const { DateTime } = require('luxon');
 
 const DirectorSchema = new Schema({
   name: { type: String, required: true },
@@ -22,8 +23,15 @@ const DirectorSchema = new Schema({
 
 DirectorSchema.virtual("FormattedBirthDate").get(function () {
   return this.birthdate
-    ? DateTime.FromJSDate(this.birthdate).toFormat("yyyy-MM-dd")
+    ? DateTime.fromJSDate(this.birthdate).toFormat("yyyy-MM-dd")
     : null;
+});
+
+
+DirectorSchema.virtual("BirthDateToLocaleString").get(function () {
+    return this.birthdate
+        ? DateTime.fromJSDate(this.birthdate).toLocaleString()
+        : null;
 });
 
 DirectorSchema.virtual("url").get(function () {

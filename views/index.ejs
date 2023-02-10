@@ -32,6 +32,7 @@
 		</div>
    </div>
 	<h2 class ="font-bold text-center mx-auto mt-[50px]  text-white text-lg"><%= title %></h2>
+	<%- include('partials/MovieSearchBar')%>
 	<% if(movie_list) { %>
 		<div class = "sm:grid sm:grid-cols-2 md:grid-cols-3">
 			<% movie_list.forEach(movie =>{ %>
@@ -53,12 +54,10 @@
 					</a>
 					<p class = "font-bold text-2xl"><%= movie.title %></p>
 					<p><%= movie.year %></p>
-				<% if (!Array.isArray(movie.director)) {%>
-					<p>Directed by <%= director_list.find(val => val._id.toString() == movie.director.toString() ).name %></p>
-				<%} else { %>
+				<% if (typeof movie.director != 'undefined' && movie.director.length > 0) {%>
 					<p>Directed by 
 						<% movie.director.forEach((codirector, index) =>{ %> 
-							<%= director_list.find(val => val._id.toString() == codirector.toString() ).name %>
+							<%= codirector.name %>
 							<% if(index < movie.director.length - 2) { %> 
 								<span>, </span>
 						    <% } else if (index == movie.director.length - 2) { %> 

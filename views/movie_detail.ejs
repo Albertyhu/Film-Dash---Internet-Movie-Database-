@@ -32,7 +32,7 @@
                 class = "z-[2] text-white absolute top-[15%] sm:top-[5%] left-[50%] translate-x-[-50%] 
                 md:max-w-2xl mx-auto">
                 <h1 class = "text-4xl sm:text-5xl text-center"><%= movie.title%></h1>
-                <% if(typeof director != "undefined") { %> 
+                <% if(typeof director != "undefined" && director.length > 0) { %> 
                     <p class = "text-2xl sm:text-3xl text-center">Directed by
                         <% director.forEach((person, ind) =>{ %> 
                              <a href ='/../../<%= person.url %>'><span><%= person.name %><span></a>

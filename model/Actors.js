@@ -27,4 +27,10 @@ ActorSchema.virtual("url").get(function () {
   return `catalog/actor/${this._id}`;
 });
 
+ActorSchema.virtual("BirthDateToLocaleString").get(function () {
+    return this.birthdate
+        ? DateTime.fromJSDate(this.birthdate).toLocaleString()
+        : null;
+});
+
 module.exports = mongoose.model("Actor", ActorSchema);

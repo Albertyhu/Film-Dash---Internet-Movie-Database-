@@ -34,6 +34,7 @@ exports.MovieList = (req, res, next) => {
       MovieList(callback) {
         Movie.find({})
           .sort({ title: 1 })
+          .populate('director')
           .populate("actors")
           .populate("genres")
           .exec(callback);
@@ -57,7 +58,9 @@ exports.MovieList = (req, res, next) => {
           genre_list: result.GenreList,
           video: "video/red_glitter.mp4",
           logo: logo,
-          burgerMenu: "../../icon/hamburger_menu_white.png",
+            burgerMenu: "../../icon/hamburger_menu_white.png",
+            searchIcon: "/icon/search-white.png",
+          DataList: result.MovieList, 
         });
       }
     }

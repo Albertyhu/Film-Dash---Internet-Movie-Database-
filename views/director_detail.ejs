@@ -37,7 +37,7 @@
             id="DirectorDetailPanel"
             class = "w-11/12 mx-auto text-white sm:w-6/12"
           >
-              <% if(typeof director.birthdate != 'undefined') {%> <p class = "mb-3"><b>Birth Date: </b> <%= director.birthdate%> </p><% } %>
+              <% if(typeof director.birthdate != 'undefined') {%> <p class = "mb-3"><b>Birth Date: </b> <%= director.BirthDateToLocaleString %> </p><% } %>
               <% if(typeof director.birthplace != 'undefined') {%>  <p class = "mb-3"><b>Birth Place: </b> <%= director.birthplace%> </p><% } %>
               <% if(typeof director.height != 'undefined') {%>  <p class = "mb-3"><b>Birth Height: </b> <%= director.height%> </p><% } %>
               <% if(typeof director.spouse != 'undefined') {%> <p class = "mb-3"><b>Spouse: </b> <%= director.spouse %> </p><% } %>
@@ -88,7 +88,9 @@
                     <p><b>Quotes: </b></p>
                     <ul>
                         <% director.quotes.forEach(val => {%> 
-                            <li class = "my-1">"<%= val %>"</li>
+                            <% if(val != "") {%>
+                                <li class = "my-1">"<%= val %>"</li>
+                            <% } %>
                         <%})%>
                     </ul>
                 </div>

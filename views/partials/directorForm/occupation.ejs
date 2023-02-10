@@ -1,8 +1,8 @@
 <script>
     var OccupationArray = [];
-        <% if( typeof director != 'undefined') { %>
-            var temp = '<%= director.occupation.toString() %>'
-            OccupationArray = temp.split(',');
+        <% if( typeof director != 'undefined' && stringOccupation != "") { %>
+            var temp = '<%= stringOccupation %>'
+            OccupationArray = (ParseText(temp)).split('|');
         <%}%>
 </script>
 <div>
@@ -44,7 +44,7 @@ var OccupationHiddenInput = document.getElementById('OccupationHiddenInput');
 if(OccupationArray.length > 0){
     OccupationAnswers = document.getElementById('OccupationAnswers');
     OccupationHiddenInput = document.getElementById('OccupationHiddenInput'); 
-    OccupationHiddenInput.value = OccupationArray; 
+    OccupationHiddenInput.value = Join(OccupationArray); 
     OccupationArray.forEach(val =>{
         const UserInput = val;
         const NewInput = document.createElement('div')
@@ -65,8 +65,9 @@ if(OccupationArray.length > 0){
             var tempArr = OccupationArray; 
             tempArr = OccupationArray.filter(val => val !== UserInput)
             OccupationArray = tempArr;
-            OccupationAnswers.removeChild(NewInput)
-            console.log("After deletion: ", OccupationArray)
+            OccupationAnswers.removeChild(NewInput);
+            OccupationHiddenInput = document.getElementById('OccupationHiddenInput'); 
+            OccupationHiddenInput.value = Join(OccupationArray); 
         })
 
     })
@@ -100,13 +101,14 @@ const AddRelatedOccupation = () => {
             tempArr = OccupationArray.filter(val => val !== UserInput)
             OccupationArray = tempArr;
             OccupationAnswers.removeChild(NewInput)
-            console.log("After deletion: ", OccupationArray)
+            OccupationHiddenInput = document.getElementById('OccupationHiddenInput'); 
+            OccupationHiddenInput.value = Join(OccupationArray); 
         })
         OccupationInput.value = ""
             
 
         OccupationHiddenInput = document.getElementById('OccupationHiddenInput'); 
-        OccupationHiddenInput.value = OccupationArray; 
+        OccupationHiddenInput.value = Join(OccupationArray); 
     }
 }
 AddOccupationButton.addEventListener('click', AddRelatedOccupation)
